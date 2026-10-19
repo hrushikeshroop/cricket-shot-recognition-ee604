@@ -15,6 +15,8 @@ Classify one cricket image as **drive, leg glance/flick, pull or sweep** using f
 - [Project report, including the full implementation appendix](submission/CricketShot_Report.pdf)
 - [Presentation](submission/CricketShot_Presentation.pptx)
 
+The public repository and the compact **Revised Demo ZIP** define the code/demo submission. The report appendix covers their 42 implementation and configuration files. The **Revised Full ZIP** is a local research archive for comparison and reproduction. It additionally contains data, feature caches, lecture notes and document-building utilities; those supporting utilities are outside the submitted-code appendix. Neither ZIP is uploaded to GitHub.
+
 ## Run the application
 
 Use Python 3.11 or newer. On Windows, run `setup.bat`, then `run_demo.bat`, and open http://127.0.0.1:6040. Or run:
@@ -73,3 +75,30 @@ python scripts/train_fusion.py --stage test
 ```
 
 The script deliberately refuses to overwrite a frozen selection or an existing test result. The gate's numerical gradient and probability constraints are covered by the research tests.
+
+## Reproduce the image study
+
+Use a **scratch copy**, preserving the submitted models and results. These commands replace research manifests, feature caches, models and predictions. They are unnecessary for running the demonstration. The pinned image archive is about 676 MB; CPU feature extraction, duplicate grouping and stress evaluation take additional time.
+
+With the bundled feature encoder in `models/`, the preparation order is:
+
+```powershell
+python -m pip install -r requirements-dev.txt
+python scripts/fetch_images.py
+python scripts/prepare_images.py
+python scripts/strengthen_image_groups.py
+```
+
+`prepare_images.py` builds the preliminary hash grouping and frozen two-view feature cache. `strengthen_image_groups.py` preserves that initial grouping, adds transform/geometric links and writes the corrected split used by the report. Do not train on the preliminary split when reproducing the corrected comparison. The recorded initial high score is historical evidence, not the final benchmark.
+
+Fit and evaluate the corrected image comparison with:
+
+```powershell
+python scripts/train_images.py
+python scripts/train_hog.py
+python scripts/analyze_revision.py
+```
+
+The first command also recomputes the image stress tests. For the optional learned-weighting follow-up, use the separate validation/test commands above after moving aside the scratch copy's saved fusion results. Keep the existing split and validation selection rules. `requirements-lock.txt` records the original environment; different library versions may change fitted coefficients or grouping results.
+
+`scripts/verify_runtime.py` checks a public clone with runtime dependencies only. The complete research test suite also expects cached features and selected media from the separate video study; it is not a runtime-only check.

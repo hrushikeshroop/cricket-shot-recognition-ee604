@@ -9,4 +9,6 @@
 
 The five bundled JPEG inputs are in `demo/images/`. Their current predictions are computed from these actual files, not replayed benchmark outputs. The optional disagreement input is the original decoded PNG. `demo/image_examples.json` records each variant, SHA-256, upstream label, expected prediction and selection role. Examples were selected after evaluation; they illustrate behaviour and do not estimate accuracy.
 
+The main image page downloads `cricketshot-image-prediction.json`, with four class scores and the HOG result. The separate video page downloads `cricketshot-prediction.json`, with eight video labels. Use the image export for the main project demonstration; an older video export does not describe the image model.
+
 Install dependencies and run the complete sequence before going offline. The submitted report explains the method and includes the implementation; `results/revision/worked_trace.json` records one measured prediction trace. The default app port is 6040.
