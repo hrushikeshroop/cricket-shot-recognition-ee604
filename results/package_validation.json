@@ -15,7 +15,7 @@
   },
   "source_model_hashes": {
     "app.py": "1e3b56728836ae3836662b1e7f0a1be5889130720fe2f2b389bc3f6ca44bcee6",
-    "configs/submission.json": "5a34aab545325ef1384718b43a5871a404f75c08a8ea930e6054a79b853fcdfb",
+    "configs/submission.json": "618d92b1c417b8fbe74c6d14e174f37b33aa3cc95860d00fa5ad74c9015570a4",
     "models/classifier.json": "4043415418797d415b6d780bb56db75389489612cb845bac87f7d81cde37d892",
     "models/classifier.npz": "26f3b5531b01e3258879a11bfc5abe87b52eeebbe0a5ad19332d48221dcd6e37",
     "models/hog/classifier.json": "2dbccafef9de5dd6ea4fa05b2acd21e5f816d361674ba3e4793fb6e10d9a5658",
@@ -36,7 +36,7 @@
     "templates/index.html": "8dc632e0bc7233c64566a7177f9a46968c9bdaae36061723f4c67a765a076dd2"
   },
   "tracked_files": 187,
-  "tracked_bytes": 19901549,
+  "tracked_bytes": 19899079,
   "secret_pattern_scan_pass": true,
   "excluded_bulk_and_account_metadata": true
 }

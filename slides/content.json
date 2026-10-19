@@ -6,7 +6,7 @@
       "kicker": "EE604 COURSE PROJECT / 2026",
       "subtitle": "Gradient features and a frozen CNN\nA controlled four-class image study",
       "image": "slides/assets/class_0.jpg",
-      "team_text": "Hrushikesh Roop Avvari (230249)  /  Voora Rakesh (231174)\nGokavarapu Manikanta Sri Akshith (230418)\nLokesh Kumar Moond (230606)  /  Sharath (230303)",
+      "team_text": "Hrushikesh Roop Avvari (230249)  /  Voora Rakesh (231174)\nGokavarapu Manikanta Sri Akshith (230418)\nLokesh Kumar Moond (230606)  /  Bollu Sharath chandra (230303)",
       "bottom": "https://github.com/hrushikeshroop/cricket-shot-recognition-ee604",
       "notes": "Introduce one-image classification. HOG and frozen features connect directly to lectures 10 and 15. The two-view difference is a small extension to test, not a new backbone. Cover image: selected held-out source image, https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset v2."
     },

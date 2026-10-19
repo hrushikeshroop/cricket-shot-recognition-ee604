@@ -2,7 +2,7 @@
 
 | Check | Result | Evidence |
 |---|---|---|
-| Behavioral and integration tests | PASS | ....................                                                     [100%] 20 passed in 2.60s |
+| Behavioral and integration tests | PASS | ....................                                                     [100%] 20 passed in 2.47s |
 | global metric arithmetic | PASS |  |
 | focus metric arithmetic | PASS |  |
 | concat metric arithmetic | PASS |  |

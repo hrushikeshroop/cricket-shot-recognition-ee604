@@ -10,7 +10,7 @@ Repository: https://github.com/hrushikeshroop/cricket-shot-recognition-ee604
 | Voora Rakesh | 231174 |
 | Gokavarapu Manikanta Sri Akshith | 230418 |
 | Lokesh Kumar Moond | 230606 |
-| Sharath | 230303 |
+| Bollu Sharath chandra | 230303 |
 
 ## Results
 

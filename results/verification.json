@@ -3,7 +3,7 @@
     {
       "name": "Behavioral and integration tests",
       "pass": true,
-      "detail": "....................                                                     [100%]\n20 passed in 2.60s"
+      "detail": "....................                                                     [100%]\n20 passed in 2.47s"
     },
     {
       "name": "global metric arithmetic",

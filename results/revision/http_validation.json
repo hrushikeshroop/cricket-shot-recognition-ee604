@@ -61,7 +61,7 @@
   "invalid_upload_status": 400,
   "source_model_hashes": {
     "app.py": "1e3b56728836ae3836662b1e7f0a1be5889130720fe2f2b389bc3f6ca44bcee6",
-    "configs/submission.json": "5a34aab545325ef1384718b43a5871a404f75c08a8ea930e6054a79b853fcdfb",
+    "configs/submission.json": "618d92b1c417b8fbe74c6d14e174f37b33aa3cc95860d00fa5ad74c9015570a4",
     "src/cricketshot/core.py": "674a26e804cf3496059cd6a6d329a08843cc92bf8acb54146ecad9620947e4a3",
     "src/cricketshot/images.py": "075890069bad57da7efb563f85adc701a3ab47dec74a6d76df574042f136d97e",
     "src/cricketshot/hog.py": "50525c18ef93148670223ba9caf040be429eaca19f94dc4f52aac47d7efcb56c",

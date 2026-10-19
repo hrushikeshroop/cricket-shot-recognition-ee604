@@ -2,9 +2,9 @@
 
 The current reading report has 5 pages; the source appendix has 79 pages, giving 84 pages in the complete report. The appendix inventory covers 54 current executable source/configuration files with SHA-256 checks. All file headings and PDF text boundaries pass the document checks.
 
-The report was rendered after the latest edit. The changed supplementary page was inspected at reading size, and all appendix pages were reviewed on four contact sheets with full-size samples. Earlier checks covered the unchanged main text, figures and cover. The unmodified CVPR 2022 style is retained.
+The report was rendered after the latest edit. The current report author block and presentation cover were inspected after the team-name update. The longer name fits correctly. Previous render checks covered the main text, figures and appendix pagination. The unmodified CVPR 2022 style is retained.
 
-PowerPoint exported 16 editable slides and a PDF; its layout check reported zero text-height or outside-slide issues. Notes, native tables, team names and the repository link were checked. The visual slide layouts are unchanged by the latest notes edit.
+PowerPoint exported 16 editable slides and a PDF; its layout check reported zero text-height or outside-slide issues. Notes, native tables, team names and the repository link were checked. The updated cover fits within its existing layout.
 
 Current checks passed: 20 behavioral tests, 34 submission checks and 150 research/cache checks. The 64 fresh two-view CNN feature comparisons had maximum absolute difference zero. Actual local HTTP requests checked five GET routes, four image example/multipart-upload pairs and malformed-image rejection.
 
