@@ -1,0 +1,9 @@
+﻿{
+    "font":  "Arial",
+    "slide_count":  16,
+    "issues":  [
+
+               ],
+    "source":  "slides/content.json",
+    "renderer":  "Microsoft PowerPoint 16 COM"
+}

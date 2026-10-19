@@ -1,0 +1,13 @@
+{
+  "status": "Exploratory extension after seeing Option B results; fixed before the new HOG experiment",
+  "question": "How does a hand-crafted gradient descriptor compare with frozen CNN features on the identical images and split?",
+  "feature": "224 square global-view luminance, unsigned 9-bin HOG, 16x16 cells, 2x2-cell blocks, stride one cell, L2 block and image normalization",
+  "split_policy": "Reuse existing manifest, test identities and groups exactly; no split/seed search",
+  "C_candidates": [0.1, 1, 10, 100],
+  "selection": "Validation macro F1; smallest C wins ties",
+  "classifier": "L2-regularized multinomial logistic regression, balanced class weights, lbfgs, max_iter=2000",
+  "scaling": "Deterministic per-image normalization only. No learned scaling, PCA or feature selection.",
+  "calibration": "None for HOG. Existing CNN temperatures and review threshold remain unchanged.",
+  "uncertainty": "2000 paired visual-group bootstrap draws, seed 17, fixed model and split; no independence claim for 945 images",
+  "fusion": "No HOG+CNN fusion experiment; keep one focused course comparison"
+}

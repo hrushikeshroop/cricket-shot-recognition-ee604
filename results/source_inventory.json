@@ -1,0 +1,277 @@
+[
+  {
+    "path": "app.py",
+    "sha256": "1e3b56728836ae3836662b1e7f0a1be5889130720fe2f2b389bc3f6ca44bcee6",
+    "lines": 233
+  },
+  {
+    "path": "configs/experiment.json",
+    "sha256": "0fe3c86b5ce4d3aaa00543e6dfdf587d1b6a91b9134e1b20daa729321da5b7a4",
+    "lines": 15
+  },
+  {
+    "path": "configs/hog_experiment.json",
+    "sha256": "00afb9f631023e3e4a9a1e35656b66d951ebcd19980d10280d0e6a919c32ffb2",
+    "lines": 13
+  },
+  {
+    "path": "configs/image_experiment.json",
+    "sha256": "37849f54a1447540de2c1368dc2e5ea2ad734d9c2496095a6fc3a5831d32172f",
+    "lines": 12
+  },
+  {
+    "path": "configs/submission.json",
+    "sha256": "0ca43d3f7e535a4c2bbfd38bdb53386dc4d800271dff01faa8f345fcfd960ffd",
+    "lines": 34
+  },
+  {
+    "path": "pyproject.toml",
+    "sha256": "28d1f0d8e17956a80f493567706180db5b8ad96fe48458976931fc8637bc8bda",
+    "lines": 17
+  },
+  {
+    "path": "requirements-dev.txt",
+    "sha256": "aae61509e7ee4ca3cfad1eacb5b5e81356b175caca123a237718246632757819",
+    "lines": 11
+  },
+  {
+    "path": "requirements-lock.txt",
+    "sha256": "ceb72e28517bea031a57296fcb85b7b48a794c5bcdd2ddaa7e35cd1724b223e1",
+    "lines": 43
+  },
+  {
+    "path": "requirements.txt",
+    "sha256": "b07549491ddfbd43878fd04609e5c8bb62fc3c0dd58d6cc865f184a96372d827",
+    "lines": 6
+  },
+  {
+    "path": "run_demo.bat",
+    "sha256": "34a47fa936a95534809f582a5601726011da6b2b1e21bbe5f9ac4b3cfec9b280",
+    "lines": 10
+  },
+  {
+    "path": "scripts/analyze_revision.py",
+    "sha256": "e1362aa0e4af82fb1d2068815655ecfec0ffe624e847a5c2d68b6a4ff406e053",
+    "lines": 97
+  },
+  {
+    "path": "scripts/benchmark.py",
+    "sha256": "ea68c4f988c662c42e33431ae9a0e2a05b652025e9fd62b46cd1ca839fb01227",
+    "lines": 28
+  },
+  {
+    "path": "scripts/build_image_report.py",
+    "sha256": "43d1c2fee3867df5c0019999f7a76e9d7e914189534200c0daf611ecf94e8f55",
+    "lines": 5
+  },
+  {
+    "path": "scripts/build_report.py",
+    "sha256": "7f44ed4ed519e08e87f4978a70be3f09885bbc9fa9b951db8dfd7a8026f52ba6",
+    "lines": 159
+  },
+  {
+    "path": "scripts/build_revision_report.py",
+    "sha256": "10c2cc76b3f12045e5372da6911cfc8a8421ed978576412696bda4c16aea8fc1",
+    "lines": 132
+  },
+  {
+    "path": "scripts/build_slides.ps1",
+    "sha256": "dde40168020713f08a43c52fbe7ac67fc73a9df67684c3fd68cc43633002be88",
+    "lines": 143
+  },
+  {
+    "path": "scripts/extract_roi_features.py",
+    "sha256": "cd884264ddfc925b1d6aa8acec590bdb722fffb54a35363b3b84212070e6f7b5",
+    "lines": 43
+  },
+  {
+    "path": "scripts/fetch_assets.py",
+    "sha256": "af0de64339abdc030d5b381f81eceebb8a92d2b5dae3b794f5290e9d11260852",
+    "lines": 52
+  },
+  {
+    "path": "scripts/fetch_images.py",
+    "sha256": "1256e483be3d8fd77c325d1da3c3c19cbb575d422f30d4c225b3d73b968ed9bf",
+    "lines": 24
+  },
+  {
+    "path": "scripts/image_figures.py",
+    "sha256": "f4c78b87aba05542cff3852db1c8f6f88f3e144c038de2e76332a6c7e4d07a46",
+    "lines": 94
+  },
+  {
+    "path": "scripts/inspect_environment.py",
+    "sha256": "d56b090bcf40e634f8931490ce44f8eba0a180480eb5f5c4592f671cb6cb8d28",
+    "lines": 36
+  },
+  {
+    "path": "scripts/make_figures.py",
+    "sha256": "fc5e67eca74b3c848e690e2b613f85b88ca76cb3ce5adf5a415e57c94c7dd43c",
+    "lines": 133
+  },
+  {
+    "path": "scripts/merge_report.py",
+    "sha256": "b7e42d224dbad94b1d24f2191219a0415e0337e2e08822e9ac6c1667890d7f34",
+    "lines": 19
+  },
+  {
+    "path": "scripts/package_project.py",
+    "sha256": "7a0fa19e1a76a4e4404ee37dbe3b1a8c9c4dc4b891accedec96bca748dc93c0a",
+    "lines": 5
+  },
+  {
+    "path": "scripts/package_revised.py",
+    "sha256": "b1035988664760e5760025d401b2234211ac40612690deaa7cd413c865ca4a94",
+    "lines": 86
+  },
+  {
+    "path": "scripts/prepare_data.py",
+    "sha256": "552519f72673d4e28e9f9c58c0d7f9ff2c64318a84fa232ea1867f3bcc5c3515",
+    "lines": 135
+  },
+  {
+    "path": "scripts/prepare_demo_examples.py",
+    "sha256": "5fe22b5c365422900fa2b15da3e915fabc92922e0ab4ebf70141886418c2bc91",
+    "lines": 75
+  },
+  {
+    "path": "scripts/prepare_images.py",
+    "sha256": "d8ba86220e13ddbffee20e8d3d1b9ce407ac38ed8f99f7a717ad2d5c79d5c09a",
+    "lines": 175
+  },
+  {
+    "path": "scripts/prepare_revision_slides.py",
+    "sha256": "c283c946d7b25fd3ce240d830a52ca40a5b686a1853ec23409c148c7317db594",
+    "lines": 124
+  },
+  {
+    "path": "scripts/prepare_slides.py",
+    "sha256": "346a18690c55cf537c2ab91a8eca64e8c4f826b4ba04f301fd477ac168854b54",
+    "lines": 5
+  },
+  {
+    "path": "scripts/record_environment.py",
+    "sha256": "f03cb2839031186e8be80a46c7d9f5f83c31588c3099f06c191200aa8ce6bc79",
+    "lines": 17
+  },
+  {
+    "path": "scripts/render_demo.ps1",
+    "sha256": "1739e673475e2dc5edfd092fead6f27b19bc9cd003feeff36b0ccd52ed7547c4",
+    "lines": 38
+  },
+  {
+    "path": "scripts/revision_figures.py",
+    "sha256": "1d72e629b01b4a0abb239176b614422ba40c850c813bad8dd2fa9c6c74ac16de",
+    "lines": 89
+  },
+  {
+    "path": "scripts/strengthen_image_groups.py",
+    "sha256": "aa765aad9edd2c77c2d48b5531af7175f431c34abddde0cb45acb65df9fc0e31",
+    "lines": 229
+  },
+  {
+    "path": "scripts/train_evaluate.py",
+    "sha256": "f2880be0e5bd3e82e16bb6ce16850817ef1640364877032071b13946ae5b65fc",
+    "lines": 376
+  },
+  {
+    "path": "scripts/train_hog.py",
+    "sha256": "ddd810462a69b399dbf3f4a74c96054c5964b3f9140267084d35c62c8fca66ee",
+    "lines": 101
+  },
+  {
+    "path": "scripts/train_images.py",
+    "sha256": "3ece3b7262cf61023eef5354b2eadb451e868742eb9e332085bd0f35219a0420",
+    "lines": 249
+  },
+  {
+    "path": "scripts/verify_revision.py",
+    "sha256": "becfcc2d29e8999d3a9adf575e3c00d2a46930276e37e766602cd0589978311a",
+    "lines": 85
+  },
+  {
+    "path": "scripts/verify_runtime.py",
+    "sha256": "cc0bb82d069e5125382a0c9865267d165d73cba77f57859e08da1a25cbbe3999",
+    "lines": 70
+  },
+  {
+    "path": "scripts/verify_submission.py",
+    "sha256": "f87caf5fb365e58070834483a37827fdbfd9dc0cedd6e14fc47a3d8ddc271d43",
+    "lines": 126
+  },
+  {
+    "path": "scripts/write_project_docs.py",
+    "sha256": "d3bb9ac528c3be73f575f6c31102520596ccd8e7c81b855537385a865acf28bc",
+    "lines": 89
+  },
+  {
+    "path": "setup.bat",
+    "sha256": "e64012e318d0fd0f8061f124eec3491775c3d552b797e1b0906238cd4f168638",
+    "lines": 8
+  },
+  {
+    "path": "src/cricketshot/__init__.py",
+    "sha256": "f4553fb4761cb494d23f0609fa71ad8dd85af94742630e78e16d3093642815d0",
+    "lines": 2
+  },
+  {
+    "path": "src/cricketshot/core.py",
+    "sha256": "674a26e804cf3496059cd6a6d329a08843cc92bf8acb54146ecad9620947e4a3",
+    "lines": 205
+  },
+  {
+    "path": "src/cricketshot/hog.py",
+    "sha256": "50525c18ef93148670223ba9caf040be429eaca19f94dc4f52aac47d7efcb56c",
+    "lines": 109
+  },
+  {
+    "path": "src/cricketshot/images.py",
+    "sha256": "075890069bad57da7efb563f85adc701a3ab47dec74a6d76df574042f136d97e",
+    "lines": 115
+  },
+  {
+    "path": "static/app.js",
+    "sha256": "0ffe1a9ae3f29d320c1fb8127818ffeb600b67e15869fcb4749f25fa9f83ba48",
+    "lines": 91
+  },
+  {
+    "path": "static/images.css",
+    "sha256": "7011c70dc88d001ec3158d398a6ced4435405454c10188d14fd8490ee75709c1",
+    "lines": 6
+  },
+  {
+    "path": "static/images.js",
+    "sha256": "74cfe958cd683f9ed3bcc16f13e3c5b2ba9095729919bfb111b815e7486fa2db",
+    "lines": 33
+  },
+  {
+    "path": "static/style.css",
+    "sha256": "f5b482eb18c6532c8ced1c3c95792fce29ae503dff64b9fc64b3e6be6b4ef60b",
+    "lines": 1
+  },
+  {
+    "path": "templates/images.html",
+    "sha256": "58d1f711f178ccc415a8a1bd70d94dbfa3740700553900c877700838c4eb533c",
+    "lines": 7
+  },
+  {
+    "path": "templates/index.html",
+    "sha256": "8dc632e0bc7233c64566a7177f9a46968c9bdaae36061723f4c67a765a076dd2",
+    "lines": 29
+  },
+  {
+    "path": "tests/test_images.py",
+    "sha256": "adba6b11210b5059707c9c5ad9cc43a533391d3843efc1e65cfb3bff1065200f",
+    "lines": 67
+  },
+  {
+    "path": "tests/test_project.py",
+    "sha256": "37d2a5fe87bc979b5abaab675582184c1a5fe25f4b2e67d9286bb99b0df32f5c",
+    "lines": 96
+  },
+  {
+    "path": "tests/test_revision.py",
+    "sha256": "f916c73767dc43b79139a083caf4eded646c93c7d93d0295f2cc8efd98a80b73",
+    "lines": 86
+  }
+]

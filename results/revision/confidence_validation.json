@@ -1,0 +1,58 @@
+{
+  "all_match_saved_evidence": true,
+  "checks": {
+    "global_scaled": {
+      "nll": 0.965430702342692,
+      "ece_10_bins": 0.1179775484526536,
+      "brier_multiclass": 0.5082137967034436
+    },
+    "global_unscaled": {
+      "nll": 0.915814682647613,
+      "ece_10_bins": 0.0757399015870611,
+      "brier_multiclass": 0.4934805357318564
+    },
+    "focus_scaled": {
+      "nll": 0.9395622600819252,
+      "ece_10_bins": 0.1044120809766695,
+      "brier_multiclass": 0.5037877638495593
+    },
+    "focus_unscaled": {
+      "nll": 0.9250653019246231,
+      "ece_10_bins": 0.08733029665884587,
+      "brier_multiclass": 0.4990022138601082
+    },
+    "concat_scaled": {
+      "nll": 0.9082758429360664,
+      "ece_10_bins": 0.09986071369073239,
+      "brier_multiclass": 0.48037331801371147
+    },
+    "concat_unscaled": {
+      "nll": 0.8644724245403058,
+      "ece_10_bins": 0.04748020061555171,
+      "brier_multiclass": 0.46744688428226117
+    },
+    "contrast_scaled": {
+      "nll": 0.8976541799979367,
+      "ece_10_bins": 0.09426354950391819,
+      "brier_multiclass": 0.4821690705551544
+    },
+    "contrast_unscaled": {
+      "nll": 0.858557360577707,
+      "ece_10_bins": 0.04295206481065685,
+      "brier_multiclass": 0.46960164831648626
+    },
+    "confidence_only": {
+      "accepted": 588,
+      "correct": 456,
+      "coverage": 0.6222222222222222,
+      "accepted_accuracy": 0.7755102040816326
+    },
+    "agreement_gate": {
+      "accepted": 557,
+      "correct": 433,
+      "coverage": 0.5894179894179894,
+      "accepted_accuracy": 0.77737881508079
+    }
+  },
+  "scope": "Recomputed all four heads unscaled/scaled NLL, ECE, Brier, and exact review counts from numeric inference and individual predictions"
+}

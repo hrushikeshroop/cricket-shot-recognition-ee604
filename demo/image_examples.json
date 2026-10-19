@@ -1,0 +1,34 @@
+[
+  {
+    "id": "image_00210",
+    "label": "drive",
+    "path": "demo/images/image_00210.png",
+    "split": "test",
+    "short_label": "Drive",
+    "note": "Selected success. Chosen after evaluation for the demo."
+  },
+  {
+    "id": "image_02934",
+    "label": "pullshot",
+    "path": "demo/images/image_02934.png",
+    "split": "test",
+    "short_label": "Pull",
+    "note": "Selected success. Chosen after evaluation for the demo."
+  },
+  {
+    "id": "image_04199",
+    "label": "sweep",
+    "path": "demo/images/image_04199.png",
+    "split": "test",
+    "short_label": "Sweep",
+    "note": "Confident failure. Chosen after evaluation for the demo."
+  },
+  {
+    "id": "image_00014",
+    "label": "drive",
+    "path": "demo/images/image_00014.png",
+    "split": "test",
+    "short_label": "Drive",
+    "note": "View disagreement. Chosen after evaluation for the demo."
+  }
+]

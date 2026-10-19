@@ -1,0 +1,16 @@
+[
+  {
+    "url": "https://www.kaggle.com/api/v1/datasets/download/amittalmale/cricket-shots?datasetVersionNumber=1",
+    "path": "data\\downloads\\cricket-shots-v1.zip",
+    "sha256": "1b4ceb40a8c976c2a06b532aa0280b82fdf41cfc1d83cd228e9159cfa5b5053d",
+    "bytes": 142528824,
+    "accessed": "2026-10-17"
+  },
+  {
+    "url": "https://media.githubusercontent.com/media/onnx/models/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx",
+    "path": "models\\mobilenetv2-12.onnx",
+    "sha256": "c0c3f76d93fa3fd6580652a45618618a220fced18babf65774ed169de0432ad5",
+    "bytes": 13964571,
+    "accessed": "2026-10-17"
+  }
+]

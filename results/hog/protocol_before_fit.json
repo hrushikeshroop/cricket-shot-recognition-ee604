@@ -1,0 +1,48 @@
+{
+  "status": "Exploratory extension after seeing Option B results; fixed before the new HOG experiment",
+  "question": "How does a hand-crafted gradient descriptor compare with frozen CNN features on the identical images and split?",
+  "feature": "224 square global-view luminance, unsigned 9-bin HOG, 16x16 cells, 2x2-cell blocks, stride one cell, L2 block and image normalization",
+  "split_policy": "Reuse existing manifest, test identities and groups exactly; no split/seed search",
+  "C_candidates": [
+    0.1,
+    1,
+    10,
+    100
+  ],
+  "selection": "Validation macro F1; smallest C wins ties",
+  "classifier": "L2-regularized multinomial logistic regression, balanced class weights, lbfgs, max_iter=2000",
+  "scaling": "Deterministic per-image normalization only. No learned scaling, PCA or feature selection.",
+  "calibration": "None for HOG. Existing CNN temperatures and review threshold remain unchanged.",
+  "uncertainty": "2000 paired visual-group bootstrap draws, seed 17, fixed model and split; no independence claim for 945 images",
+  "fusion": "No HOG+CNN fusion experiment; keep one focused course comparison",
+  "parameters": {
+    "image_size": [
+      224,
+      224
+    ],
+    "grayscale": "PIL RGB to L (8-bit luminance)",
+    "gradient": "central difference, zero derivative at image boundaries",
+    "orientations": 9,
+    "angle_range_degrees": [
+      0,
+      180
+    ],
+    "pixels_per_cell": [
+      16,
+      16
+    ],
+    "cells_per_block": [
+      2,
+      2
+    ],
+    "block_stride_cells": 1,
+    "orientation_interpolation": "linear between circular neighboring bins",
+    "spatial_interpolation": false,
+    "block_normalization": "L2, epsilon=1e-5",
+    "final_normalization": "L2 per image, epsilon floor=1e-12",
+    "dimension": 6084
+  },
+  "manifest_sha256": "a83c2b3dc4573769ade21d06a2186e85d9c34c8d8c11ad8134286ea5210c2c3d",
+  "implementation_sha256": "50525c18ef93148670223ba9caf040be429eaca19f94dc4f52aac47d7efcb56c",
+  "protocol_sha256": "00afb9f631023e3e4a9a1e35656b66d951ebcd19980d10280d0e6a919c32ffb2"
+}

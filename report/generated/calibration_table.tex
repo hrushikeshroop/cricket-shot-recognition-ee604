@@ -1,0 +1,13 @@
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Probabilities & NLL & ECE & Brier \\
+\midrule
+Before calibration & 2.054 & 0.204 & 0.914 \\
+After calibration & 1.885 & 0.105 & 0.843 \\
+\bottomrule
+\end{tabular}
+\caption{Proposed model on test clips. ECE uses ten equal-width confidence bins. Brier is the unscaled mean sum of squared errors over eight classes. Lower is better.}
+\label{tab:cal}
+\end{table}

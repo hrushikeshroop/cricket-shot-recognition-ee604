@@ -1,0 +1,42 @@
+{
+  "all_pass": true,
+  "scope": "Fresh export of exactly the Git index, in isolated Python environment with system site packages disabled and only requirements.txt installed. No raw datasets, feature caches or selected demo fixtures in export. External photograph passed as an actual multipart upload; malformed input rejected. No new accuracy measurement.",
+  "input": "external photograph",
+  "input_sha256": "69647d251f2b8342908b23bd10c6d3d1b1156d2b49be51a06fbc41ab6c07d4e1",
+  "label": "drive",
+  "available_image_examples": 0,
+  "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+  "packages": {
+    "numpy": "2.5.4",
+    "Pillow": "13.0.0",
+    "onnxruntime": "1.31.0",
+    "opencv-python-headless": "5.0.0.93",
+    "Flask": "3.1.3"
+  },
+  "source_model_hashes": {
+    "app.py": "1e3b56728836ae3836662b1e7f0a1be5889130720fe2f2b389bc3f6ca44bcee6",
+    "configs/submission.json": "0ca43d3f7e535a4c2bbfd38bdb53386dc4d800271dff01faa8f345fcfd960ffd",
+    "models/classifier.json": "4043415418797d415b6d780bb56db75389489612cb845bac87f7d81cde37d892",
+    "models/classifier.npz": "26f3b5531b01e3258879a11bfc5abe87b52eeebbe0a5ad19332d48221dcd6e37",
+    "models/hog/classifier.json": "2dbccafef9de5dd6ea4fa05b2acd21e5f816d361674ba3e4793fb6e10d9a5658",
+    "models/hog/head.npz": "b642a548057aa1db6a504d9d85b276240cc59525541f9f6ae3986f9e53e7a10d",
+    "models/image/classifier.json": "502f2c537c55606626b65ac644ce2ee8420775be453aeab61b5b38e4e08031d8",
+    "models/image/heads.npz": "43f011254541764271add9e192adc1a52d9b18ecb21fe776e335e38fc0ea55f1",
+    "models/mobilenetv2_features.onnx": "bfa8f7bdd68ff12b519fe81f420ba370904b33b6580b01fb907bd05a3b6959cc",
+    "scripts/verify_runtime.py": "cc0bb82d069e5125382a0c9865267d165d73cba77f57859e08da1a25cbbe3999",
+    "src/cricketshot/__init__.py": "f4553fb4761cb494d23f0609fa71ad8dd85af94742630e78e16d3093642815d0",
+    "src/cricketshot/core.py": "674a26e804cf3496059cd6a6d329a08843cc92bf8acb54146ecad9620947e4a3",
+    "src/cricketshot/hog.py": "50525c18ef93148670223ba9caf040be429eaca19f94dc4f52aac47d7efcb56c",
+    "src/cricketshot/images.py": "075890069bad57da7efb563f85adc701a3ab47dec74a6d76df574042f136d97e",
+    "static/app.js": "0ffe1a9ae3f29d320c1fb8127818ffeb600b67e15869fcb4749f25fa9f83ba48",
+    "static/images.css": "7011c70dc88d001ec3158d398a6ced4435405454c10188d14fd8490ee75709c1",
+    "static/images.js": "74cfe958cd683f9ed3bcc16f13e3c5b2ba9095729919bfb111b815e7486fa2db",
+    "static/style.css": "f5b482eb18c6532c8ced1c3c95792fce29ae503dff64b9fc64b3e6be6b4ef60b",
+    "templates/images.html": "58d1f711f178ccc415a8a1bd70d94dbfa3740700553900c877700838c4eb533c",
+    "templates/index.html": "8dc632e0bc7233c64566a7177f9a46968c9bdaae36061723f4c67a765a076dd2"
+  },
+  "tracked_files": 209,
+  "tracked_bytes": 20466252,
+  "secret_pattern_scan_pass": true,
+  "excluded_bulk_and_account_metadata": true
+}

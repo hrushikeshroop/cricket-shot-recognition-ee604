@@ -1,0 +1,15 @@
+{
+  "seed": 17,
+  "frames": 9,
+  "split": "5 source-grouped folds: test=0, val=1, train=2,3,4",
+  "descriptors": ["middle", "mean", "phase", "phase_delta"],
+  "C_candidates": [0.1, 1, 10, 100],
+  "selection_metric": "validation macro F1, smallest C wins ties",
+  "deployment_descriptor": "phase_delta",
+  "view": "batter_roi",
+  "temperature_bounds": [0.1, 10.0],
+  "review_target_validation_accuracy": 0.9,
+  "review_min_validation_coverage": 0.2,
+  "bootstrap_source_resamples": 2000,
+  "comment": "The original full-frame specification preceded pilot test scores. The ROI revision followed the failed pilot and keeps the same split, so final results are exploratory on a reused holdout. ROI bounds were fixed before ROI scoring. The proposed model remains phase_delta even if an ablation scores higher."
+}

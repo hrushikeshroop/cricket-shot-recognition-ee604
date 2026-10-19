@@ -1,0 +1,12 @@
+{
+  "seed": 604,
+  "views": ["full image", "crop x=15..85%, y=5..95%"],
+  "modes": ["global", "focus", "concat", "contrast"],
+  "deployment_mode": "contrast",
+  "duplicate_rule": "Initial RGB/pHash groups strengthened with quarter-turn/mirror pHash and ORB/RANSAC verified frozen-feature nearest-neighbor pairs. See strengthen_image_groups.py for exact criteria. Components stay in one split.",
+  "split": "StratifiedGroupKFold(5, shuffle=True, random_state=604): test fold0, val fold1, train other folds",
+  "C_candidates": [0.1, 1, 10, 100],
+  "selection": "validation macro F1, smallest C wins ties",
+  "review": "Lowest threshold 0.50..0.95 step0.05 with agreement of global, focus and fused heads, at least 20 accepted validation images, >=20% validation coverage, >=90% validation accuracy. Fallback threshold=0.80.",
+  "status": "The view geometry and head comparison preceded all image scores. Visual QA after the initial hash-grouped score found transformed copies; grouping was strengthened and the comparison rerun. Final revised-grouping scores are exploratory, with initial scores preserved. No source/match IDs are available."
+}

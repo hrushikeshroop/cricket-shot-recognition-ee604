@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cricketshot-ee604"
+version = "1.0.0"
+description = "Four-class cricket image recognition with HOG and frozen CNN features"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26", "Pillow>=10", "onnxruntime>=1.17", "opencv-python-headless>=4.9", "Flask>=3.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

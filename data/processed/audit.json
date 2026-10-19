@@ -1,0 +1,65 @@
+{
+  "seed": 17,
+  "split_policy": "StratifiedGroupKFold(5), test fold 0, validation fold 1, other folds train",
+  "upstream_files": 562,
+  "decoded_files": 562,
+  "errors": [],
+  "class_counts": {
+    "cut": 41,
+    "defence": 25,
+    "glance": 41,
+    "offdrive": 137,
+    "ondrive": 159,
+    "pull": 96,
+    "sweep": 42,
+    "unorthodox": 21
+  },
+  "sources": 25,
+  "union_groups": 25,
+  "exact_duplicate_files": 0,
+  "cross_source_near_duplicates": [],
+  "near_duplicate_rule": "64-bit pHash at first/middle/last sampled frame: max Hamming <=6 and mean <=4",
+  "split_counts": {
+    "train": {
+      "cut": 23,
+      "defence": 16,
+      "glance": 22,
+      "offdrive": 76,
+      "ondrive": 95,
+      "pull": 44,
+      "sweep": 25,
+      "unorthodox": 16
+    },
+    "val": {
+      "cut": 10,
+      "defence": 6,
+      "glance": 11,
+      "offdrive": 32,
+      "ondrive": 29,
+      "pull": 29,
+      "sweep": 11,
+      "unorthodox": 1
+    },
+    "test": {
+      "cut": 8,
+      "defence": 3,
+      "glance": 8,
+      "offdrive": 29,
+      "ondrive": 35,
+      "pull": 23,
+      "sweep": 6,
+      "unorthodox": 4
+    }
+  },
+  "split_groups": {
+    "train": 14,
+    "val": 6,
+    "test": 5
+  },
+  "feature_shape": [
+    562,
+    9,
+    1280
+  ],
+  "frame_sampling": "9 uniform samples, endpoints included"
+}

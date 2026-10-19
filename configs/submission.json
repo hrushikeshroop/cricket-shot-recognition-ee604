@@ -1,0 +1,34 @@
+{
+  "group_name": "EE604 Project Group",
+  "github_url": "https://github.com/hrushikeshroop/cricket-shot-recognition-ee604",
+  "member_names": [
+    "Hrushikesh Roop Avvari",
+    "Voora Rakesh",
+    "Gokavarapu Manikanta Sri Akshith",
+    "Lokesh Kumar Moond",
+    "Sharath"
+  ],
+  "members": [
+    {
+      "name": "Hrushikesh Roop Avvari",
+      "roll_number": "230249"
+    },
+    {
+      "name": "Voora Rakesh",
+      "roll_number": "231174"
+    },
+    {
+      "name": "Gokavarapu Manikanta Sri Akshith",
+      "roll_number": "230418"
+    },
+    {
+      "name": "Lokesh Kumar Moond",
+      "roll_number": "230606"
+    },
+    {
+      "name": "Sharath",
+      "roll_number": "230303"
+    }
+  ],
+  "note": "Team details supplied by the user. Individual work statements are omitted at the user's request. Public repository created under the verified hrushikeshroop account on 19 October 2026."
+}

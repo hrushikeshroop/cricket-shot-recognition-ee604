@@ -1,0 +1,53 @@
+{
+  "files_found": 4724,
+  "decoded_labeled": 4724,
+  "errors": [],
+  "exact_duplicate_excess": 1,
+  "near_duplicate_pairs": 2809,
+  "conflicting_components": 0,
+  "conflicting_images_excluded": 0,
+  "exact_representatives_kept": 4723,
+  "visual_groups": 363,
+  "class_counts": {
+    "drive": 1223,
+    "legglance-flick": 1120,
+    "pullshot": 1260,
+    "sweep": 1120
+  },
+  "split_counts": {
+    "train": {
+      "drive": 734,
+      "legglance-flick": 672,
+      "pullshot": 756,
+      "sweep": 672
+    },
+    "val": {
+      "drive": 244,
+      "legglance-flick": 224,
+      "pullshot": 252,
+      "sweep": 224
+    },
+    "test": {
+      "drive": 245,
+      "legglance-flick": 224,
+      "pullshot": 252,
+      "sweep": 224
+    }
+  },
+  "split_groups": {
+    "train": 221,
+    "val": 72,
+    "test": 70
+  },
+  "split_seed": 604,
+  "source_ids_available": false,
+  "rule": "Original pHash/RGB components + quarter-turn/mirror pHash <=6 and MAD <=24 + ORB/RANSAC verified frozen-feature neighbors",
+  "warning": "Transform and geometric grouping reduce further leakage but do not establish match or player independence.",
+  "initial_visual_groups": 3108,
+  "transform_hash_edges": 948,
+  "orb_verified_edges": 1797,
+  "orb_candidates": 19857,
+  "final_conflicting_components": 0,
+  "final_conflicting_images_excluded": 0,
+  "protocol_status": "Strengthened after initial image score and visual QA. Final comparison is exploratory under revised grouping."
+}

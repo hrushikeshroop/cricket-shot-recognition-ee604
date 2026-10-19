@@ -1,0 +1,6 @@
+# Demo and inference, Python 3.11 or newer. See requirements-lock.txt for tested versions.
+numpy>=1.26
+Pillow>=10
+onnxruntime>=1.17
+opencv-python-headless>=4.9
+Flask>=3.0

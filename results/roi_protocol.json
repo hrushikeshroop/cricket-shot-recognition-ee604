@@ -1,0 +1,13 @@
+{
+  "view": "batter_roi",
+  "normalized_bounds": [
+    0.3,
+    0.02,
+    0.7,
+    0.65
+  ],
+  "motivation": "Full-frame pilot showed poor recognition. Small batters and broadcast context motivated a fixed upper-center crop.",
+  "evaluation_status": "Exploratory reused holdout. Original test results were observed before this revision.",
+  "split": "Unchanged source-grouped split, seed 17",
+  "detector": false
+}

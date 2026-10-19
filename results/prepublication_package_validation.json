@@ -1,0 +1,163 @@
+{
+  "all_pass": true,
+  "scope": "Extracted demo ZIP in fresh isolated Python venv, system site packages disabled; installed only requirements.txt; Flask example and actual multipart upload paths",
+  "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+  "checks": [
+    {
+      "id": "image_00210",
+      "example_status": 200,
+      "upload_status": 200,
+      "label": "drive",
+      "decision": "Prediction",
+      "probabilities": {
+        "drive": 0.9969049138414902,
+        "legglance-flick": 0.002159999977698855,
+        "pullshot": 0.000424511256666244,
+        "sweep": 0.0005105749241446746
+      },
+      "hog_baseline": {
+        "label": "drive",
+        "note": "Exploratory HOG baseline; uncalibrated softmax scores.",
+        "probabilities": {
+          "drive": 0.29912702418709364,
+          "legglance-flick": 0.24129520267348734,
+          "pullshot": 0.24854018566362235,
+          "sweep": 0.21103758747579665
+        },
+        "score": 0.29912702418709364
+      }
+    },
+    {
+      "id": "image_02934",
+      "example_status": 200,
+      "upload_status": 200,
+      "label": "pullshot",
+      "decision": "Prediction",
+      "probabilities": {
+        "drive": 0.10450176945053424,
+        "legglance-flick": 0.004074927036848729,
+        "pullshot": 0.8733434926762331,
+        "sweep": 0.018079810836383856
+      },
+      "hog_baseline": {
+        "label": "legglance-flick",
+        "note": "Exploratory HOG baseline; uncalibrated softmax scores.",
+        "probabilities": {
+          "drive": 0.27221457272427985,
+          "legglance-flick": 0.32448785432930627,
+          "pullshot": 0.21033628004846847,
+          "sweep": 0.1929612928979454
+        },
+        "score": 0.32448785432930627
+      }
+    },
+    {
+      "id": "image_04199",
+      "example_status": 200,
+      "upload_status": 200,
+      "label": "pullshot",
+      "decision": "Prediction",
+      "probabilities": {
+        "drive": 0.00011968194457974336,
+        "legglance-flick": 0.0023290695432758956,
+        "pullshot": 0.9972264433266707,
+        "sweep": 0.00032480518547370736
+      },
+      "hog_baseline": {
+        "label": "pullshot",
+        "note": "Exploratory HOG baseline; uncalibrated softmax scores.",
+        "probabilities": {
+          "drive": 0.22608346285183767,
+          "legglance-flick": 0.22754210400108935,
+          "pullshot": 0.30588156009492795,
+          "sweep": 0.2404928730521451
+        },
+        "score": 0.30588156009492795
+      }
+    },
+    {
+      "id": "image_00014",
+      "example_status": 200,
+      "upload_status": 200,
+      "label": "legglance-flick",
+      "decision": "Needs review",
+      "probabilities": {
+        "drive": 0.04049513290011937,
+        "legglance-flick": 0.5951891468623361,
+        "pullshot": 0.1511403021540261,
+        "sweep": 0.21317541808351845
+      },
+      "hog_baseline": {
+        "label": "pullshot",
+        "note": "Exploratory HOG baseline; uncalibrated softmax scores.",
+        "probabilities": {
+          "drive": 0.2878971208473386,
+          "legglance-flick": 0.2125497285402825,
+          "pullshot": 0.32661739783849,
+          "sweep": 0.17293575277388898
+        },
+        "score": 0.32661739783849
+      }
+    }
+  ],
+  "video_status": 200,
+  "source_model_hashes": {
+    "app.py": "8373fc7d74207b060c8f01bc0cbd1ca7cceed952aea70c20119a86bd107003c1",
+    "src/cricketshot/core.py": "674a26e804cf3496059cd6a6d329a08843cc92bf8acb54146ecad9620947e4a3",
+    "src/cricketshot/images.py": "075890069bad57da7efb563f85adc701a3ab47dec74a6d76df574042f136d97e",
+    "src/cricketshot/hog.py": "50525c18ef93148670223ba9caf040be429eaca19f94dc4f52aac47d7efcb56c",
+    "models/image/heads.npz": "43f011254541764271add9e192adc1a52d9b18ecb21fe776e335e38fc0ea55f1",
+    "models/image/classifier.json": "502f2c537c55606626b65ac644ce2ee8420775be453aeab61b5b38e4e08031d8",
+    "models/hog/head.npz": "b642a548057aa1db6a504d9d85b276240cc59525541f9f6ae3986f9e53e7a10d",
+    "models/hog/classifier.json": "2dbccafef9de5dd6ea4fa05b2acd21e5f816d361674ba3e4793fb6e10d9a5658",
+    "models/mobilenetv2_features.onnx": "bfa8f7bdd68ff12b519fe81f420ba370904b33b6580b01fb907bd05a3b6959cc",
+    "models/classifier.npz": "26f3b5531b01e3258879a11bfc5abe87b52eeebbe0a5ad19332d48221dcd6e37"
+  },
+  "packages": {
+    "numpy": "2.5.4",
+    "Pillow": "13.0.0",
+    "onnxruntime": "1.31.0",
+    "opencv-python-headless": "5.0.0.93",
+    "Flask": "3.1.3"
+  },
+  "system_site_packages_enabled": false,
+  "tested_payload_hashes": {
+    "src/cricketshot/core.py": "674a26e804cf3496059cd6a6d329a08843cc92bf8acb54146ecad9620947e4a3",
+    "src/cricketshot/hog.py": "50525c18ef93148670223ba9caf040be429eaca19f94dc4f52aac47d7efcb56c",
+    "src/cricketshot/images.py": "075890069bad57da7efb563f85adc701a3ab47dec74a6d76df574042f136d97e",
+    "src/cricketshot/__init__.py": "f4553fb4761cb494d23f0609fa71ad8dd85af94742630e78e16d3093642815d0",
+    "models/classifier.json": "4043415418797d415b6d780bb56db75389489612cb845bac87f7d81cde37d892",
+    "models/classifier.npz": "26f3b5531b01e3258879a11bfc5abe87b52eeebbe0a5ad19332d48221dcd6e37",
+    "models/mobilenetv2_features.onnx": "bfa8f7bdd68ff12b519fe81f420ba370904b33b6580b01fb907bd05a3b6959cc",
+    "models/hog/classifier.json": "2dbccafef9de5dd6ea4fa05b2acd21e5f816d361674ba3e4793fb6e10d9a5658",
+    "models/hog/head.npz": "b642a548057aa1db6a504d9d85b276240cc59525541f9f6ae3986f9e53e7a10d",
+    "models/image/classifier.json": "502f2c537c55606626b65ac644ce2ee8420775be453aeab61b5b38e4e08031d8",
+    "models/image/heads.npz": "43f011254541764271add9e192adc1a52d9b18ecb21fe776e335e38fc0ea55f1",
+    "templates/images.html": "21e1ae3ad8f8d0a8b71e283af673d7cb998edb30f28cc7090a0d9c2665702a0e",
+    "templates/index.html": "73a4c5317aedd99b5ad168138449be17fc74ad70ea0a60eb5b619df96da84567",
+    "static/app.js": "0ffe1a9ae3f29d320c1fb8127818ffeb600b67e15869fcb4749f25fa9f83ba48",
+    "static/images.css": "e4ea207254068eed7d4c2f710072a6d59d3eba7a34915737e30cc68ac8931995",
+    "static/images.js": "cb639b0176f8d823f1c44e9af112dfa8160f21f845290dfa08a6e49b86e86dde",
+    "static/style.css": "f5b482eb18c6532c8ced1c3c95792fce29ae503dff64b9fc64b3e6be6b4ef60b",
+    "demo/examples.json": "f89f94954f9f3fb1511287b82a72b119c1c6f2c7e02a1a3d0a0a7b50cff1b6f7",
+    "demo/image_examples.json": "3ce873bfafaedfee829fa6cdb5989d6f541e1faf16077e2bb667786127e83c0e",
+    "demo/clips/clip_0239.avi": "7b0f004f173760561cf4c5dd62f4d8046886af93325d4fc03dbc58b5a91f1375",
+    "demo/clips/clip_0242.avi": "d3958728ff794495287579b84e2cd661a05b4652e960ddb4330a93f52546b8ac",
+    "demo/clips/clip_0331.avi": "4ae4cae83ae1cda2dafabb7c67634115ab6a383f09b7410f834273703c6776a3",
+    "demo/clips/clip_0494.avi": "8212b96dddb28cba497a43f7344e9b9ab5dacbf1bcd689bb648bc2893e9f0855",
+    "demo/images/image_00014.png": "7d0ac9d59e383376b5c562c680da8491cda7dc66528718a75cfbd0cfeb51322b",
+    "demo/images/image_00210.png": "69647d251f2b8342908b23bd10c6d3d1b1156d2b49be51a06fbc41ab6c07d4e1",
+    "demo/images/image_02934.png": "c7dedd40c253b2a86fc0a2f1904c4b14a74da9c62b60d55ee6d21c3c0d4dbd89",
+    "demo/images/image_04199.png": "e66e98fe60a410e2cfa1b4e3492ebe25d3723c7e4df0d3802c53e62f0c4f8244",
+    "demo/thumbnails/clip_0239.jpg": "ed67fef0c6352c5cb76e1fae58614403824399c214d99b9a7d2e06953100de13",
+    "demo/thumbnails/clip_0242.jpg": "36e102ad205dd8caff3af10163b45eb06b14630ad9bca99c64252bda1fde820a",
+    "demo/thumbnails/clip_0331.jpg": "887d812f6571272feeb165f4f67c4eb82610fae833ddaf2db89763f6344394db",
+    "demo/thumbnails/clip_0494.jpg": "014ffc64c5526a159f089c6df7b3579445414011f80e369191253e809bb15460",
+    "app.py": "8373fc7d74207b060c8f01bc0cbd1ca7cceed952aea70c20119a86bd107003c1",
+    "requirements.txt": "b07549491ddfbd43878fd04609e5c8bb62fc3c0dd58d6cc865f184a96372d827",
+    "results/images/metrics.json": "7aff1020469c5dd490a001a32a092b6829068b42683da8ccfaaf2400c6e1533f",
+    "results/metrics.json": "113104f17917f1f07e944af21c5a65c7c4ff2193e4046148fa52777c95336899"
+  },
+  "same_labels_as_development_environment": true,
+  "note": "The demo archive is regenerated after inserting this proof. Runtime source, models, UI and example asset hashes remain bound to the actually tested extracted payload."
+}

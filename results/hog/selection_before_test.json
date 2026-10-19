@@ -1,0 +1,29 @@
+{
+  "trials": [
+    {
+      "C": 0.1,
+      "validation_macro_f1": 0.49391266499824865,
+      "iterations": 25,
+      "warnings": []
+    },
+    {
+      "C": 1,
+      "validation_macro_f1": 0.4451176181401423,
+      "iterations": 49,
+      "warnings": []
+    },
+    {
+      "C": 10,
+      "validation_macro_f1": 0.43180200257811635,
+      "iterations": 103,
+      "warnings": []
+    },
+    {
+      "C": 100,
+      "validation_macro_f1": 0.4149538996054749,
+      "iterations": 89,
+      "warnings": []
+    }
+  ],
+  "selected_C": 0.1
+}

@@ -1,0 +1,13 @@
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Probabilities & NLL & ECE & Brier \\
+\midrule
+Before calibration & 0.859 & 0.043 & 0.470 \\
+After calibration & 0.898 & 0.094 & 0.482 \\
+\bottomrule
+\end{tabular}
+\caption{Fused head on test images. ECE uses ten equal-width confidence bins. Brier is the mean summed squared error over the four classes. Lower values are better.}
+\label{tab:image_cal}
+\end{table}

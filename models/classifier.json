@@ -1,0 +1,29 @@
+{
+  "mode": "phase_delta",
+  "view": "batter_roi",
+  "classes": [
+    "cut",
+    "defence",
+    "glance",
+    "offdrive",
+    "ondrive",
+    "pull",
+    "sweep",
+    "unorthodox"
+  ],
+  "temperature": 1.7599952725702703,
+  "review_threshold": 0.8,
+  "C": 100,
+  "frames": 9,
+  "train_clips": 317,
+  "validation_clips": 129,
+  "test_clips": 116,
+  "threshold_selection": {
+    "target_met": false,
+    "reason": "No candidate met 90% accuracy with at least 20% coverage and 10 clips. Fallback 0.80.",
+    "validation_coverage": 0.0,
+    "validation_accepted": 0,
+    "validation_accuracy": null
+  },
+  "notes": "Review threshold is a validation heuristic, not a certified error bound or open-set detector."
+}

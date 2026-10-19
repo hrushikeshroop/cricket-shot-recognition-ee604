@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Representation & $C$ & Acc. (\%) & F1 (\%) \\
+\midrule
+Training majority & -- & 30.2 & 5.8 \\
+Color histogram & 0.1 & 9.5 & 7.9 \\
+Middle frame & 10 & 19.8 & 18.6 \\
+Temporal mean & 10 & 18.1 & 17.9 \\
+Ordered phases & 10 & 18.1 & 16.8 \\
+Phase + diff./std. & 100 & 30.2 & 21.3 \\
+\bottomrule
+\end{tabular}
+\caption{All learned heads select regularization by validation macro F1. Final visual models use the same fixed ROI and split. Color uses the full frame. F1 is macro-averaged.}
+\label{tab:results}
+\end{table}

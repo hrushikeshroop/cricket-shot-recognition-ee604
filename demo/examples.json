@@ -1,0 +1,38 @@
+[
+  {
+    "id": "clip_0242",
+    "label": "offdrive",
+    "path": "demo/clips/clip_0242.avi",
+    "thumbnail": "demo/thumbnails/clip_0242.jpg",
+    "note": "Selected correct example. Chosen after evaluation for demonstration.",
+    "source": "india vs west indies",
+    "split": "test"
+  },
+  {
+    "id": "clip_0494",
+    "label": "pull",
+    "path": "demo/clips/clip_0494.avi",
+    "thumbnail": "demo/thumbnails/clip_0494.jpg",
+    "note": "Selected correct example. Chosen after evaluation for demonstration.",
+    "source": "india vs west indies",
+    "split": "test"
+  },
+  {
+    "id": "clip_0239",
+    "label": "offdrive",
+    "path": "demo/clips/clip_0239.avi",
+    "thumbnail": "demo/thumbnails/clip_0239.jpg",
+    "note": "Confident failure example. Chosen after evaluation for demonstration.",
+    "source": "india vs west indies",
+    "split": "test"
+  },
+  {
+    "id": "clip_0331",
+    "label": "ondrive",
+    "path": "demo/clips/clip_0331.avi",
+    "thumbnail": "demo/thumbnails/clip_0331.jpg",
+    "note": "Low-confidence example. Chosen after evaluation for demonstration.",
+    "source": "hong kong vs zimbabwe",
+    "split": "test"
+  }
+]

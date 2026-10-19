@@ -1,0 +1,25 @@
+{
+  "classes": [
+    "drive",
+    "legglance-flick",
+    "pullshot",
+    "sweep"
+  ],
+  "mode": "contrast",
+  "temperatures": {
+    "global": 0.8039612599166999,
+    "focus": 0.9374887045407372,
+    "concat": 0.7924780063853188,
+    "contrast": 0.8018927352897799
+  },
+  "review_threshold": 0.7000000000000002,
+  "review_rule": "confidence >= threshold AND global/focus/fused head top labels all agree",
+  "review_target_met": true,
+  "crop_bounds": [
+    0.15,
+    0.05,
+    0.85,
+    0.95
+  ],
+  "note": "No guarantee of unknown-class rejection or match-independent accuracy."
+}

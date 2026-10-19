@@ -1,0 +1,111 @@
+{
+  "id": "image_00210",
+  "dataset_label": "drive",
+  "selected_after_evaluation": true,
+  "functions": [
+    "load_image",
+    "image_views",
+    "prepare_frame",
+    "Encoder.encode",
+    "image_descriptor",
+    "ImageRecognizer.predict_features"
+  ],
+  "loaded_size_wh": [
+    287,
+    175
+  ],
+  "view_sizes_wh": [
+    [
+      287,
+      175
+    ],
+    [
+      201,
+      157
+    ]
+  ],
+  "encoder_input_shape": [
+    1,
+    3,
+    224,
+    224
+  ],
+  "encoder_output_shapes": [
+    [
+      "batch_size",
+      1280,
+      1,
+      1
+    ]
+  ],
+  "two_view_features_shape": [
+    2,
+    1280
+  ],
+  "contrast_shape": [
+    3840
+  ],
+  "head_weight_shape": [
+    4,
+    3840
+  ],
+  "contrast_l2_norm": 1.0,
+  "first_eight_contrast_values": [
+    0.010059569962322712,
+    0.009453992359340191,
+    0.0,
+    0.04479936510324478,
+    0.014796326868236065,
+    0.004001005552709103,
+    0.045421093702316284,
+    0.009102161973714828
+  ],
+  "logits": [
+    4.304697036743164,
+    -0.6145517826080322,
+    -1.9191710948944092,
+    -1.771142601966858
+  ],
+  "temperature": 0.8018927352897799,
+  "result": {
+    "label": "drive",
+    "display_label": "Drive",
+    "score_type": "temperature-scaled softmax",
+    "score_note": "A relative score among four supported labels, not a guarantee of correctness. Test calibration worsened after temperature scaling.",
+    "confidence": 0.9969049138414902,
+    "accepted": true,
+    "decision": "Prediction",
+    "probabilities": {
+      "drive": 0.9969049138414902,
+      "legglance-flick": 0.002159999977698855,
+      "pullshot": 0.000424511256666244,
+      "sweep": 0.0005105749241446746
+    },
+    "views_agree": true,
+    "prediction_consistent": true,
+    "global_label": "Drive",
+    "focus_label": "Drive",
+    "threshold": 0.7000000000000002,
+    "seconds": 0.01520050001272466,
+    "input_size": [
+      287,
+      175
+    ],
+    "scope": "Four-class still-image classification. Unknown classes can receive confident scores."
+  },
+  "hog_shape": [
+    6084
+  ],
+  "hog_l2_norm": 0.9999999403953552,
+  "hog_result": {
+    "label": "drive",
+    "score": 0.29912702418709364,
+    "probabilities": {
+      "drive": 0.29912702418709364,
+      "legglance-flick": 0.24129520267348734,
+      "pullshot": 0.24854018566362235,
+      "sweep": 0.21103758747579665
+    },
+    "note": "Exploratory HOG baseline; uncalibrated softmax scores."
+  }
+}

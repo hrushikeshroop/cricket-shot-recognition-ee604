@@ -1,0 +1,697 @@
+{
+  "slides": [
+    {
+      "title": "Cricket Shot\nRecognition",
+      "kind": "cover",
+      "kicker": "EE604 COURSE PROJECT / 2026",
+      "subtitle": "Gradient features and a frozen CNN\nA controlled four-class image study",
+      "image": "slides/assets/class_0.jpg",
+      "team_text": "Hrushikesh Roop Avvari (230249)  /  Voora Rakesh (231174)\nGokavarapu Manikanta Sri Akshith (230418)\nLokesh Kumar Moond (230606)  /  Sharath (230303)",
+      "bottom": "https://github.com/hrushikeshroop/cricket-shot-recognition-ee604",
+      "notes": "Introduce one-image classification. HOG and frozen features connect directly to lectures 10 and 15. The two-view difference is a small extension to test, not a new backbone. Cover image: selected held-out source image, https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset v2. Assistance and actual contributions must be attributed accurately."
+    },
+    {
+      "title": "Problem, labels and constraints",
+      "subtitle": "Input: one selected cricket image. Output: one of four dataset labels.",
+      "blocks": [
+        {
+          "text": "Drive\nLeg glance / flick\nPull\nSweep",
+          "x": 50,
+          "y": 150,
+          "w": 370,
+          "h": 170,
+          "size": 26,
+          "bold": true
+        },
+        {
+          "text": "CPU inference, offline after setup.\nNo batter detection, contact localization or technique grading.\nUnknown shots can still receive confident scores.",
+          "x": 50,
+          "y": 350,
+          "w": 850,
+          "h": 105,
+          "size": 20,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "path": "slides/assets/class_1.jpg",
+          "x": 490,
+          "y": 145,
+          "w": 410,
+          "h": 190
+        }
+      ],
+      "notes": "The user supplies the image. Drive and leg glance/flick are combined upstream classes. A full match is outside scope. Classification is multiclass with one target, not multilabel sigmoid prediction. Source: dataset v2; lectures 15 pages 16-19."
+    },
+    {
+      "title": "Course foundation and prior work",
+      "subtitle": "Use established feature extraction, then test one modest extension",
+      "tables": [
+        {
+          "headers": [
+            "Foundation",
+            "Source",
+            "Our use"
+          ],
+          "rows": [
+            [
+              "Gradient histograms",
+              "Lecture 10; Dalal / Triggs (2005)",
+              "Explicit HOG baseline"
+            ],
+            [
+              "Frozen pretrained features",
+              "Lecture 15, pp. 11-14",
+              "MobileNetV2 + linear classifier"
+            ],
+            [
+              "Cricket recognition",
+              "KUCricShot (2023); Kang (2025)",
+              "Prior task studies; different data"
+            ],
+            [
+              "Two-view difference",
+              "Course implementation",
+              "Compare with simple concatenation"
+            ]
+          ],
+          "x": 50,
+          "y": 150,
+          "w": 860,
+          "h": 255,
+          "fontSize": 16,
+          "widths": [
+            230,
+            330,
+            300
+          ]
+        }
+      ],
+      "callout": "No claim of a new backbone or an unprecedented combination. Novelty remains limited.",
+      "notes": "Lecture 8 part 2 page 9 distinguishes local/global features; our crop is a regional descriptor, not a keypoint. Lecture 14 part 2 pp 2-3 and 27 cover extractor/classifier and softmax. MobileNetV2 is our architecture choice, not claimed taught by name. Sources: https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf ; https://arxiv.org/abs/1801.04381 ; https://github.com/AtanuCSE/CricketShotDetection ; https://arxiv.org/abs/2510.09187 . Do not compare published percentages across datasets."
+    },
+    {
+      "title": "Images and fixed visual-group split",
+      "subtitle": "4,724 original files; 4,723 exact representatives in 363 visual groups",
+      "tables": [
+        {
+          "headers": [
+            "Class",
+            "Train",
+            "Validation",
+            "Test"
+          ],
+          "rows": [
+            [
+              "Drive",
+              734,
+              244,
+              245
+            ],
+            [
+              "Glance / flick",
+              672,
+              224,
+              224
+            ],
+            [
+              "Pull",
+              756,
+              252,
+              252
+            ],
+            [
+              "Sweep",
+              672,
+              224,
+              224
+            ]
+          ],
+          "x": 50,
+          "y": 150,
+          "w": 860,
+          "h": 245,
+          "fontSize": 17,
+          "widths": [
+            320,
+            180,
+            180,
+            180
+          ]
+        }
+      ],
+      "blocks": [
+        {
+          "text": "221 training groups / 72 validation groups / 70 test groups\nNo shared group or decoded hash. Match and player identities remain unknown.",
+          "x": 50,
+          "y": 420,
+          "w": 850,
+          "h": 58,
+          "size": 17,
+          "bold": false
+        }
+      ],
+      "notes": "Data: https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset v2. Unknown license in downloaded metadata; no original annotations claimed. Fixed seed 604 folds; this is one holdout, not five-fold cross-validation. Test images are clustered copies and must not be described as 945 independent photographs."
+    },
+    {
+      "title": "Evaluation choices and their limits",
+      "subtitle": "All five methods share images, labels, visual groups and split identities",
+      "tables": [
+        {
+          "headers": [
+            "Choice",
+            "Data used",
+            "What remains fixed"
+          ],
+          "rows": [
+            [
+              "Fit classifier coefficients",
+              "Training only",
+              "Frozen CNN; deterministic HOG"
+            ],
+            [
+              "Choose C: 0.1, 1, 10, 100",
+              "Validation macro F1",
+              "Smallest C wins ties"
+            ],
+            [
+              "Temperature and review",
+              "Original validation reuse",
+              "Keep original settings"
+            ],
+            [
+              "Final comparison",
+              "Same 945 test identities",
+              "No new split or seed search"
+            ]
+          ],
+          "x": 50,
+          "y": 150,
+          "w": 860,
+          "h": 265,
+          "fontSize": 16,
+          "widths": [
+            300,
+            260,
+            300
+          ]
+        }
+      ],
+      "callout": "Exploratory: grouping changed after preliminary evaluation; HOG was added after old results were known.",
+      "notes": "One validation set was reused for regularization, calibration and threshold selection. This can overfit validation. We disclose it rather than create a new split and pretend the original test was untouched. Initial hash-only contrast result was 96.3%; stronger transformed-copy grouping yields 65.5%. Both results and original individual predictions remain available."
+    },
+    {
+      "title": "Implemented pipeline",
+      "subtitle": "Only the small cricket classifiers learn from the training images",
+      "images": [
+        {
+          "path": "results/revision/figures/pipeline.png",
+          "x": 40,
+          "y": 135,
+          "w": 880,
+          "h": 280
+        }
+      ],
+      "callout": "The fixed crop is a regional view. It does not detect or segment the batter.",
+      "notes": "Explain the two branches. HOG and CNN global inputs have identical aspect-preserving 224 square geometry. CNN has two view passes; its global, crop and fused heads share features. HOG uses luminance, unsigned gradients, cells, blocks and per-image normalization. No StandardScaler or PCA learns from test. Source: actual implemented pipeline; lecture mapping in docs/course_mapping.md."
+    },
+    {
+      "title": "HOG: gradients, cells and blocks",
+      "subtitle": "Lecture 10: accumulate gradient magnitude in orientation bins",
+      "tables": [
+        {
+          "headers": [
+            "Step",
+            "Fixed setting"
+          ],
+          "rows": [
+            [
+              "Input",
+              "224 x 224 luminance"
+            ],
+            [
+              "Orientation votes",
+              "9 unsigned bins; linear bin weights"
+            ],
+            [
+              "Cells",
+              "16 x 16 pixels; 14 x 14 cells"
+            ],
+            [
+              "Blocks",
+              "2 x 2 cells; stride 1 cell"
+            ],
+            [
+              "Normalize / concatenate",
+              "L2 blocks, then 6,084-value L2 vector"
+            ]
+          ],
+          "x": 50,
+          "y": 150,
+          "w": 455,
+          "h": 260,
+          "fontSize": 15,
+          "widths": [
+            165,
+            290
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "results/revision/figures/hog_steps.png",
+          "x": 525,
+          "y": 160,
+          "w": 385,
+          "h": 230
+        }
+      ],
+      "callout": "Votes use magnitude, not frequency. No learned feature scaling; no test-based HOG tuning.",
+      "notes": "Trace gx and gy central differences, sqrt(gx\u00b2+gy\u00b2), atan2 modulo 180. A 50-degree gradient of magnitude 90 votes 45 to the 40-degree bin and 45 to 60. No spatial vote interpolation. Each 36-value block divides by sqrt(sum(h\u00b2)+1e-10). 13*13*36=6084. This is a documented HOG variant, not the exact signed-angle lecture example or original pedestrian detector. Lecture 10 pp 7-23; original method https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf ."
+    },
+    {
+      "title": "CNN views and the contrast feature",
+      "subtitle": "Frozen ImageNet MobileNetV2 gives two 1,280-value pooled embeddings",
+      "tables": [
+        {
+          "headers": [
+            "Representation",
+            "Normalized classifier input",
+            "Dimension"
+          ],
+          "rows": [
+            [
+              "Global",
+              "u",
+              "1,280"
+            ],
+            [
+              "Fixed regional crop",
+              "v",
+              "1,280"
+            ],
+            [
+              "Concatenation",
+              "[u; v]",
+              "2,560"
+            ],
+            [
+              "Contrast",
+              "[u; v; abs(u-v)]",
+              "3,840"
+            ]
+          ],
+          "x": 50,
+          "y": 150,
+          "w": 860,
+          "h": 235,
+          "fontSize": 18,
+          "widths": [
+            300,
+            360,
+            200
+          ]
+        }
+      ],
+      "blocks": [
+        {
+          "text": "Absolute difference is nonlinear; signed difference would be redundant\nfor a linear head on concatenation. This motivates a test, not a success claim.",
+          "x": 50,
+          "y": 407,
+          "w": 850,
+          "h": 65,
+          "size": 18,
+          "bold": false
+        }
+      ],
+      "notes": "Both vectors are normalized before joining; the joined descriptor is normalized again. Contrast W has (4,3840) shape plus four biases. It learns weighted multiclass cross-entropy with L2 regularization. No bat-motion interpretation is assigned to feature coordinates. Actual inputs are displayed in the demo. MobileNetV2: https://arxiv.org/abs/1801.04381 ; ONNX weights: https://github.com/onnx/models ."
+    },
+    {
+      "title": "Recognition results",
+      "subtitle": "Same corrected split; every test image contributes, including review cases",
+      "tables": [
+        {
+          "headers": [
+            "Feature",
+            "C",
+            "Val. F1",
+            "Test acc.",
+            "Test F1"
+          ],
+          "rows": [
+            [
+              "HOG",
+              "0.1",
+              "49.4%",
+              "35.3%",
+              "34.5%"
+            ],
+            [
+              "CNN global",
+              "10",
+              "77.1%",
+              "63.0%",
+              "62.9%"
+            ],
+            [
+              "CNN crop",
+              "10",
+              "74.8%",
+              "62.4%",
+              "61.7%"
+            ],
+            [
+              "Concatenation",
+              "10",
+              "79.6%",
+              "65.2%",
+              "64.6%"
+            ],
+            [
+              "Contrast",
+              "10",
+              "77.8%",
+              "65.5%",
+              "64.9%"
+            ]
+          ],
+          "x": 50,
+          "y": 150,
+          "w": 860,
+          "h": 265,
+          "fontSize": 17,
+          "widths": [
+            300,
+            80,
+            160,
+            160,
+            160
+          ]
+        }
+      ],
+      "callout": "HOG is a controlled baseline. Pretrained features help here; contrast adds only three correct images.",
+      "notes": "HOG fixed settings, validation-selected C and predictions are saved under results/hog. Do not try a new descriptor after seeing the 35.3% test score to improve a headline. CNN heads/predictions are retained unchanged. This comparison does not isolate color versus pretraining versus architecture; no general statement that all HOG methods are inferior. Evidence: results/revision/comparison.csv and saved individual probabilities."
+    },
+    {
+      "title": "Uncertainty comes from 70 visual groups",
+      "subtitle": "Whole-group bootstrap, 2,000 paired draws, fixed model and split",
+      "tables": [
+        {
+          "headers": [
+            "Feature",
+            "Accuracy",
+            "Conditional 95% interval"
+          ],
+          "rows": [
+            [
+              "HOG",
+              "35.3%",
+              "25.9 to 48.1%"
+            ],
+            [
+              "CNN global",
+              "63.0%",
+              "49.5 to 74.2%"
+            ],
+            [
+              "CNN crop",
+              "62.4%",
+              "45.3 to 76.7%"
+            ],
+            [
+              "Concatenation",
+              "65.2%",
+              "48.9 to 77.9%"
+            ],
+            [
+              "Contrast",
+              "65.5%",
+              "49.9 to 77.6%"
+            ]
+          ],
+          "x": 50,
+          "y": 150,
+          "w": 860,
+          "h": 245,
+          "fontSize": 17,
+          "widths": [
+            300,
+            180,
+            380
+          ]
+        }
+      ],
+      "callout": "Contrast minus concatenation: +0.32 points; interval -1.46 to +2.38. No clear advantage.",
+      "notes": "Draw groups with replacement and keep all images within each drawn group. Reuse draws between methods for paired differences. Statistics are image-weighted in each resample. Intervals omit training/split variability and unknown match correlation. They are not a hypothesis-test certificate of equality. Contrast 619/945, concatenation 616/945. Data and calculations: scripts/analyze_revision.py."
+    },
+    {
+      "title": "Class errors",
+      "subtitle": "Contrast confusion counts; rows are dataset labels",
+      "tables": [
+        {
+          "headers": [
+            "True / predicted",
+            "Drive",
+            "Glance/flick",
+            "Pull",
+            "Sweep"
+          ],
+          "rows": [
+            [
+              "Drive",
+              161,
+              27,
+              36,
+              21
+            ],
+            [
+              "Glance / flick",
+              80,
+              102,
+              15,
+              27
+            ],
+            [
+              "Pull",
+              36,
+              13,
+              197,
+              6
+            ],
+            [
+              "Sweep",
+              1,
+              15,
+              49,
+              159
+            ]
+          ],
+          "x": 50,
+          "y": 150,
+          "w": 860,
+          "h": 270,
+          "fontSize": 19,
+          "widths": [
+            260,
+            150,
+            150,
+            150,
+            150
+          ],
+          "heatmap": true,
+          "totals": [
+            245,
+            224,
+            252,
+            224
+          ]
+        }
+      ],
+      "callout": "Macro F1 averages the four class F1 scores equally. Review does not remove mistakes from this table.",
+      "notes": "Read an off-diagonal entry and explain precision versus recall. Glance/flick is difficult under this protocol. HOG predicts pull for 110 of 224 sweep images. Fixed geometry, similar stances and background are plausible issues, not proven causes for each error. Evidence: saved prediction arithmetic in comparison.json."
+    },
+    {
+      "title": "Scores, calibration and secondary review",
+      "subtitle": "Temperature scaling worsened the recorded test calibration",
+      "tables": [
+        {
+          "headers": [
+            "Contrast scores",
+            "NLL",
+            "ECE"
+          ],
+          "rows": [
+            [
+              "Unscaled",
+              "0.859",
+              "0.043"
+            ],
+            [
+              "Scaled",
+              "0.898",
+              "0.094"
+            ]
+          ],
+          "x": 50,
+          "y": 160,
+          "w": 420,
+          "h": 165,
+          "fontSize": 18,
+          "widths": [
+            200,
+            110,
+            110
+          ]
+        }
+      ],
+      "blocks": [
+        {
+          "text": "557 / 945 accepted\n433 accepted predictions correct\n58.9% coverage / 77.7% accuracy",
+          "x": 510,
+          "y": 165,
+          "w": 400,
+          "h": 150,
+          "size": 25,
+          "bold": true
+        },
+        {
+          "text": "Keep T = 0.802 and threshold = 0.70 unchanged.\nThe 90% validation target did not transfer to test.",
+          "x": 50,
+          "y": 370,
+          "w": 850,
+          "h": 65,
+          "size": 20,
+          "bold": false
+        }
+      ],
+      "callout": "Softmax is a relative class score. Agreement is not a guarantee or an unknown-shot detector.",
+      "notes": "NLL and ECE worsen; do not say calibration improved. ECE uses ten equal-width confidence bins. The same validation set selected C, temperature and threshold. The gate needs global/crop/contrast agreement; the heads are correlated. HOG scores are unscaled and do not affect review. Sources: https://proceedings.mlr.press/v70/guo17a.html ; https://arxiv.org/abs/1705.08500 ."
+    },
+    {
+      "title": "A confident error stays in the demo",
+      "subtitle": "Selected after evaluation, alongside successful and disagreement examples",
+      "images": [
+        {
+          "path": "results/images/figures/failure.jpg",
+          "x": 50,
+          "y": 145,
+          "w": 860,
+          "h": 280
+        }
+      ],
+      "callout": "Inspect the upstream label, predicted label and actual input views. Confidence can be wrong.",
+      "notes": "Use image_04199, the preserved confident failure. Do not invent its exact cause or silently relabel it. The selected picture is an illustration, not an estimate of failure frequency. Real data source: aneesh10/cricket-shot-dataset v2. Follow with the view-disagreement image_00014."
+    },
+    {
+      "title": "Local image demonstration",
+      "subtitle": "Upload an image, compare CNN and HOG, inspect the review reason, export JSON",
+      "images": [
+        {
+          "path": "results/ui_image_prediction.png",
+          "x": 50,
+          "y": 135,
+          "w": 860,
+          "h": 325
+        }
+      ],
+      "notes": "Run setup.bat on a fresh machine, then run_demo.bat. Default URL http://127.0.0.1:6040. Revision verification may use 6060 to avoid another local service. Show success image_00210, confident error image_04199 and disagreement image_00014. Selected examples are honestly labeled. JSON preserves temperature-scaled score semantics. Screenshot must come from the revised running app, not a mockup."
+    },
+    {
+      "title": "What we can defend",
+      "subtitle": "An implemented comparison with useful negative findings",
+      "blocks": [
+        {
+          "text": "Course foundation",
+          "x": 50,
+          "y": 145,
+          "w": 850,
+          "h": 35,
+          "size": 26,
+          "bold": true
+        },
+        {
+          "text": "HOG and frozen features, each followed by a trained multiclass head.",
+          "x": 50,
+          "y": 193,
+          "w": 850,
+          "h": 50,
+          "size": 21,
+          "bold": false
+        },
+        {
+          "text": "Limited extension",
+          "x": 50,
+          "y": 275,
+          "w": 850,
+          "h": 35,
+          "size": 26,
+          "bold": true
+        },
+        {
+          "text": "Contrast gains three test images; uncertainty spans no gain.\nThe audit corrects optimism, and calibration fails to transfer.",
+          "x": 50,
+          "y": 323,
+          "w": 850,
+          "h": 85,
+          "size": 21,
+          "bold": false
+        }
+      ],
+      "callout": "Next useful step: independently labeled data with known match and player identities.",
+      "notes": "Novelty remains a weakness, not a promise of marks. Do not claim a new architecture, detector or state-of-the-art result. Mention unknown upstream license, possible missed copies and unverified labels. Course mapping and viva guide contain actual page references and a tensor-shape trace. Team identities and the real repository URL are on the cover; assistance is attributed."
+    },
+    {
+      "title": "Backup: video pilot and duplicate audit",
+      "subtitle": "Separate eight-class data and reused pilot holdout; not the main recognition claim",
+      "tables": [
+        {
+          "headers": [
+            "Video model",
+            "Accuracy",
+            "Macro F1"
+          ],
+          "rows": [
+            [
+              "Full frame",
+              "18.1%",
+              "17.7%"
+            ],
+            [
+              "Fixed crop",
+              "30.2%",
+              "21.3%"
+            ],
+            [
+              "Majority baseline",
+              "30.2%",
+              "5.8%"
+            ]
+          ],
+          "x": 50,
+          "y": 150,
+          "w": 860,
+          "h": 205,
+          "fontSize": 18,
+          "widths": [
+            450,
+            205,
+            205
+          ]
+        }
+      ],
+      "blocks": [
+        {
+          "text": "562 clips / 25 source groups / 116 test clips from five groups\nImage audit: hashes, transforms, ORB/RANSAC links; all connected copies stay together.",
+          "x": 50,
+          "y": 387,
+          "w": 850,
+          "h": 65,
+          "size": 17,
+          "bold": false
+        }
+      ],
+      "notes": "Use only for questions. Equal 30.2% majority accuracy means weak video recognition, despite higher macro F1. Fixed crop followed pilot test feedback. Source: https://www.kaggle.com/datasets/amittalmale/cricket-shots . Image audit: pHash <=6 bits with thumbnail MAD, rotations/mirrors, then 15 feature neighbors within cosine .20. ORB binary matching, .72 ratio, >=16 matches, >=12 RANSAC inliers, >=65% inlier fraction, >=8% hull coverage. These are evaluation tools, not a novel shot classifier. Other sources: https://github.com/onnx/models ; https://github.com/scikit-learn/scikit-learn ; https://github.com/microsoft/onnxruntime ; https://github.com/opencv/opencv ; https://arxiv.org/abs/1608.00859 . Full URLs, saved evidence and complete code appendix accompany the report."
+    }
+  ]
+}

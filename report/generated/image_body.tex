@@ -1,0 +1,93 @@
+\begin{abstract}
+We study a small, practical task: classify one cricket image as drive, leg glance/flick, pull or sweep. We compare a hand-crafted histogram of oriented gradients (HOG) with frozen MobileNetV2 features followed by a linear classifier. Our implemented extension combines global and fixed regional CNN features with their absolute difference, and exposes disagreement between separate view classifiers. On an unchanged test set of 945 images in 70 visual groups, HOG obtains 35.3\% accuracy and 34.5\% macro F1; the global CNN obtains 63.0\% and 62.9\%. Contrast obtains 65.5\% and 64.9\%, only three additional correct predictions over concatenation. Group-based uncertainty does not establish a clear advantage. A duplicate audit substantially reduces the optimistic preliminary result, and temperature scaling worsens test calibration. We report these limitations alongside a local demo and reproducible predictions. The study is exploratory because grouping was revised after earlier evaluation.
+\end{abstract}
+
+\section{Introduction}
+A collection of labeled cricket images can help retrieve examples of batting shots. Our task takes one image containing a shot and returns one of four supplied labels. It assumes that someone has already chosen the image. It does not locate the batter, identify a contact frame or grade batting technique.
+
+Visual differences can be subtle. The bat may be blurred, a frame may show preparation rather than contact, and camera angle or background may dominate. We ask two focused questions. How does a gradient descriptor compare with pretrained CNN features on the same images? Does comparing a global view with a fixed central region provide evidence beyond simply concatenating them?
+
+Our foundation is feature extraction followed by classification. HOG supplies an explicit descriptor; a frozen pretrained network supplies a learned one. The course-level extension is a two-view absolute-difference feature and a visible agreement diagnostic. We implement and ablate this design, but do not claim its components or combination are unprecedented. The small gain leaves algorithmic novelty a weakness. Auditing modified copies is useful evaluation work, rather than a new recognition algorithm.
+
+\section{Related work and positioning}
+HOG accumulates gradient orientations into normalized spatial blocks~\cite{dalal}. Our documented variant uses this idea for whole-image classification; it does not reproduce the original pedestrian detector. MobileNetV2 is an established efficient CNN~\cite{sandler}. We select public ImageNet ONNX weights~\cite{onnxmodel} and freeze them. This follows the pretrained-feature-extractor plus classifier approach in Lecture 15; the architecture itself need not have been taught by name.
+
+Cricket recognition already has datasets and model studies, including KUCricShot~\cite{kucricshot} and Kang's preprint~\cite{kang}. We did not import those models, and their scores use different data and protocols. They are prior work, not numerical baselines for this experiment. Temperature scaling~\cite{guo} and selective classification~\cite{geifman} are established. Our threshold heuristic provides no guaranteed risk bound.
+
+\section{Data and evaluation}
+We use version 2 of Aneesh's \emph{Cricket Shots Dataset} on Kaggle~\cite{imagedataset}. Its 4,724 files have four upstream labels. Drive and leg glance/flick each combine related stroke types. We retain these labels and do not claim original collection or annotation. The downloaded metadata reports an unknown license. Provenance and checksums are recorded; source-control defaults exclude raw images and examples.
+
+Decoded RGB hashes remove one excess exact copy. A visual audit connects qualifying near copies, including rotated and mirrored versions, then keeps each connected group in one split. It leaves 4,723 representatives in 363 visual groups. The initial hash-only contrast accuracy was 96.3\%. Visual review found missed transformed pictures, so grouping was strengthened and the comparison rerun. The corrected result is 65.5\%. Both predictions and both grouping records remain available. This history makes the final study exploratory; the new HOG comparison uses the corrected split unchanged.
+
+\input{generated/image_data_table.tex}
+Training has 2,834 images in 221 groups, validation 944 in 72 groups, and test 945 in 70 groups. These are fixed stratified group folds with seed 604: fold 0 is test, fold 1 validation, and the others training. This is one holdout, not five-fold cross-validation. The source has no verified match or player identities. Visual groups are not necessarily independent photographs or matches. Appendix~\ref{app:audit} gives detailed audit criteria.
+
+\section{Proposed method}
+\begin{figure*}[t]
+\centering\includegraphics[width=.98\textwidth]{pipeline.pdf}
+\caption{Two feature approaches on the same split. Only the linear cricket classifiers learn from training images. CNN ablations share a frozen encoder. The fixed crop is a regional view, not a detected or segmented batter.}
+\label{fig:pipeline}
+\end{figure*}
+\subsection{Common geometry}
+We apply EXIF orientation, convert to RGB and bound the image to a 1,024-pixel box. The CNN uses the image extent and a central crop with $x\in[0.15W,0.85W]$, $y\in[0.05H,0.95H]$. Each view is fitted to 224 by 224 while preserving aspect ratio and cropping the center. Even the global branch loses peripheral pixels at this step. The crop can miss an off-center batter.
+
+\subsection{HOG baseline}
+HOG uses the identical global geometry, converted to 8-bit luminance and scaled to $[0,1]$. Central differences give $g_x,g_y$, magnitude $m=\sqrt{g_x^2+g_y^2}$ and unsigned angle $\theta=\operatorname{atan2}(g_y,g_x)\bmod180^\circ$. Boundary derivatives are zero. Each 16 by 16 cell accumulates \emph{magnitudes}, not pixel counts, into nine bins centered at $0,20,\ldots,160^\circ$. A pixel splits its vote linearly between adjacent orientation bins, wrapping at $180^\circ$. Votes do not interpolate across cell boundaries.
+
+A 2 by 2 cell block has 36 values and moves one cell per step. Each block is divided by $\sqrt{\sum_i h_i^2+10^{-10}}$. The 14 by 14 cells yield 13 by 13 blocks: $13\cdot13\cdot36=6,084$ concatenated values. Final per-image L2 normalization gives the classifier input. There is no learned scaling, PCA or feature selection. These fixed settings are not claimed to be optimal HOG settings. The lecture's signed-angle example and our unsigned bins are distinct variants of the same principle.
+
+\begin{figure}[t]
+\centering\includegraphics[width=\linewidth]{hog_steps.png}
+\caption{A selected test image traced through luminance, gradient magnitude and magnitude-weighted cell bins. This explains HOG; it is not a localization result or a representative performance sample.}
+\end{figure}
+
+\subsection{Frozen CNN and contrast}
+The CNN uses ImageNet RGB mean $(0.485,0.456,0.406)$ and standard deviation $(0.229,0.224,0.225)$. We remove the ImageNet classifier and retain the pooled 1,280-value output. No CNN parameters are updated on cricket images. For separately normalized global and regional vectors $u,v$, compare $u$, $v$, $\operatorname{Norm}([u;v])$, and
+\begin{equation}
+z=\operatorname{Norm}([u;v;|u-v|])\in\mathbb{R}^{3840}.
+\end{equation}
+Absolute difference gives a linear classifier a nonlinear relationship between the views. A signed difference would already be expressible by a linear map of concatenation. This motivates the construction without proving it improves recognition. Coordinates have no claimed physical interpretation, and the crop vector is not a local keypoint descriptor.
+
+All five representations use class-balanced, L2-regularized multinomial logistic regression. Logits are $a=Wz+b$ and scores are $p_c=\exp(a_c/T)/\sum_j\exp(a_j/T)$. Training minimizes weighted multiclass cross-entropy with regularization. Contrast stores a $4\times3840$ matrix and four biases: 15,364 parameters. These cricket parameters are learned; the CNN and HOG extraction rules stay fixed.
+
+\section{Experiments}
+\subsection{Controlled comparison}
+Every head uses the corrected manifest and $C\in\{0.1,1,10,100\}$. Validation macro F1 selects $C$, with smaller values winning ties. HOG's configuration and selection are saved before test scoring. No new split, seed, feature setting or threshold was searched for a better test result. We retain the original CNN heads and predictions. HOG is an exploratory extension after prior results on this archive were known.
+
+The original validation set also selected CNN temperatures and the review threshold. This reuse can overfit validation. We disclose it and preserve the choices; separate calibration data is future work. HOG uses $T=1$ and does not alter the review gate.
+
+\input{generated/image_results_table.tex}
+HOG selects $C=0.1$ and reaches 49.4\% validation macro F1, falling to 34.5\% on test. Its 35.3\% accuracy is below all four CNN configurations. This supports pretrained features \emph{for this configuration and split}. It does not isolate color, pretraining or architecture effects, or establish universal HOG inferiority.
+
+Contrast gets 619/945 correct, versus 616/945 for concatenation: only +0.32 accuracy points. A paired group-bootstrap interval is -1.46 to +2.38 points, spanning zero. Concatenation has the highest validation macro F1. We retain the pre-existing contrast deployment, but do not present a substantial or reliable advantage.
+
+\input{generated/image_uncertainty_table.tex}
+Intervals resample the 70 visual groups with replacement in 2,000 draws, seed 17, retaining each drawn group's images. Identical draws give paired comparisons. Statistics remain image-weighted within each resample. These conditional percentile intervals omit training and split variability and cannot repair unknown match correlation or missed copies. They do not treat 945 images as independent original photographs.
+
+\subsection{Errors and model scores}
+\begin{figure}[t]
+\centering\includegraphics[width=\linewidth]{confusion.png}
+\caption{Contrast confusion counts on all test images. Rows are dataset labels; color is within-class fraction. Review does not remove errors from this matrix.}
+\label{fig:confusion}
+\end{figure}
+Glance/flick recall is 45.5\% on 224 examples, while pull recall is 78.2\% on 252.  HOG predicts pull for 110 of 224 sweep images. Similar stances, fixed spatial cells and camera layout are plausible limitations, not verified causes for every error.
+
+Temperature scaling retains the top label but worsens test ECE from 0.043 to 0.094 and NLL from 0.859 to 0.898 (ten equal-width ECE bins). It did not demonstrate improved calibration. A softmax score is relative to the supported labels, not a guarantee that an arbitrary image is correct or belongs to these classes.
+
+The unchanged secondary review rule requires score at least 0.70 and agreement of global, crop and contrast heads. It accepts 557/945 images, with 433 correct: 58.9\% coverage and 77.7\% accepted accuracy. The 90\% validation target is not a test result or guarantee. Correlated heads can agree on a wrong label. Appendix~\ref{app:secondary} retains the detailed diagnostics.
+
+\begin{figure}[t]
+\centering\includegraphics[width=\linewidth]{failure.jpg}
+\caption{Dataset label: sweep; prediction: pull (99.7\% score). This error was selected after evaluation and retained in the demo, alongside successes and disagreement.}
+\label{fig:failure}
+\end{figure}
+
+\subsection{Implementation and demonstration}
+Training uses scikit-learn; inference uses CPU ONNX Runtime and numeric NPZ/JSON heads. Shared functions implement training and demo preprocessing. The image page shows both actual inputs, four scores, review reasons and a HOG comparison. Uploads use temporary storage; inference needs no cloud service or API key after installation. JSON export identifies temperature-scaled softmax scores. Selected examples include a correct result, a confident error and disagreement.
+
+Warm CNN plus HOG inference takes 23 ms median and 52 ms at the 95th percentile over 50 fixed test images on the recorded host. This includes separate image decodes, but excludes initialization, HTTP transport and preview encoding. Preserved older CNN-only timings describe a different operation.
+
+\section{Limitations and conclusion}
+The project implements the course's feature-extractor/classifier structure and tests a small two-view extension. HOG gives an explicit gradient baseline; pretrained features work better on this fixed benchmark. Contrast adds only three correct test predictions over concatenation, with uncertainty spanning no gain. Novelty remains modest; we make no state-of-the-art or first-in-literature claim.
+
+The duplicate-audit effect is an evaluation warning, not proof of independent groups. Unknown match identities, unverified upstream labels, validation reuse and exploratory development limit generalization claims. An independently labeled test collection with known match/player identities would answer a more useful question than searching this split for a higher score. The weak video study remains in Appendix~\ref{app:video}.

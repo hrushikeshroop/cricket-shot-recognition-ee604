@@ -1,0 +1,767 @@
+{
+  "all_checks_pass": true,
+  "checks": [
+    {
+      "name": "hog independent confusion arithmetic",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "global independent confusion arithmetic",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "focus independent confusion arithmetic",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "concat independent confusion arithmetic",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "contrast independent confusion arithmetic",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Review exact counts preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Paired contrast gain is uncertain",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Calibration failure recorded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Original threshold retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "HOG preprocessing matches model",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "HOG cache binds manifest and implementation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "CNN cache IDs match manifest",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00000",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00000",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00075",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00075",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00150",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00150",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00225",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00225",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00300",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00300",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00375",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00375",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00450",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00450",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00525",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00525",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00600",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00600",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00675",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00675",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00750",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00750",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00825",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00825",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00900",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00900",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_00975",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_00975",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01050",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01050",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01125",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01125",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01200",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01200",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01275",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01275",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01350",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01350",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01425",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01425",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01500",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01500",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01575",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01575",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01649",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01649",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01724",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01724",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01799",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01799",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01874",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01874",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_01949",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_01949",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02024",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02024",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02099",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02099",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02174",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02174",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02249",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02249",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02324",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02324",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02399",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02399",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02474",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02474",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02549",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02549",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02624",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02624",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02699",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02699",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02774",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02774",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02849",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02849",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02924",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02924",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_02999",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_02999",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03074",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03074",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03149",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03149",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03223",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03223",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03298",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03298",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03373",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03373",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03448",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03448",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03523",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03523",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03598",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03598",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03673",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03673",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03748",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03748",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03823",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03823",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03898",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03898",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_03973",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_03973",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_04048",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_04048",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_04123",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_04123",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_04198",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_04198",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_04273",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_04273",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_04348",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_04348",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_04423",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_04423",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_04498",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_04498",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_04573",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_04573",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_04648",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_04648",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Raw pixel hash image_04723",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh two-view features image_04723",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Original project files preserved",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "Preserved evidence data/images/processed/manifest.csv",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Preserved evidence models/image/heads.npz",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Preserved evidence models/image/classifier.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Preserved evidence results/images/metrics.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Preserved evidence results/images/test_predictions.npz",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Preserved evidence results/images_initial_hash/metrics.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Preserved evidence results/images_initial_hash/test_predictions.npz",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Preserved evidence results/metrics.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Preserved evidence results/test_predictions.npz",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "cache_validation": {
+    "manifest_sha256": "a83c2b3dc4573769ade21d06a2186e85d9c34c8d8c11ad8134286ea5210c2c3d",
+    "feature_cache_sha256": "42e5d409b5fe3e97488a5c3068ee3f890bce25f39b37763229243092c0270e1d",
+    "encoder_sha256": "bfa8f7bdd68ff12b519fe81f420ba370904b33b6580b01fb907bd05a3b6959cc",
+    "images_module_sha256": "075890069bad57da7efb563f85adc701a3ab47dec74a6d76df574042f136d97e",
+    "core_module_sha256": "674a26e804cf3496059cd6a6d329a08843cc92bf8acb54146ecad9620947e4a3",
+    "fresh_images_checked": 64,
+    "two_views_per_image": true,
+    "maximum_absolute_error": 0.0,
+    "scope": "64 deterministic samples across all splits; not every cached image independently recomputed"
+  },
+  "scope": "Current revision: arithmetic, fixed evidence, preprocessing parity and original preservation. Pytest, HTTP, render and document checks have separate records."
+}

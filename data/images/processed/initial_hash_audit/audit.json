@@ -1,0 +1,46 @@
+{
+  "files_found": 4724,
+  "decoded_labeled": 4724,
+  "errors": [],
+  "exact_duplicate_excess": 1,
+  "near_duplicate_pairs": 2809,
+  "conflicting_components": 0,
+  "conflicting_images_excluded": 0,
+  "exact_representatives_kept": 4723,
+  "visual_groups": 3108,
+  "class_counts": {
+    "drive": 1223,
+    "legglance-flick": 1120,
+    "pullshot": 1260,
+    "sweep": 1120
+  },
+  "split_counts": {
+    "train": {
+      "drive": 733,
+      "legglance-flick": 672,
+      "pullshot": 756,
+      "sweep": 672
+    },
+    "val": {
+      "drive": 245,
+      "legglance-flick": 224,
+      "pullshot": 252,
+      "sweep": 224
+    },
+    "test": {
+      "drive": 245,
+      "legglance-flick": 224,
+      "pullshot": 252,
+      "sweep": 224
+    }
+  },
+  "split_groups": {
+    "train": 1863,
+    "val": 623,
+    "test": 622
+  },
+  "split_seed": 604,
+  "source_ids_available": false,
+  "rule": "Exact decoded RGB hash or pHash <=6 and thumbnail RGB MAD <=18",
+  "warning": "Visual groups do not establish match/player independence. Related frames may remain across splits."
+}

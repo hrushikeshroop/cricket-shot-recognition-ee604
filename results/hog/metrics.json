@@ -1,0 +1,235 @@
+{
+  "classes": [
+    "drive",
+    "legglance-flick",
+    "pullshot",
+    "sweep"
+  ],
+  "config": {
+    "status": "Exploratory extension after seeing Option B results; fixed before the new HOG experiment",
+    "question": "How does a hand-crafted gradient descriptor compare with frozen CNN features on the identical images and split?",
+    "feature": "224 square global-view luminance, unsigned 9-bin HOG, 16x16 cells, 2x2-cell blocks, stride one cell, L2 block and image normalization",
+    "split_policy": "Reuse existing manifest, test identities and groups exactly; no split/seed search",
+    "C_candidates": [
+      0.1,
+      1,
+      10,
+      100
+    ],
+    "selection": "Validation macro F1; smallest C wins ties",
+    "classifier": "L2-regularized multinomial logistic regression, balanced class weights, lbfgs, max_iter=2000",
+    "scaling": "Deterministic per-image normalization only. No learned scaling, PCA or feature selection.",
+    "calibration": "None for HOG. Existing CNN temperatures and review threshold remain unchanged.",
+    "uncertainty": "2000 paired visual-group bootstrap draws, seed 17, fixed model and split; no independence claim for 945 images",
+    "fusion": "No HOG+CNN fusion experiment; keep one focused course comparison"
+  },
+  "metadata": {
+    "parameters": {
+      "image_size": [
+        224,
+        224
+      ],
+      "grayscale": "PIL RGB to L (8-bit luminance)",
+      "gradient": "central difference, zero derivative at image boundaries",
+      "orientations": 9,
+      "angle_range_degrees": [
+        0,
+        180
+      ],
+      "pixels_per_cell": [
+        16,
+        16
+      ],
+      "cells_per_block": [
+        2,
+        2
+      ],
+      "block_stride_cells": 1,
+      "orientation_interpolation": "linear between circular neighboring bins",
+      "spatial_interpolation": false,
+      "block_normalization": "L2, epsilon=1e-5",
+      "final_normalization": "L2 per image, epsilon floor=1e-12",
+      "dimension": 6084
+    },
+    "manifest_sha256": "a83c2b3dc4573769ade21d06a2186e85d9c34c8d8c11ad8134286ea5210c2c3d",
+    "implementation_sha256": "50525c18ef93148670223ba9caf040be429eaca19f94dc4f52aac47d7efcb56c",
+    "protocol_sha256": "00afb9f631023e3e4a9a1e35656b66d951ebcd19980d10280d0e6a919c32ffb2"
+  },
+  "trials": [
+    {
+      "C": 0.1,
+      "validation_macro_f1": 0.49391266499824865,
+      "iterations": 25,
+      "warnings": []
+    },
+    {
+      "C": 1,
+      "validation_macro_f1": 0.4451176181401423,
+      "iterations": 49,
+      "warnings": []
+    },
+    {
+      "C": 10,
+      "validation_macro_f1": 0.43180200257811635,
+      "iterations": 103,
+      "warnings": []
+    },
+    {
+      "C": 100,
+      "validation_macro_f1": 0.4149538996054749,
+      "iterations": 89,
+      "warnings": []
+    }
+  ],
+  "C": 0.1,
+  "dimension": 6084,
+  "validation": {
+    "n": 944,
+    "accuracy": 0.4925847457627119,
+    "balanced_accuracy": 0.49200047163674215,
+    "macro_f1": 0.49391266499824865,
+    "nll": 1.264030405343117,
+    "ece_10_bins": 0.18087802757402513,
+    "brier_multiclass": 0.6893489307636802,
+    "confusion": [
+      [
+        101,
+        63,
+        50,
+        30
+      ],
+      [
+        44,
+        107,
+        47,
+        26
+      ],
+      [
+        51,
+        42,
+        143,
+        16
+      ],
+      [
+        50,
+        12,
+        48,
+        114
+      ]
+    ],
+    "per_class": {
+      "drive": {
+        "precision": 0.4105691056910569,
+        "recall": 0.4139344262295082,
+        "f1-score": 0.4122448979591837,
+        "support": 244.0
+      },
+      "legglance-flick": {
+        "precision": 0.47767857142857145,
+        "recall": 0.47767857142857145,
+        "f1-score": 0.47767857142857145,
+        "support": 224.0
+      },
+      "pullshot": {
+        "precision": 0.4965277777777778,
+        "recall": 0.5674603174603174,
+        "f1-score": 0.5296296296296297,
+        "support": 252.0
+      },
+      "sweep": {
+        "precision": 0.6129032258064516,
+        "recall": 0.5089285714285714,
+        "f1-score": 0.5560975609756098,
+        "support": 224.0
+      },
+      "accuracy": 0.4925847457627119,
+      "macro avg": {
+        "precision": 0.49941967017596445,
+        "recall": 0.49200047163674215,
+        "f1-score": 0.49391266499824865,
+        "support": 944.0
+      },
+      "weighted avg": {
+        "precision": 0.4974514664928634,
+        "recall": 0.4925847457627119,
+        "f1-score": 0.4932418171898772,
+        "support": 944.0
+      }
+    }
+  },
+  "test": {
+    "n": 945,
+    "accuracy": 0.35343915343915344,
+    "balanced_accuracy": 0.3525403911564626,
+    "macro_f1": 0.34493120746555367,
+    "nll": 1.3204346692728695,
+    "ece_10_bins": 0.046071256493072914,
+    "brier_multiclass": 0.7176124576987967,
+    "confusion": [
+      [
+        122,
+        30,
+        81,
+        12
+      ],
+      [
+        65,
+        102,
+        26,
+        31
+      ],
+      [
+        63,
+        106,
+        69,
+        14
+      ],
+      [
+        54,
+        19,
+        110,
+        41
+      ]
+    ],
+    "per_class": {
+      "drive": {
+        "precision": 0.40131578947368424,
+        "recall": 0.49795918367346936,
+        "f1-score": 0.4444444444444444,
+        "support": 245.0
+      },
+      "legglance-flick": {
+        "precision": 0.3968871595330739,
+        "recall": 0.45535714285714285,
+        "f1-score": 0.42411642411642414,
+        "support": 224.0
+      },
+      "pullshot": {
+        "precision": 0.24125874125874125,
+        "recall": 0.27380952380952384,
+        "f1-score": 0.25650557620817843,
+        "support": 252.0
+      },
+      "sweep": {
+        "precision": 0.41836734693877553,
+        "recall": 0.18303571428571427,
+        "f1-score": 0.2546583850931677,
+        "support": 224.0
+      },
+      "accuracy": 0.35343915343915344,
+      "macro avg": {
+        "precision": 0.36445725930106876,
+        "recall": 0.3525403911564626,
+        "f1-score": 0.34493120746555367,
+        "support": 945.0
+      },
+      "weighted avg": {
+        "precision": 0.3616260112888357,
+        "recall": 0.35343915343915344,
+        "f1-score": 0.344522594027829,
+        "support": 945.0
+      }
+    }
+  },
+  "elapsed_seconds": 338.9242685999925
+}
