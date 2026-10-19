@@ -59,7 +59,7 @@ def main():
         p=ROOT/item['path']
         if not p.exists() or hashlib.sha256(p.read_bytes()).hexdigest()!=item['sha256']:stale.append(item['path'])
     check('Full code appendix matches current source',not stale,', '.join(stale) or f'{len(inventory)} source/config files match SHA-256 inventory')
-    main=fitz.open(ROOT/'output/pdf/CricketShot_Report_Main.pdf');complete=fitz.open(ROOT/'output/pdf/CricketShot_Report_Complete.pdf');appendix=fitz.open(ROOT/'output/pdf/CricketShot_Code_Appendix.pdf')
+    main=fitz.open(ROOT/'.build/report/CricketShot_Report_Main.pdf');complete=fitz.open(ROOT/'output/pdf/CricketShot_Report_Complete.pdf');appendix=fitz.open(ROOT/'.build/report/CricketShot_Code_Appendix.pdf')
     check('Complete report includes entire appendix',len(complete)==len(main)+len(appendix),f'{len(main)} main + {len(appendix)} appendix = {len(complete)} pages')
     text='\n'.join(p.get_text() for p in main)
     check('Report contains current primary score',f'{r["models"]["contrast"]["test"]["accuracy"]*100:.1f}' in text)
@@ -89,15 +89,18 @@ def main():
         check('Speaker notes present',len(notes)==16,str(len(notes)))
     office=json.loads((ROOT/'results/presentation_validation.json').read_text(encoding='utf-8-sig'))
     check('PowerPoint renderer geometry',not office['issues'],str(office['issues']))
-    with zipfile.ZipFile(ROOT/'output/CricketShot_Overleaf.zip') as z:
+    with zipfile.ZipFile(ROOT/'.build/report/CricketShot_Overleaf.zip') as z:
         check('Overleaf package contains actual 2022 style and source appendix',all(n in z.namelist() for n in ('main.tex','cvpr.sty','references.bib','code_appendix.pdf')))
     revision=json.loads((ROOT/'results/revision/verification.json').read_text())
     check('Current revision arithmetic/cache audit',revision['all_checks_pass'],f"{len(revision['checks'])} recorded checks; scope in results/revision/verification.json")
     proof=json.loads((ROOT/'results/revision/cache_validation.json').read_text())
     check('Current preprocessing binding',proof['images_module_sha256']==hashlib.sha256((ROOT/'src/cricketshot/images.py').read_bytes()).hexdigest() and proof['core_module_sha256']==hashlib.sha256((ROOT/'src/cricketshot/core.py').read_bytes()).hexdigest())
-    http=json.loads((ROOT/'results/revision/http_validation.json').read_text())
-    pairs=[c for c in http['checks'] if 'example_status' in c]
-    check('Actual upload HTTP flow',http['all_pass'] and len(pairs)==len(json.loads((ROOT/'demo/image_examples.json').read_text())) and all(hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==sha for path,sha in http['source_model_hashes'].items()),f'{len(pairs)} real example/multipart-upload pairs on the running app; malformed upload rejected')
+    runtime_path=ROOT/'.build/verification/runtime.json'
+    runtime_run=subprocess.run([sys.executable,str(ROOT/'scripts/verify_runtime.py'),'--output',str(runtime_path)],cwd=ROOT,capture_output=True,text=True)
+    runtime=json.loads(runtime_path.read_text()) if runtime_run.returncode==0 else {}
+    pairs=runtime.get('example_checks',[])
+    check('Actual multipart upload flow',runtime_run.returncode==0 and runtime.get('all_pass') and len(pairs)>=5,
+          f'{len(pairs)} real example/upload pairs through Flask requests; malformed upload rejected' if runtime else runtime_run.stderr[-1000:])
     hog=json.loads((ROOT/'results/hog/metrics.json').read_text())
     check('Report includes new HOG evidence',f"{hog['test']['accuracy']*100:.1f}" in text and f"{hog['test']['macro_f1']*100:.1f}" in text and 'HOG' in text)
     check('Slides include new HOG evidence',f"{hog['test']['accuracy']*100:.1f}%" in slide_text and 'HOG' in slide_text)
@@ -120,7 +123,7 @@ def main():
             'course_submission_ready':all(x['pass'] for x in checks) and not pending,
             'individual_contribution_statements_present':contribution_statements_present,
             'revision_scope':'Current source, prediction arithmetic and document checks. Behavioral tests are rerun by this verifier.',
-            'manual_review':'See docs/visual_review.md for actual render inspection. Automated checks alone do not prove visual quality or data-label correctness.',
+            'manual_review':'Inspect the generated report and slides visually. Automated checks alone do not prove visual quality or data-label correctness.',
             'limits':['No independent label audit of every raw image/clip','No image match/player identities','Exploratory revised grouping and reused video holdout','Unknown upstream image license']}
     (ROOT/'results/verification.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
     md='# Final verification record\n\n'

@@ -60,24 +60,19 @@
     "lines": 28
   },
   {
-    "path": "scripts/build_image_report.py",
-    "sha256": "43d1c2fee3867df5c0019999f7a76e9d7e914189534200c0daf611ecf94e8f55",
-    "lines": 5
-  },
-  {
     "path": "scripts/build_report.py",
-    "sha256": "7f44ed4ed519e08e87f4978a70be3f09885bbc9fa9b951db8dfd7a8026f52ba6",
-    "lines": 159
+    "sha256": "73fee8a474b31dd06423bbc6d642ebe7cff3210f853ec127bf10846a9c038ef0",
+    "lines": 59
   },
   {
     "path": "scripts/build_revision_report.py",
-    "sha256": "7346e23d86daf2bb2d2f1e88b559684af3f641eed2ecb2e533d6212806812cf4",
-    "lines": 149
+    "sha256": "4364fdcb07230c605d42216b6571ff016924faf3403391885aa286b8b9164a13",
+    "lines": 161
   },
   {
     "path": "scripts/build_slides.ps1",
-    "sha256": "37cf1490fee411be3260f4ac2e6c7216b8b4524b1586ec04294f28f623376aef",
-    "lines": 142
+    "sha256": "01ed3840cbe33e00d71d125e3d33dd1014c4073a92f2039a4f59a3c7297e6662",
+    "lines": 143
   },
   {
     "path": "scripts/extract_roi_features.py",
@@ -115,14 +110,9 @@
     "lines": 19
   },
   {
-    "path": "scripts/package_project.py",
-    "sha256": "7a0fa19e1a76a4e4404ee37dbe3b1a8c9c4dc4b891accedec96bca748dc93c0a",
-    "lines": 5
-  },
-  {
     "path": "scripts/package_revised.py",
-    "sha256": "7d5b8be4bc57fdf6da887c16e08595e74445b93c700a4738723cce93ecf35425",
-    "lines": 86
+    "sha256": "62c85a62e2768fbfcef2b6380e470858d4d563aaae0e9234c161e6a2f511e374",
+    "lines": 92
   },
   {
     "path": "scripts/prepare_data.py",
@@ -143,11 +133,6 @@
     "path": "scripts/prepare_revision_slides.py",
     "sha256": "02361a7cd91aca70aa815cc2c6bcc2bf86ac34980727d4e8ed1e5edeeca69657",
     "lines": 128
-  },
-  {
-    "path": "scripts/prepare_slides.py",
-    "sha256": "346a18690c55cf537c2ab91a8eca64e8c4f826b4ba04f301fd477ac168854b54",
-    "lines": 5
   },
   {
     "path": "scripts/record_environment.py",
@@ -196,8 +181,8 @@
   },
   {
     "path": "scripts/verify_submission.py",
-    "sha256": "f5f76cd12ebfb93776764ca3d07cecf8e22558208d02c1af862d454b60ff1c27",
-    "lines": 135
+    "sha256": "ff23134caace55c261370a27277ba0d555a424f68abc14820bf75264a1b19cdc",
+    "lines": 138
   },
   {
     "path": "setup.bat",

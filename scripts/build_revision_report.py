@@ -15,6 +15,8 @@ def main():
     generated.mkdir(exist_ok=True)
     out = ROOT / "output/pdf"
     out.mkdir(parents=True, exist_ok=True)
+    parts = ROOT / ".build/report"
+    parts.mkdir(parents=True, exist_ok=True)
     build = ROOT / ".build/latex/revision"
     build.mkdir(parents=True, exist_ok=True)
     original = json.loads((ROOT/"results/images/metrics.json").read_text())
@@ -120,26 +122,36 @@ The complete report appends every current custom executable source and configura
 Data: \href{https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset}{Cricket Shots Dataset v2} and \href{https://www.kaggle.com/datasets/amittalmale/cricket-shots}{CRICKET\_SHOTS v1}. Pretrained weights: \href{https://github.com/onnx/models}{ONNX Model Zoo}. Libraries: \href{https://github.com/scikit-learn/scikit-learn}{scikit-learn}, \href{https://github.com/microsoft/onnxruntime}{ONNX Runtime}, \href{https://github.com/opencv/opencv}{OpenCV}, \href{https://github.com/pallets/flask}{Flask}, and \href{https://github.com/numpy/numpy}{NumPy}. Complete dependency links and attribution accompany \texttt{docs/sources.md}. Our NumPy HOG follows the cited method and supplied lectures; no external cricket classifier code was imported.
 """
     (generated/"image_supplement.tex").write_text(supplement,encoding="utf-8")
-    for name in ("cvpr.sty","ieee_fullname.bst"):
-        shutil.copy2(report/"template/latex"/name,report/name)
     subprocess.run([str(ROOT/"tools/tectonic/tectonic.exe"),"--keep-logs","--outdir",str(build),str(report/"image_main.tex")],cwd=report,check=True)
-    shutil.copy2(build/"image_main.pdf",out/"CricketShot_Report_Main.pdf")
-    count=code_appendix(out/"CricketShot_Code_Appendix.pdf")
-    complete=fitz.open(out/"CricketShot_Report_Main.pdf")
-    appendix=fitz.open(out/"CricketShot_Code_Appendix.pdf");complete.insert_pdf(appendix)
+    shutil.copy2(build/"image_main.pdf",parts/"CricketShot_Report_Main.pdf")
+    count=code_appendix(parts/"CricketShot_Code_Appendix.pdf")
+    complete=fitz.open(parts/"CricketShot_Report_Main.pdf")
+    appendix=fitz.open(parts/"CricketShot_Code_Appendix.pdf");complete.insert_pdf(appendix)
     complete.set_metadata({"title":"Cricket Shot Recognition - EE604 course revision", "author":"; ".join(sub["member_names"])})
     complete.save(out/"CricketShot_Report_Complete.pdf",garbage=4,deflate=True)
-    with zipfile.ZipFile(ROOT/"output/CricketShot_Overleaf.zip","w",zipfile.ZIP_DEFLATED) as z:
+    with zipfile.ZipFile(parts/"CricketShot_Overleaf.zip","w",zipfile.ZIP_DEFLATED) as z:
         main=(report/"image_main.tex").read_text()
         main=re.sub(r"\\graphicspath\{.*?\}\n",lambda _:r"\graphicspath{{figures/}}"+"\n",main)
         z.writestr("main.tex",main)
         for name in ("cvpr.sty","ieee_fullname.bst","references.bib"):z.write(report/name,name)
-        for path in generated.glob("*.tex"):
-            if path.name.startswith("image_") or path.name=="authors.tex":z.write(path,"generated/"+path.name)
-        for folder in (ROOT/"results/images/figures",ROOT/"results/revision/figures"):
-            for path in folder.iterdir():
-                if path.suffix in {".pdf",".png",".jpg"}:z.write(path,"figures/"+path.name)
-        z.write(out/"CricketShot_Code_Appendix.pdf","code_appendix.pdf")
+        # Include only files referenced by this manuscript, not older drafts.
+        sources={"main.tex":main}
+        pending=re.findall(r"\\input\{(generated/[^}]+)\}",main)
+        while pending:
+            name=pending.pop()
+            if name in sources:continue
+            text=(report/name).read_text(encoding="utf-8")
+            sources[name]=text
+            pending.extend(re.findall(r"\\input\{(generated/[^}]+)\}",text))
+        for name,text in sources.items():
+            if name!="main.tex":z.writestr(name,text)
+        figures=set(re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}","\n".join(sources.values())))
+        for name in sorted(figures):
+            candidates=[folder/name for folder in (ROOT/"results/revision/figures",ROOT/"results/images/figures")]
+            path=next((p for p in candidates if p.is_file()),None)
+            if path is None:raise FileNotFoundError("Missing report figure: "+name)
+            z.write(path,"figures/"+name)
+        z.write(parts/"CricketShot_Code_Appendix.pdf","code_appendix.pdf")
         z.write(out/"CricketShot_Report_Complete.pdf","complete_report.pdf")
         z.write(ROOT/"scripts/merge_report.py","merge_report.py")
         z.writestr("README.txt","Compile main.tex for the revised CVPR manuscript and supplementary evidence. The unmodified 2022 style is included.\nThe current complete report and entire source appendix are included. After editing, export main.pdf and run:\npython -m pip install pymupdf\npython merge_report.py main.pdf code_appendix.pdf complete_updated.pdf\nThe PDF merge avoids the 2022 style's embedded eso-pic conflict with pdfpages.\n")

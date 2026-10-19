@@ -9,6 +9,11 @@ import zipfile
 ROOT=Path(__file__).resolve().parents[1]
 EXCLUDED={".venv",".build",".git",".pytest_cache","__pycache__",".codex",".agents",".aws"}
 STORED={".zip",".jpg",".jpeg",".png",".webp",".avi",".mp4",".pdf",".pptx",".docx"}
+LOCAL_ONLY={"docs/verification.md","docs/visual_review.md","results/package_validation.json",
+            "results/presentation_validation.json","results/verification.json",
+            "results/revision/cache_validation.json","results/revision/confidence_validation.json",
+            "results/revision/http_validation.json","results/revision/overleaf_validation.json",
+            "results/revision/verification.json","results/revision/inference_environment.txt"}
 
 
 def digest(path):
@@ -24,6 +29,7 @@ def select_files(kind):
         relative=path.relative_to(ROOT)
         if any(p in EXCLUDED for p in relative.parts):continue
         name=relative.as_posix()
+        if name in LOCAL_ONLY:continue
         if path.suffix in {".pyc",".part",".log",".aux",".blg",".bbl"}:continue
         if name.startswith("output/"):
             if path.name!="CricketShot_Overleaf.zip" and path.suffix not in {".pdf",".pptx",".PNG"}:continue

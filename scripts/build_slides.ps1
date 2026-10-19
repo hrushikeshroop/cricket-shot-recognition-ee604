@@ -6,8 +6,9 @@ $ErrorActionPreference = 'Stop'
 $workspace = Split-Path -Parent $PSScriptRoot
 $spec = Get-Content -LiteralPath (Join-Path $workspace $SpecPath) -Raw -Encoding UTF8 | ConvertFrom-Json
 $outDir = Join-Path $workspace 'output/presentation'
-$previewDir = Join-Path $workspace 'output/presentation/previews'
-New-Item -ItemType Directory -Force -Path $outDir,$previewDir | Out-Null
+$buildDir = Join-Path $workspace '.build/presentation'
+$previewDir = Join-Path $buildDir 'previews'
+New-Item -ItemType Directory -Force -Path $outDir,$buildDir,$previewDir | Out-Null
 
 function RGB([string]$hex) {
     $v = $hex.TrimStart('#')
@@ -117,7 +118,7 @@ try {
         if($entry.notes){$slide.NotesPage.Shapes.Placeholders.Item(2).TextFrame.TextRange.Text=[string]$entry.notes}
     }
     $pptx=Join-Path $outDir 'CricketShot_Presentation.pptx'
-    $pdf=Join-Path $outDir 'CricketShot_Presentation.pdf'
+    $pdf=Join-Path $buildDir 'CricketShot_Presentation.pdf'
     $deck.SaveAs($pptx,24)
     $deck.SaveAs($pdf,32)
     $deck.Export($previewDir,'PNG',1600,900)

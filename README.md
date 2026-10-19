@@ -48,13 +48,12 @@ The optional image archive is about 676 MB. Add `--include-video` to restore the
 | Location | Contents |
 |---|---|
 | [Complete report](output/pdf/CricketShot_Report_Complete.pdf) | CVPR manuscript, supplementary experiments and complete custom-code appendix |
-| [Reading report](output/pdf/CricketShot_Report_Main.pdf) | Manuscript and supplementary experiments |
-| [Editable LaTeX package](output/CricketShot_Overleaf.zip) | Sources, figures, code appendix and complete PDF |
 | [Presentation](output/presentation/CricketShot_Presentation.pptx) | 16 editable slides and speaker notes; slide 16 is backup |
+| `report/` | Editable LaTeX manuscript, required tables, references and CVPR 2022 style |
 | [Course mapping](docs/course_mapping.md) | Connections to the supplied lecture topics and page references |
 | [Demo guide](docs/demo_guide.md), [method guide](docs/viva_guide.md) | Example sequence, equations and implementation explanations |
 | [Data card](docs/data_card.md), [model card](docs/model_card.md) | Data protocol, model design and measured limitations |
-| `results/images/`, `results/hog/`, `results/revision/` | Saved predictions, comparisons, confidence analysis and verification |
+| `results/images/`, `results/hog/`, `results/revision/` | Saved predictions, comparisons, confidence analysis and method figures |
 | `results/images_initial_hash/`, `results/pilot_fullframe/` | Earlier experiment evidence, retained to explain the evaluation changes |
 
 The contrast feature corrects 17 concatenation errors but loses 14 correct decisions. The post-hoc breakdown and selected cases are in `results/revision/view_diagnostics.json`; they describe the small net gain without establishing a reliable improvement. The report compares two earlier cricket video methods with this image pipeline. [The method guide](docs/viva_guide.md) explains the design choices and their limits.
@@ -80,6 +79,12 @@ Full research tests require development dependencies, raw data and feature cache
 
 For a reconstruction from downloads, run `fetch_assets.py`, `prepare_data.py`, `fetch_images.py`, `prepare_images.py`, `strengthen_image_groups.py`, then `train_images.py`. Run these in a scratch copy: they replace generated data and model files. The strengthening step is required for the final visual-group protocol. Do not select new splits, seeds or thresholds using test results. HOG uses the same final manifest and selects only C on validation, without a fusion search.
 
-Rebuild the documents with `scripts/build_revision_report.py`, `scripts/prepare_revision_slides.py` and `scripts/build_slides.ps1`, then run `scripts/verify_submission.py`. Report rebuilding needs Tectonic at `tools/tectonic/tectonic.exe`; slide rebuilding needs desktop PowerPoint on Windows. The demo needs neither. In Overleaf, compile `main.tex`; after editing, use the included `merge_report.py` to append the code PDF. The supplied unmodified CVPR 2022 style is retained.
+The public `output/` directory contains only the complete report and editable presentation. Separate manuscript/code PDFs, the optional Overleaf ZIP, slide PDF/previews and machine-specific verification records are local build artifacts and are excluded from Git.
+
+Rebuild the report with `scripts/build_revision_report.py`; edit `report/image_content_template.tex` for manuscript changes. Rebuilding needs development dependencies and Tectonic at `tools/tectonic/tectonic.exe`. It creates the complete PDF under `output/pdf/` and intermediate parts plus an optional Overleaf package under `.build/report/`. In that package, compile `main.tex`, then use `merge_report.py` to append the code PDF. The unmodified CVPR 2022 style is retained.
+
+Rebuild slides with `scripts/prepare_revision_slides.py` and `scripts/build_slides.ps1` using desktop PowerPoint on Windows. For a fresh clone, first start the app and run `scripts/render_demo.ps1` to produce the local UI screenshot; that optional capture step needs Chrome. Slide PDF and preview images go under `.build/presentation/`. The demo itself needs none of these authoring tools.
+
+After a full local rebuild and `scripts/verify_revision.py`, run `scripts/verify_submission.py`. Verification generates local records; they are excluded from the public repository.
 
 Dataset, pretrained-model, paper, library and template sources are listed in [docs/sources.md](docs/sources.md) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The image dataset metadata reports an unknown license; this project does not grant rights to the source photographs.
