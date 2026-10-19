@@ -40,3 +40,9 @@ docs/revision_request.txt
 .env.*
 *.pem
 *.key
+
+# Unused stock author-kit samples; keep only the style, bibliography style and attribution.
+report/template/word/
+report/template/latex/PaperForReview.*
+report/template/latex/RebuttalTemplate.*
+report/template/latex/egbib.bib

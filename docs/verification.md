@@ -2,7 +2,7 @@
 
 | Check | Result | Evidence |
 |---|---|---|
-| Behavioral and integration tests | PASS | ....................                                                     [100%] 20 passed in 7.77s |
+| Behavioral and integration tests | PASS | ....................                                                     [100%] 20 passed in 2.60s |
 | global metric arithmetic | PASS |  |
 | focus metric arithmetic | PASS |  |
 | concat metric arithmetic | PASS |  |
@@ -13,8 +13,8 @@
 | Initial hash components remain unsplit | PASS | 3108 original components checked |
 | Raw pixel hashes independently sampled | PASS | 64 deterministic source images re-read; 0 mismatches |
 | Source inventory covers every current custom file | PASS |  |
-| Full code appendix matches current source | PASS | 55 source/config files match SHA-256 inventory |
-| Complete report includes entire appendix | PASS | 5 main + 82 appendix = 87 pages |
+| Full code appendix matches current source | PASS | 54 source/config files match SHA-256 inventory |
+| Complete report includes entire appendix | PASS | 5 main + 79 appendix = 84 pages |
 | Report contains current primary score | PASS |  |
 | Report covers required sections | PASS | Abstract, Introduction, Proposed method, Experiments, Code, data and repositories |
 | Every inventoried file appears in source appendix | PASS |  |

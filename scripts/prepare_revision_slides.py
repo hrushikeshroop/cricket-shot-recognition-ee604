@@ -28,7 +28,7 @@ def main():
     add("Cricket Shot\nRecognition",kind="cover",kicker="EE604 COURSE PROJECT / 2026",
         subtitle="Gradient features and a frozen CNN\nA controlled four-class image study",
         image="slides/assets/class_0.jpg",team_text=team_text,bottom=sub["github_url"],
-        notes="Introduce one-image classification. HOG and frozen features connect directly to lectures 10 and 15. The two-view difference is a small extension to test, not a new backbone. Cover image: selected held-out source image, https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset v2. Assistance and actual contributions must be attributed accurately.")
+        notes="Introduce one-image classification. HOG and frozen features connect directly to lectures 10 and 15. The two-view difference is a small extension to test, not a new backbone. Cover image: selected held-out source image, https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset v2.")
     add("Problem, labels and constraints",subtitle="Input: one selected cricket image. Output: one of four dataset labels.",
         blocks=[block("Drive\nLeg glance / flick\nPull\nSweep",50,150,370,170,26,True),
                 block("CPU inference, offline after setup.\nNo batter detection, contact localization or technique grading.\nUnknown shots can still receive confident scores.",50,350,850,105,20)],
@@ -107,7 +107,7 @@ def main():
         blocks=[block("Course foundation",50,145,850,35,26,True),block("HOG and frozen features, each followed by a trained multiclass head.",50,193,850,50,21),
                 block("Limited extension",50,275,850,35,26,True),block("Contrast gains three test images; uncertainty spans no gain.\nThe audit corrects optimism, and calibration fails to transfer.",50,323,850,85,21)],
         callout="Next useful step: independently labeled data with known match and player identities.",
-        notes="Novelty remains a weakness, not a promise of marks. Do not claim a new architecture, detector or state-of-the-art result. Mention unknown upstream license, possible missed copies and unverified labels. Course mapping and viva guide contain actual page references and a tensor-shape trace. Team identities and the real repository URL are on the cover; assistance is attributed.")
+        notes="Novelty remains a weakness, not a promise of marks. Do not claim a new architecture, detector or state-of-the-art result. Mention unknown upstream license, possible missed copies and unverified labels. Course mapping and viva guide contain actual page references and a tensor-shape trace. Team identities and the real repository URL are on the cover.")
     vm=v["models"]["phase_delta"];pm=old["models"]["phase_delta"]
     add("Backup: video pilot and duplicate audit",subtitle="Separate eight-class data and reused pilot holdout; not the main recognition claim",
         tables=[table(["Video model","Accuracy","Macro F1"],[["Full frame",pct(pm["test"]["accuracy"]),pct(pm["test"]["macro_f1"])],["Fixed crop",pct(vm["test"]["accuracy"]),pct(vm["test"]["macro_f1"])],["Majority baseline",pct(v["majority_baseline"]["accuracy"]),pct(v["majority_baseline"]["macro_f1"])]],y=150,h=205,fontSize=18,widths=[450,205,205])],

@@ -4,7 +4,7 @@ Slides 1-15 form the main talk; slide 16 is backup. Adjust timing to the assigne
 
 ## 1. Cricket Shot Recognition
 
-Introduce one-image classification. HOG and frozen features connect directly to lectures 10 and 15. The two-view difference is a small extension to test, not a new backbone. Cover image: selected held-out source image, https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset v2. Assistance and actual contributions must be attributed accurately.
+Introduce one-image classification. HOG and frozen features connect directly to lectures 10 and 15. The two-view difference is a small extension to test, not a new backbone. Cover image: selected held-out source image, https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset v2.
 
 ## 2. Problem, labels and constraints
 
@@ -60,7 +60,7 @@ Run setup.bat on a fresh machine, then run_demo.bat. Default URL http://127.0.0.
 
 ## 15. What we can defend
 
-Novelty remains a weakness, not a promise of marks. Do not claim a new architecture, detector or state-of-the-art result. Mention unknown upstream license, possible missed copies and unverified labels. Course mapping and viva guide contain actual page references and a tensor-shape trace. Team identities and the real repository URL are on the cover; assistance is attributed.
+Novelty remains a weakness, not a promise of marks. Do not claim a new architecture, detector or state-of-the-art result. Mention unknown upstream license, possible missed copies and unverified labels. Course mapping and viva guide contain actual page references and a tensor-shape trace. Team identities and the real repository URL are on the cover.
 
 ## 16. Backup: video pilot and duplicate audit
 

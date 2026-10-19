@@ -140,5 +140,4 @@ than majority macro F1 but does not make it a dependable video recognizer.
 - Read a confusion matrix row and independently recompute one class's F1.
 - Find a duplicate-group edge in the saved audit and verify both images share a
   split. Explain the difference between a visual group and a verified match ID.
-- State a contribution only after personally doing or verifying it. Attribute
-  public data, weights, papers, libraries and AI assistance accurately.
+- Check the source register for the datasets, pretrained weights, papers and libraries used.

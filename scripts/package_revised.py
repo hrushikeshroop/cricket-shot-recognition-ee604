@@ -43,7 +43,7 @@ def main():
     files=list(select_files(args.kind));entries=[];started=time.monotonic();last=started
     print(f"Packaging {len(files)} {args.kind} files",flush=True)
     prefix="CricketShot_EE604_Revised/"
-    guide=("# Start here\n\nRead README.md and docs/revision_log.md. Open the report and slides under output/. "
+    guide=("# Start here\n\nRead README.md and docs/demo_guide.md. Open the report and slides under output/. "
            "See docs/course_mapping.md and docs/viva_guide.md. On a new Windows machine with Python 3.11+, "
            "run setup.bat then run_demo.bat and open http://127.0.0.1:6040. No machine environment is included.\n\n"
            "The full package includes raw data, original dataset ZIPs, computed research features, models, evidence and lecture PDFs. "
@@ -51,7 +51,7 @@ def main():
            "Machine environments, temporary build/Python caches, account metadata and duplicate handoff archives are excluded.\n\n"
            "The original CNN scores remain 65.5% accuracy and 64.9% macro F1. HOG scores 35.3% and 34.5%. "
            "Novelty and generalization remain limited. Team identities and the public repository URL are in README.md and the report. "
-           "The public code repository is linked in README.md; course submission remains a group action. ARCHIVE_MANIFEST.json lists all payload sizes and SHA-256 values.\n")
+           "The public code repository is linked in README.md. ARCHIVE_MANIFEST.json lists all payload sizes and SHA-256 values.\n")
     with zipfile.ZipFile(partial,"w",zipfile.ZIP_DEFLATED,compresslevel=6,allowZip64=True) as z:
         for i,path in enumerate(files,1):
             name=path.relative_to(ROOT).as_posix()

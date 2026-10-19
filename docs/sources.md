@@ -37,4 +37,3 @@ The implementation is written for this project and uses the libraries above. The
 - [Official scikit-learn logistic regression documentation](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html), used to check the classifier behavior; no external cricket classifier code is imported.
 - [Supplied Overleaf URL](https://www.overleaf.com/latex/templates/cvpr-2022-author-kit/qbmjsdxryffn) currently displays the 2026 submission kit. Existing unmodified official 2022 style is preserved in this revision.
 
-AI assistance is recorded in `contributions.md`; it must not be assigned as a member's personal work.

@@ -8,7 +8,7 @@
       "image": "slides/assets/class_0.jpg",
       "team_text": "Hrushikesh Roop Avvari (230249)  /  Voora Rakesh (231174)\nGokavarapu Manikanta Sri Akshith (230418)\nLokesh Kumar Moond (230606)  /  Sharath (230303)",
       "bottom": "https://github.com/hrushikeshroop/cricket-shot-recognition-ee604",
-      "notes": "Introduce one-image classification. HOG and frozen features connect directly to lectures 10 and 15. The two-view difference is a small extension to test, not a new backbone. Cover image: selected held-out source image, https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset v2. Assistance and actual contributions must be attributed accurately."
+      "notes": "Introduce one-image classification. HOG and frozen features connect directly to lectures 10 and 15. The two-view difference is a small extension to test, not a new backbone. Cover image: selected held-out source image, https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset v2."
     },
     {
       "title": "Problem, labels and constraints",
@@ -639,7 +639,7 @@
         }
       ],
       "callout": "Next useful step: independently labeled data with known match and player identities.",
-      "notes": "Novelty remains a weakness, not a promise of marks. Do not claim a new architecture, detector or state-of-the-art result. Mention unknown upstream license, possible missed copies and unverified labels. Course mapping and viva guide contain actual page references and a tensor-shape trace. Team identities and the real repository URL are on the cover; assistance is attributed."
+      "notes": "Novelty remains a weakness, not a promise of marks. Do not claim a new architecture, detector or state-of-the-art result. Mention unknown upstream license, possible missed copies and unverified labels. Course mapping and viva guide contain actual page references and a tensor-shape trace. Team identities and the real repository URL are on the cover."
     },
     {
       "title": "Backup: video pilot and duplicate audit",

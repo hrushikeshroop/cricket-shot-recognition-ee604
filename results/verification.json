@@ -3,7 +3,7 @@
     {
       "name": "Behavioral and integration tests",
       "pass": true,
-      "detail": "....................                                                     [100%]\n20 passed in 7.77s"
+      "detail": "....................                                                     [100%]\n20 passed in 2.60s"
     },
     {
       "name": "global metric arithmetic",
@@ -58,12 +58,12 @@
     {
       "name": "Full code appendix matches current source",
       "pass": true,
-      "detail": "55 source/config files match SHA-256 inventory"
+      "detail": "54 source/config files match SHA-256 inventory"
     },
     {
       "name": "Complete report includes entire appendix",
       "pass": true,
-      "detail": "5 main + 82 appendix = 87 pages"
+      "detail": "5 main + 79 appendix = 84 pages"
     },
     {
       "name": "Report contains current primary score",
@@ -173,7 +173,7 @@
   ],
   "all_checks_pass": true,
   "pending_user_submission_items": [],
-  "revision_scope": "Earlier verification is under prior_* files. Current behavioral tests are rerun by this verifier.",
+  "revision_scope": "Current source, prediction arithmetic and document checks. Behavioral tests are rerun by this verifier.",
   "manual_review": "See docs/visual_review.md for actual render inspection. Automated checks alone do not prove visual quality or data-label correctness.",
   "limits": [
     "No independent label audit of every raw image/clip",

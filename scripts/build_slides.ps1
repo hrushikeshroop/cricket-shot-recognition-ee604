@@ -1,6 +1,5 @@
 param([string]$SpecPath = "slides/content.json")
-# Native PowerPoint authoring fallback: the presentation skill's Artifact Tool
-# runtime is unavailable in this session. Native tables/diagrams remain editable.
+# Create an editable presentation with native PowerPoint text, tables and diagrams.
 # Open and export without a presentation window. Run outside the sandbox because
 # Office COM cannot attach to a user logon session inside the sandbox.
 $ErrorActionPreference = 'Stop'

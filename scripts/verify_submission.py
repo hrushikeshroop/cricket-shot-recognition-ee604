@@ -104,14 +104,14 @@ def main():
     check('Course mapping and viva trace present',all((ROOT/path).is_file() for path in ['docs/course_mapping.md','docs/viva_guide.md','results/revision/worked_trace.json']))
     sub=json.loads((ROOT/'configs/submission.json').read_text())
     pending=[]
-    if not sub.get('github_url'):pending.append('Real GitHub URL, deferred by user')
+    if not sub.get('github_url'):pending.append('Project repository URL missing')
     if len(sub.get('members',[]))!=5:pending.append('Five member identities')
     check('Report contains all supplied names and roll numbers',all(m['name'] in plain and m['roll_number'] in plain for m in sub['members']))
     check('Slides contain all supplied names and roll numbers',all(m['name'] in slide_text and m['roll_number'] in slide_text for m in sub['members']))
     report_links={link.get('uri') for page in main for link in page.get_links()}
     check('Current repository URL in report and slides',sub['github_url'] in report_links and sub['github_url'] in slide_text)
     result={'checks':checks,'all_checks_pass':all(x['pass'] for x in checks),'pending_user_submission_items':pending,
-            'revision_scope':'Earlier verification is under prior_* files. Current behavioral tests are rerun by this verifier.',
+            'revision_scope':'Current source, prediction arithmetic and document checks. Behavioral tests are rerun by this verifier.',
             'manual_review':'See docs/visual_review.md for actual render inspection. Automated checks alone do not prove visual quality or data-label correctness.',
             'limits':['No independent label audit of every raw image/clip','No image match/player identities','Exploratory revised grouping and reused video holdout','Unknown upstream image license']}
     (ROOT/'results/verification.json').write_text(json.dumps(result,indent=2),encoding='utf-8')

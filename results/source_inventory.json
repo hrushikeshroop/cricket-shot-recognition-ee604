@@ -21,8 +21,8 @@
   },
   {
     "path": "configs/submission.json",
-    "sha256": "0ca43d3f7e535a4c2bbfd38bdb53386dc4d800271dff01faa8f345fcfd960ffd",
-    "lines": 34
+    "sha256": "5a34aab545325ef1384718b43a5871a404f75c08a8ea930e6054a79b853fcdfb",
+    "lines": 33
   },
   {
     "path": "pyproject.toml",
@@ -71,13 +71,13 @@
   },
   {
     "path": "scripts/build_revision_report.py",
-    "sha256": "10c2cc76b3f12045e5372da6911cfc8a8421ed978576412696bda4c16aea8fc1",
+    "sha256": "ea8b46ff382ea7b14445c8441d1e0cff27fd8077e154b503d9b19fff83079d3f",
     "lines": 132
   },
   {
     "path": "scripts/build_slides.ps1",
-    "sha256": "dde40168020713f08a43c52fbe7ac67fc73a9df67684c3fd68cc43633002be88",
-    "lines": 143
+    "sha256": "37cf1490fee411be3260f4ac2e6c7216b8b4524b1586ec04294f28f623376aef",
+    "lines": 142
   },
   {
     "path": "scripts/extract_roi_features.py",
@@ -121,7 +121,7 @@
   },
   {
     "path": "scripts/package_revised.py",
-    "sha256": "b1035988664760e5760025d401b2234211ac40612690deaa7cd413c865ca4a94",
+    "sha256": "7d5b8be4bc57fdf6da887c16e08595e74445b93c700a4738723cce93ecf35425",
     "lines": 86
   },
   {
@@ -141,7 +141,7 @@
   },
   {
     "path": "scripts/prepare_revision_slides.py",
-    "sha256": "c283c946d7b25fd3ce240d830a52ca40a5b686a1853ec23409c148c7317db594",
+    "sha256": "8ca0580c12af887638c3a3ceb0b4128893d09828b4ab1d1e1e6f05c678854834",
     "lines": 124
   },
   {
@@ -186,8 +186,8 @@
   },
   {
     "path": "scripts/verify_revision.py",
-    "sha256": "becfcc2d29e8999d3a9adf575e3c00d2a46930276e37e766602cd0589978311a",
-    "lines": 85
+    "sha256": "d487a32a1e108233bfcf7ac02ea98fdbd7b2fb48e4ebfebe0b350efae3a4ba1b",
+    "lines": 86
   },
   {
     "path": "scripts/verify_runtime.py",
@@ -196,13 +196,8 @@
   },
   {
     "path": "scripts/verify_submission.py",
-    "sha256": "f87caf5fb365e58070834483a37827fdbfd9dc0cedd6e14fc47a3d8ddc271d43",
+    "sha256": "a0ee15d264d01356608edc06723c9949801026326a3eec84036e3fbe708288ab",
     "lines": 126
-  },
-  {
-    "path": "scripts/write_project_docs.py",
-    "sha256": "d3bb9ac528c3be73f575f6c31102520596ccd8e7c81b855537385a865acf28bc",
-    "lines": 89
   },
   {
     "path": "setup.bat",

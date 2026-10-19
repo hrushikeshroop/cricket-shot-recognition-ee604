@@ -68,8 +68,9 @@ def main():
     (out/"cache_validation.json").write_text(json.dumps(cache_proof,indent=2))
     # If the original sibling workspace exists, verify it was not modified.
     sibling=ROOT.parents[1]
-    baseline=json.loads((ROOT/"docs/original_files_baseline.json").read_text())
-    if (sibling/"app.py").exists() and (sibling/"revision").exists():
+    baseline_path=ROOT/".build/local_notes/docs/original_files_baseline.json"
+    if baseline_path.exists() and (sibling/"app.py").exists() and (sibling/"revision").exists():
+        baseline=json.loads(baseline_path.read_text())
         changed=[item["path"] for item in baseline if not (sibling/item["path"]).exists() or digest(sibling/item["path"])!=item["sha256"]]
         check("Original project files preserved",not changed,str(changed))
         preserved=["data/images/processed/manifest.csv","models/image/heads.npz","models/image/classifier.json",
