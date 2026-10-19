@@ -1,8 +1,8 @@
 """Recreate the selected local examples without changing experiment evidence.
 
-The public Git repository omits raw photographs and clips. Fetch the pinned
-archives with --download, or reuse an existing local data directory. Download
-requires requests (included in requirements-dev.txt). No training is performed.
+Five examples reuse the illustrations already shipped with the slides. Fetch
+the pinned archives with --download only for the optional original disagreement
+image and backup clips. Download requires requests. No training is performed.
 """
 from pathlib import Path
 import argparse
@@ -22,6 +22,10 @@ def restore_images():
         rows = {row["id"]: row for row in csv.DictReader(stream)}
     examples = json.loads((ROOT / "demo/image_examples.json").read_text())
     for entry in examples:
+        if entry.get("bundled"):
+            if not (ROOT / entry["path"]).is_file():
+                raise FileNotFoundError("Bundled slide illustration missing: "+entry["path"])
+            continue
         row = rows[entry["id"]]
         if row["label"] != entry["label"] or row["split"] != entry["split"]:
             raise ValueError("Example metadata does not match the recorded manifest")

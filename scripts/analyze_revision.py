@@ -20,6 +20,33 @@ def confusion_statistics(matrix):
     return np.stack([accuracy, f1], axis=-1)
 
 
+def describe_view_changes(ids, y, groups, predictions, classes):
+    """Post-hoc diagnostics of fixed predictions; no model/threshold is selected."""
+    labels = {mode: predictions[mode].argmax(1) for mode in ("global", "focus", "concat", "contrast")}
+    agree = labels["global"] == labels["focus"]
+    concat_ok = labels["concat"] == y
+    contrast_ok = labels["contrast"] == y
+    gained = contrast_ok & ~concat_ok
+    lost = concat_ok & ~contrast_ok
+    strata = {}
+    for name, mask in [("all", np.ones(len(y), dtype=bool)), ("views_agree", agree), ("views_disagree", ~agree)]:
+        strata[name] = {"n": int(mask.sum()), "concat_correct": int((concat_ok & mask).sum()),
+                       "contrast_correct": int((contrast_ok & mask).sum()),
+                       "gained": int((gained & mask).sum()), "lost": int((lost & mask).sum())}
+    cases = []
+    for role, mask in [("contrast_correct_concat_wrong", gained), ("concat_correct_contrast_wrong", lost)]:
+        # Stable ID order, not a confidence search. These cases illustrate both directions.
+        chosen = sorted(np.flatnonzero(mask), key=lambda i: str(ids[i]))[:2]
+        for i in chosen:
+            cases.append({"id": str(ids[i]), "group": str(groups[i]), "role": role,
+                          "dataset_label": classes[int(y[i])], "single_view_heads_agree": bool(agree[i]),
+                          "predicted_labels": {mode: classes[int(label[i])] for mode, label in labels.items()}})
+    return {"scope": "Post-hoc descriptive comparison of unchanged held-out predictions; not a causal explanation or a model-selection step.",
+            "strata": strata, "illustrative_cases": cases,
+            "case_selection": "First two IDs in each gain/loss category; selected after evaluation, not representative frequency samples.",
+            "interpretation": "The absolute-difference representation changes decisions in both directions. A small net count and conditional subsets do not establish reliable superiority or identify the cause of an individual error."}
+
+
 def main():
     out = ROOT / "results/revision"
     out.mkdir(parents=True, exist_ok=True)
@@ -84,6 +111,9 @@ def main():
                             "conclusion": "Test NLL and ECE worsened. Retain original temperature; no improvement claim."},
             "manifest_sha256": hashlib.sha256((ROOT / "data/images/processed/manifest.csv").read_bytes()).hexdigest()}
     (out / "comparison.json").write_text(json.dumps(info, indent=2))
+    diagnosis = describe_view_changes(ids, y, groups, predictions, classes)
+    diagnosis["prediction_archive_sha256"] = hashlib.sha256((ROOT / "results/images/test_predictions.npz").read_bytes()).hexdigest()
+    (out / "view_diagnostics.json").write_text(json.dumps(diagnosis, indent=2), encoding="utf-8")
     with (out / "comparison.csv").open("w", newline="", encoding="utf-8") as stream:
         writer = csv.writer(stream)
         writer.writerow(["method", "correct", "n", "accuracy", "macro_f1", "accuracy_ci_low", "accuracy_ci_high", "f1_ci_low", "f1_ci_high"])

@@ -1,4 +1,4 @@
-# Sources checked on 17 October 2026
+# Sources checked on 19 October 2026
 
 ## Data and assets actually used
 
@@ -15,7 +15,8 @@
 - Limin Wang et al., [Temporal Segment Networks: Towards Good Practices for Deep Action Recognition](https://arxiv.org/abs/1608.00859), ECCV 2016. Sparse temporal sampling and video-level supervision predate this project. Our descriptor uses fixed phase means and differences with a frozen encoder rather than reproducing TSN training.
 - Chuan Guo et al., [On Calibration of Modern Neural Networks](https://proceedings.mlr.press/v70/guo17a.html), ICML 2017. Source for scalar temperature scaling. We fit the scalar by validation negative log likelihood.
 - Yonatan Geifman and Ran El-Yaniv, [Selective Classification for Deep Neural Networks](https://arxiv.org/abs/1705.08500), NeurIPS 2017. Background for trading prediction coverage against errors. Our finite validation threshold is a heuristic and does not implement their risk guarantee.
-- Sungwoo Kang, [Modern Deep Learning Approaches for Cricket Shot Classification: A Comprehensive Baseline Study](https://arxiv.org/html/2510.09187v1), arXiv preprint, 2025. Discusses several spatial/temporal cricket models. We do not compare its published percentages to our eight-class source-grouped split because the datasets and protocols differ. Its [linked baseline repository](https://github.com/hpicsk/CricShot10_Baselines) is a literature reference, not code imported into this project.
+- Sungwoo Kang, [Modern Deep Learning Approaches for Cricket Shot Classification: A Comprehensive Baseline Study](https://arxiv.org/html/2510.09187v1), arXiv preprint, 2025. Compares video sequence models; its proposed method uses EfficientNet-B0 with a bidirectional GRU and temporal attention. Our main method uses one image and linear spatial-view heads. We do not compare its published percentages to our four-class image split or eight-class video pilot. Its [linked baseline repository](https://github.com/hpicsk/CricShot10_Baselines) is a literature reference, not code imported into this project.
+- A. Sen et al., [CricShotClassify: An Approach to Classifying Batting Shots from Cricket Videos Using a Convolutional Neural Network and Gated Recurrent Unit](https://www.mdpi.com/1424-8220/21/8/2846), Sensors 21(8), 2846, 2021, DOI 10.3390/s21082846. Uses ten-class videos, CNN frame features and a GRU, including frozen and partly fine-tuned VGG16 variants. Our main study uses single images with frozen MobileNetV2 and linear spatial-view heads. The authors' [CricShot10 repository](https://github.com/ascuet/CricShot10) is a literature/dataset reference; neither its data nor classifier code was imported.
 - Sk. Wasiqul Hoque et al., *KUCricShot: A Dataset for Developing Detection Model of Cricket Shots*, ICCIT 2023. Citation and four-shot dataset description checked against the [authors' repository](https://github.com/AtanuCSE/CricketShotDetection). This dataset was not downloaded or used for experiments.
 
 ## Implementation references
@@ -28,11 +29,11 @@
 
 ## Attribution boundary
 
-The implementation is written for this project and uses the libraries above. The pretrained backbone, temporal segmentation idea, logistic regression, calibration and confidence rejection are established methods. The course contribution is their explicit phase/difference/spread descriptor, its controlled source-grouped ablations, and an inspectable offline demo. This is not a claim of a first publication or a state-of-the-art algorithm.
+The implementation uses the libraries above. HOG, the pretrained backbone, logistic regression, calibration and confidence rejection are established methods. The main image study implements a global/crop absolute-difference representation, compares it with single views and concatenation, and exposes agreement in an inspectable offline demo. Its small observed gain does not establish reliable superiority or priority in the literature. The phase/difference/spread descriptor belongs to the separate exploratory video pilot.
 
 ## Course revision, checked 19 October 2026
 
-- Supplied lecture PDFs: preserved in `course_notes/`; verified page mapping is in `course_mapping.md`.
+- Supplied lecture PDFs are preserved in the full local research package under `course_notes/`. They are excluded from the public repository and smaller demo package; verified topic/page references are in [course_mapping.md](course_mapping.md).
 - HOG primary method: [Dalal and Triggs, CVPR 2005](https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf). Our documented NumPy variant is not an exact reproduction of the original detector.
 - [Official scikit-learn logistic regression documentation](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html), used to check the classifier behavior; no external cricket classifier code is imported.
 - [Supplied Overleaf URL](https://www.overleaf.com/latex/templates/cvpr-2022-author-kit/qbmjsdxryffn) currently displays the 2026 submission kit. Existing unmodified official 2022 style is preserved in this revision.

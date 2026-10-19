@@ -59,7 +59,7 @@ def test_hog_saved_features_and_export_match_fresh_inputs():
 def test_uploaded_image_compares_both_real_models():
     from app import create_app
     client = create_app().test_client()
-    example = json.loads((ROOT / "demo/image_examples.json").read_text())[2]
+    example = next(e for e in json.loads((ROOT / "demo/image_examples.json").read_text()) if e["demo_role"] == "confident_error")
     payload = (ROOT / example["path"]).read_bytes()
     response = client.post("/image-api/predict", data={"image": (io.BytesIO(payload), "failure.png")})
     assert response.status_code == 200
@@ -68,6 +68,54 @@ def test_uploaded_image_compares_both_real_models():
     expected = HOGRecognizer().predict(ROOT / example["path"])
     assert result["hog_baseline"]["label"] == expected["label"]
     assert np.allclose(list(result["hog_baseline"]["probabilities"].values()), list(expected["probabilities"].values()))
+
+
+def test_bundled_examples_cover_all_labels_and_preserve_demo_behaviour():
+    """A public clone must show all classes and the documented real error."""
+    from app import create_app
+    client = create_app().test_client()
+    manifest = json.loads((ROOT / "demo/image_examples.json").read_text())
+    bundled = [e for e in manifest if e.get("bundled")]
+    assert len(bundled) == 5
+    assert {e["label"] for e in bundled if e["demo_role"] == "success"} == {"drive", "legglance-flick", "pullshot", "sweep"}
+    assert sum(e["demo_role"] == "confident_error" for e in bundled) == 1
+    for e in bundled:
+        assert hashlib.sha256((ROOT/e["path"]).read_bytes()).hexdigest() == e["example_sha256"]
+        result = client.post("/image-api/example/"+e["id"])
+        assert result.status_code == 200
+        assert result.json["label"] == e["expected_prediction"]
+        if e["demo_role"] == "success":
+            assert result.json["label"] == e["label"]
+        else:
+            assert result.json["label"] != e["label"] and result.json["confidence"] > .95
+
+
+def test_posthoc_view_diagnostics_reconcile_with_saved_predictions():
+    """Check both decision directions and that agreement partitions the test."""
+    d = json.loads((ROOT/"results/revision/view_diagnostics.json").read_text())
+    assert d["prediction_archive_sha256"] == hashlib.sha256((ROOT/"results/images/test_predictions.npz").read_bytes()).hexdigest()
+    with np.load(ROOT/"results/images/test_predictions.npz", allow_pickle=False) as a:
+        concat_ok = a["p_concat"].argmax(1) == a["y"]
+        contrast_ok = a["p_contrast"].argmax(1) == a["y"]
+        assert d["strata"]["all"]["gained"] == int((contrast_ok & ~concat_ok).sum())
+        assert d["strata"]["all"]["lost"] == int((concat_ok & ~contrast_ok).sum())
+    for key in ("n", "concat_correct", "contrast_correct", "gained", "lost"):
+        assert d["strata"]["all"][key] == d["strata"]["views_agree"][key]+d["strata"]["views_disagree"][key]
+    all_test = d["strata"]["all"]
+    assert all_test["gained"]-all_test["lost"] == all_test["contrast_correct"]-all_test["concat_correct"] == 3
+
+
+def test_runtime_verifier_cli_exercises_available_examples(tmp_path):
+    """Exercise the handoff command, including the API's hidden-path boundary."""
+    import subprocess
+    import sys
+    proof=tmp_path/"runtime.json"
+    run=subprocess.run([sys.executable,str(ROOT/"scripts/verify_runtime.py"),"--output",str(proof)],
+                       cwd=ROOT,capture_output=True,text=True)
+    assert run.returncode == 0, run.stdout+run.stderr
+    result=json.loads(proof.read_text())
+    assert result["all_pass"] and len(result["example_checks"])>=5
+    assert sum(e["bundled"] for e in result["example_checks"]) == 5
 
 
 def test_missing_optional_examples_are_hidden(monkeypatch):

@@ -49,15 +49,35 @@ def main():
     assert len(result["previews"]) == 2
     assert client.post("/image-api/predict", data={"image": (io.BytesIO(b"bad"), "bad.png")}).status_code == 400
     examples = client.get("/image-api/examples").json
-    for entry in examples:
+    example_metadata = {entry["id"]: entry for entry in json.loads((ROOT/"demo/image_examples.json").read_text())}
+    bundled = [entry for entry in example_metadata.values() if entry.get("bundled")]
+    assert len(bundled) == 5 and {e["label"] for e in bundled if e["demo_role"] == "success"} == {"drive","legglance-flick","pullshot","sweep"}
+    assert {e["id"] for e in bundled}.issubset({e["id"] for e in examples})
+    demo_checks=[]
+    for available in examples:
+        # The public API deliberately omits filesystem paths. Resolve them
+        # from the local manifest when checking actual upload bytes.
+        entry=example_metadata[available["id"]]
         assert client.get("/image-api/example/"+entry["id"]+"/thumbnail").status_code == 200
+        payload=(ROOT/entry["path"]).read_bytes()
+        assert hashlib.sha256(payload).hexdigest()==entry["example_sha256"]
+        example=client.post("/image-api/example/"+entry["id"])
+        upload=client.post("/image-api/predict",data={"image":(io.BytesIO(payload),Path(entry["path"]).name)})
+        assert example.status_code==upload.status_code==200
+        assert example.json["probabilities"]==upload.json["probabilities"]
+        assert example.json["hog_baseline"]==upload.json["hog_baseline"]
+        assert upload.json["label"]==entry["expected_prediction"]
+        if entry["demo_role"]=="success":assert upload.json["label"]==entry["label"]
+        if entry["demo_role"]=="confident_error":assert upload.json["label"]!=entry["label"]
+        if entry["demo_role"]=="view_disagreement":assert not upload.json["prediction_consistent"]
+        demo_checks.append({"id":entry["id"],"role":entry["demo_role"],"bundled":entry["bundled"],"label":upload.json["label"],"example_upload_parity":True})
     paths = [ROOT/"app.py", ROOT/"configs/submission.json", Path(__file__).resolve()]
     for folder in ("src", "templates", "static", "models"):
         paths.extend(p for p in (ROOT/folder).rglob("*") if p.is_file() and p.suffix in {".py", ".html", ".js", ".css", ".json", ".npz", ".onnx"})
     proof = {"all_pass": True, "scope": "Repository runtime; Flask request client, actual multipart upload, CNN/HOG probabilities, previews, malformed-upload rejection, team and URL rendering. No new accuracy measurement.",
              "input": "external photograph" if args.image else "generated wiring pattern",
              "input_sha256": hashlib.sha256(payload).hexdigest(), "label": result["label"],
-             "available_image_examples": len(examples), "python": sys.version,
+             "available_image_examples": len(examples), "example_checks":demo_checks, "python": sys.version,
              "packages": {p: importlib.metadata.version(p) for p in ["numpy", "Pillow", "onnxruntime", "opencv-python-headless", "Flask"]},
              "source_model_hashes": {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(set(paths))}}
     if args.output:

@@ -41,6 +41,23 @@ def main():
         "All-test accuracy and macro F1 in percent. Same images, labels, groups, split and regularization grid; HOG has no ImageNet pretraining.","tab:results"))
     (generated/"image_uncertainty_table.tex").write_text(table(["Feature","Acc. 95\\%","F1 95\\%"],intervals,
         "Conditional visual-group bootstrap intervals, in percent, from saved individual predictions.","tab:intervals"))
+    (generated/"image_literature_table.tex").write_text(table(
+        ["Study", "Input and method", "Difference here"], [
+            [r"Sen et al.~\cite{sen}", "Ten-class video; CNN features and GRU; frozen and partly fine-tuned VGG16 variants.",
+             "One image, four labels; frozen MobileNetV2 with linear heads and two spatial views."],
+            [r"Kang~\cite{kang}", "Ten-class video; proposed EfficientNet-B0, bidirectional GRU and temporal attention.",
+             "No sequence model; explicit view-difference ablation against concatenation."]],
+        "Prior cricket methods and concrete scope differences. Different datasets and protocols prevent direct score comparison.",
+        "tab:prior", spec=r"@{}>{\raggedright\arraybackslash}p{.14\linewidth}>{\raggedright\arraybackslash}p{.38\linewidth}>{\raggedright\arraybackslash}p{.36\linewidth}@{}"), encoding="utf-8")
+    diagnosis=json.loads((ROOT/"results/revision/view_diagnostics.json").read_text())
+    drows=[]
+    for name,key in [("Agree","views_agree"),("Disagree","views_disagree"),("All","all")]:
+        d=diagnosis["strata"][key]
+        drows.append([name,d["n"],d["concat_correct"],d["contrast_correct"],d["gained"],d["lost"]])
+    (generated/"image_view_diagnostics_table.tex").write_text(table(
+        ["View heads","Images","Concat.","Contrast","Gain","Loss"],drows,
+        "Correct counts conditioned on global/crop agreement. Gain/loss compares contrast with concatenation; post-hoc descriptive evidence only.",
+        "tab:viewchanges"),encoding="utf-8")
     contrast=original["models"]["contrast"]
     values={"HOG_ACC":pct(hog["test"]["accuracy"]),"HOG_F1":pct(hog["test"]["macro_f1"]),
             "HOG_VAL_F1":pct(hog["validation"]["macro_f1"]),"HOG_C":str(hog["C"]),

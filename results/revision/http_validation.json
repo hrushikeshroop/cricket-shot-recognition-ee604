@@ -31,11 +31,29 @@
       "score_type": "temperature-scaled softmax"
     },
     {
+      "id": "image_01510",
+      "example_status": 200,
+      "upload_status": 200,
+      "cnn_label": "legglance-flick",
+      "hog_label": "legglance-flick",
+      "decision": "Prediction",
+      "score_type": "temperature-scaled softmax"
+    },
+    {
       "id": "image_02934",
       "example_status": 200,
       "upload_status": 200,
       "cnn_label": "pullshot",
       "hog_label": "legglance-flick",
+      "decision": "Prediction",
+      "score_type": "temperature-scaled softmax"
+    },
+    {
+      "id": "image_03677",
+      "example_status": 200,
+      "upload_status": 200,
+      "cnn_label": "sweep",
+      "hog_label": "sweep",
       "decision": "Prediction",
       "score_type": "temperature-scaled softmax"
     },
@@ -66,12 +84,22 @@
     "src/cricketshot/images.py": "075890069bad57da7efb563f85adc701a3ab47dec74a6d76df574042f136d97e",
     "src/cricketshot/hog.py": "50525c18ef93148670223ba9caf040be429eaca19f94dc4f52aac47d7efcb56c",
     "models/image/heads.npz": "43f011254541764271add9e192adc1a52d9b18ecb21fe776e335e38fc0ea55f1",
+    "models/image/classifier.json": "502f2c537c55606626b65ac644ce2ee8420775be453aeab61b5b38e4e08031d8",
     "models/hog/head.npz": "b642a548057aa1db6a504d9d85b276240cc59525541f9f6ae3986f9e53e7a10d",
+    "models/hog/classifier.json": "2dbccafef9de5dd6ea4fa05b2acd21e5f816d361674ba3e4793fb6e10d9a5658",
+    "models/mobilenetv2_features.onnx": "bfa8f7bdd68ff12b519fe81f420ba370904b33b6580b01fb907bd05a3b6959cc",
+    "demo/image_examples.json": "93b984ec4cf360757994c20f122b21ef8c4c803bc027f047ac31f84e7c10de0c",
+    "slides/assets/class_0.jpg": "91d52ba376f23e12232a6e0a09e52b026465ae2720c2789c9026795d7216b725",
+    "slides/assets/class_1.jpg": "c24ae1e2cc360ca04cc4641b092ed6972c29e9737f908ef98b99cf36b1636fb6",
+    "slides/assets/class_2.jpg": "0159a4f98e62e6fee6148427e5cad247055517d1840702c9c0a5d4b614dade11",
+    "slides/assets/class_3.jpg": "a9cdf00f7c76dd2ae3bcde3230aa045ac0a9e723a6b07f59d8af30281b7d9a93",
+    "slides/assets/failure_original.jpg": "42520fbdb09e60fbbafb3a3ae04ed13e7c698bec563559fdec3769eb418f787f",
+    "demo/images/image_00014.png": "7d0ac9d59e383376b5c562c680da8491cda7dc66528718a75cfbd0cfeb51322b",
     "templates/images.html": "58d1f711f178ccc415a8a1bd70d94dbfa3740700553900c877700838c4eb533c",
     "templates/index.html": "8dc632e0bc7233c64566a7177f9a46968c9bdaae36061723f4c67a765a076dd2",
     "static/app.js": "0ffe1a9ae3f29d320c1fb8127818ffeb600b67e15869fcb4749f25fa9f83ba48",
-    "static/images.css": "7011c70dc88d001ec3158d398a6ced4435405454c10188d14fd8490ee75709c1",
-    "static/images.js": "74cfe958cd683f9ed3bcc16f13e3c5b2ba9095729919bfb111b815e7486fa2db",
+    "static/images.css": "3c149d0584332ea81ac9457f3c8b47c9dad5f78ff0b1de218aecd05d40c11b79",
+    "static/images.js": "5b8020e7d5f1768ea39602cb1f51edeea3a6652b8cf55eebb4fb149f0e8143fc",
     "static/style.css": "f5b482eb18c6532c8ced1c3c95792fce29ae503dff64b9fc64b3e6be6b4ef60b"
   },
   "all_pass": true

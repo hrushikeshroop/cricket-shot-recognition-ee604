@@ -1,7 +1,7 @@
 # Course ideas used in CricketShot
 
 Page numbers below are **1-based PDF page numbers**, including the title page.
-The supplied files are preserved in `course_notes/`. The notes were inspected as
+The supplied files are preserved in `course_notes/` in the full local research package; they are excluded from the public repository and smaller demo package. The notes were inspected as
 text and the relevant diagram pages were rendered before this revision.
 
 | Supplied lecture | PDF pages | Connection to the implementation |

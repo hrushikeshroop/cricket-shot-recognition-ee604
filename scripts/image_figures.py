@@ -4,6 +4,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 import csv
+import hashlib
 import json
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont,ImageOps
@@ -12,6 +13,37 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 from cricketshot.images import ImageRecognizer,LABELS,load_image,image_views
+
+
+def write_demo_manifest(by_id, ids, chosen, fail, dis):
+    """Reuse shipped illustrations; keep only the disagreement source optional.
+
+    JPEG illustrations differ from original decoded PNG inputs. Predictions
+    below are recomputed for these actual demo bytes; benchmark predictions
+    and model files are never changed by selecting demonstration examples.
+    """
+    model=ImageRecognizer();entries=[]
+    items=[(index, f"slides/assets/class_{j}.jpg", "success", True) for j,index in enumerate(chosen)]
+    if fail is not None:items.append((fail,"slides/assets/failure_original.jpg","confident_error",True))
+    if dis is not None:items.append((dis,"demo/images/"+str(ids[dis])+".png","view_disagreement",False))
+    for index,path,role,bundled in items:
+        row=by_id[str(ids[index])];target=ROOT/path
+        if not bundled:
+            target.parent.mkdir(exist_ok=True,parents=True)
+            load_image(ROOT/row['path']).save(target)
+        result,_=model.predict(target)
+        if role=='success' and result['label']!=row['label']:raise ValueError('Selected illustration no longer demonstrates success')
+        if role=='confident_error' and result['label']==row['label']:raise ValueError('Selected failure no longer demonstrates an error')
+        if role=='view_disagreement' and result['prediction_consistent']:raise ValueError('Selected disagreement no longer requests review')
+        variant='Shipped JPEG illustration' if bundled else 'Original decoded image'
+        description={'success':'Selected success','confident_error':'Confident failure','view_disagreement':'View disagreement'}[role]
+        entries.append({'id':row['id'],'label':row['label'],'path':path,'split':'test',
+                        'short_label':LABELS[row['label']], 'demo_role':role,'bundled':bundled,
+                        'input_variant':variant,'example_sha256':hashlib.sha256(target.read_bytes()).hexdigest(),
+                        'expected_prediction':result['label'],
+                        'note':description+'. Chosen after evaluation. '+variant+'; displayed scores are recomputed from this file.'})
+    (ROOT/'demo/image_examples.json').write_text(json.dumps(entries,indent=2),encoding='utf-8')
+    return entries
 
 def main():
     out=ROOT/'results/images/figures';out.mkdir(parents=True,exist_ok=True)
@@ -31,16 +63,6 @@ def main():
         chosen.append(int(pool[np.argmax(p[pool,ci])]))
     wrong=np.flatnonzero(p.argmax(1)!=y);fail=int(wrong[np.argmax(p[wrong].max(1))]) if len(wrong) else None
     low=int(np.argmin(p.max(1)));disagree=np.flatnonzero(~agreement);dis=int(disagree[0]) if len(disagree) else low
-    entries=[]
-    for i,tag in [(chosen[0],'Selected success'),(chosen[2],'Selected success'),(fail,'Confident failure'),(dis,'View disagreement')]:
-        if i is None or str(ids[i]) in [e['id'] for e in entries]:continue
-        row=by_id[str(ids[i])];dest=examples/(row['id']+'.png');load_image(ROOT/row['path']).save(dest)
-        entries.append({'id':row['id'],'label':row['label'],'path':dest.relative_to(ROOT).as_posix(),'split':'test',
-                        'short_label':LABELS[row['label']],'note':tag+'. Chosen after evaluation for the demo.'})
-    (ROOT/'demo/image_examples.json').write_text(json.dumps(entries,indent=2),encoding='utf-8')
-    used={Path(e['path']).name for e in entries}
-    for old in examples.glob('image_*'):
-        if old.is_file() and old.name not in used:old.unlink()
     # A four-image sheet of dataset labels. Each image is an actual held-out example.
     sheet=Image.new('RGB',(1200,720),'#f7f8f1');draw=ImageDraw.Draw(sheet)
     for j,i in enumerate(chosen):
@@ -57,6 +79,7 @@ def main():
             tile=ImageOps.contain(v,(570,445));sheet.paste(tile,(15+j*600,60))
         sheet.save(out/'failure.jpg',quality=95)
         im.save(assets/'failure_original.jpg',quality=95)
+    write_demo_manifest(by_id,ids,chosen,fail,dis)
     cm=np.array(r['models']['contrast']['test']['confusion']);cmn=cm/cm.sum(1,keepdims=True)
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':9,'axes.spines.top':False,'axes.spines.right':False,'savefig.dpi':200})
     labels=['Drive','Glance/flick','Pull','Sweep']

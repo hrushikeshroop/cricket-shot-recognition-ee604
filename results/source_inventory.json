@@ -51,8 +51,8 @@
   },
   {
     "path": "scripts/analyze_revision.py",
-    "sha256": "e1362aa0e4af82fb1d2068815655ecfec0ffe624e847a5c2d68b6a4ff406e053",
-    "lines": 97
+    "sha256": "77dc4200e7a0f213ed5e2d678304ecbe1c6b169dbcb3763ae490a159ab62bbe0",
+    "lines": 127
   },
   {
     "path": "scripts/benchmark.py",
@@ -71,8 +71,8 @@
   },
   {
     "path": "scripts/build_revision_report.py",
-    "sha256": "ea8b46ff382ea7b14445c8441d1e0cff27fd8077e154b503d9b19fff83079d3f",
-    "lines": 132
+    "sha256": "7346e23d86daf2bb2d2f1e88b559684af3f641eed2ecb2e533d6212806812cf4",
+    "lines": 149
   },
   {
     "path": "scripts/build_slides.ps1",
@@ -96,8 +96,8 @@
   },
   {
     "path": "scripts/image_figures.py",
-    "sha256": "f4c78b87aba05542cff3852db1c8f6f88f3e144c038de2e76332a6c7e4d07a46",
-    "lines": 94
+    "sha256": "7995676ba3c0120ba1041222cfa2dca12342b8b9661fceb1bc09067f68469aaa",
+    "lines": 117
   },
   {
     "path": "scripts/inspect_environment.py",
@@ -131,8 +131,8 @@
   },
   {
     "path": "scripts/prepare_demo_examples.py",
-    "sha256": "5fe22b5c365422900fa2b15da3e915fabc92922e0ab4ebf70141886418c2bc91",
-    "lines": 75
+    "sha256": "3af1fabd7d129af4fdad4085511c4313264c2e719da383f60e29e8ce3898591e",
+    "lines": 79
   },
   {
     "path": "scripts/prepare_images.py",
@@ -141,8 +141,8 @@
   },
   {
     "path": "scripts/prepare_revision_slides.py",
-    "sha256": "8ca0580c12af887638c3a3ceb0b4128893d09828b4ab1d1e1e6f05c678854834",
-    "lines": 124
+    "sha256": "02361a7cd91aca70aa815cc2c6bcc2bf86ac34980727d4e8ed1e5edeeca69657",
+    "lines": 128
   },
   {
     "path": "scripts/prepare_slides.py",
@@ -191,13 +191,13 @@
   },
   {
     "path": "scripts/verify_runtime.py",
-    "sha256": "cc0bb82d069e5125382a0c9865267d165d73cba77f57859e08da1a25cbbe3999",
-    "lines": 70
+    "sha256": "805d5aee44fbd5263d2b4a3e4f11b2326026417acc2c04251416587011164ad1",
+    "lines": 90
   },
   {
     "path": "scripts/verify_submission.py",
-    "sha256": "a0ee15d264d01356608edc06723c9949801026326a3eec84036e3fbe708288ab",
-    "lines": 126
+    "sha256": "f5f76cd12ebfb93776764ca3d07cecf8e22558208d02c1af862d454b60ff1c27",
+    "lines": 135
   },
   {
     "path": "setup.bat",
@@ -231,13 +231,13 @@
   },
   {
     "path": "static/images.css",
-    "sha256": "7011c70dc88d001ec3158d398a6ced4435405454c10188d14fd8490ee75709c1",
+    "sha256": "3c149d0584332ea81ac9457f3c8b47c9dad5f78ff0b1de218aecd05d40c11b79",
     "lines": 6
   },
   {
     "path": "static/images.js",
-    "sha256": "74cfe958cd683f9ed3bcc16f13e3c5b2ba9095729919bfb111b815e7486fa2db",
-    "lines": 33
+    "sha256": "5b8020e7d5f1768ea39602cb1f51edeea3a6652b8cf55eebb4fb149f0e8143fc",
+    "lines": 34
   },
   {
     "path": "static/style.css",
@@ -266,7 +266,7 @@
   },
   {
     "path": "tests/test_revision.py",
-    "sha256": "f916c73767dc43b79139a083caf4eded646c93c7d93d0295f2cc8efd98a80b73",
-    "lines": 86
+    "sha256": "211619a8e096b8105cb4f1f7548a3e06be7b1355a94b992419c4b9e08dabb75c",
+    "lines": 134
   }
 ]

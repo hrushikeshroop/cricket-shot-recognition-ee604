@@ -1,0 +1,83 @@
+{
+  "scope": "Post-hoc descriptive comparison of unchanged held-out predictions; not a causal explanation or a model-selection step.",
+  "strata": {
+    "all": {
+      "n": 945,
+      "concat_correct": 616,
+      "contrast_correct": 619,
+      "gained": 17,
+      "lost": 14
+    },
+    "views_agree": {
+      "n": 713,
+      "concat_correct": 499,
+      "contrast_correct": 499,
+      "gained": 3,
+      "lost": 3
+    },
+    "views_disagree": {
+      "n": 232,
+      "concat_correct": 117,
+      "contrast_correct": 120,
+      "gained": 14,
+      "lost": 11
+    }
+  },
+  "illustrative_cases": [
+    {
+      "id": "image_00696",
+      "group": "705",
+      "role": "contrast_correct_concat_wrong",
+      "dataset_label": "drive",
+      "single_view_heads_agree": false,
+      "predicted_labels": {
+        "global": "drive",
+        "focus": "pullshot",
+        "concat": "pullshot",
+        "contrast": "drive"
+      }
+    },
+    {
+      "id": "image_01675",
+      "group": "1668",
+      "role": "contrast_correct_concat_wrong",
+      "dataset_label": "legglance-flick",
+      "single_view_heads_agree": false,
+      "predicted_labels": {
+        "global": "sweep",
+        "focus": "legglance-flick",
+        "concat": "sweep",
+        "contrast": "legglance-flick"
+      }
+    },
+    {
+      "id": "image_00017",
+      "group": "477",
+      "role": "concat_correct_contrast_wrong",
+      "dataset_label": "drive",
+      "single_view_heads_agree": false,
+      "predicted_labels": {
+        "global": "drive",
+        "focus": "legglance-flick",
+        "concat": "drive",
+        "contrast": "legglance-flick"
+      }
+    },
+    {
+      "id": "image_00192",
+      "group": "191",
+      "role": "concat_correct_contrast_wrong",
+      "dataset_label": "drive",
+      "single_view_heads_agree": false,
+      "predicted_labels": {
+        "global": "pullshot",
+        "focus": "drive",
+        "concat": "drive",
+        "contrast": "pullshot"
+      }
+    }
+  ],
+  "case_selection": "First two IDs in each gain/loss category; selected after evaluation, not representative frequency samples.",
+  "interpretation": "The absolute-difference representation changes decisions in both directions. A small net count and conditional subsets do not establish reliable superiority or identify the cause of an individual error.",
+  "prediction_archive_sha256": "571e78f5404f8cee9a19510b97a695cd8e43c02469d8781ba5facceb65575a05"
+}

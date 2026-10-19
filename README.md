@@ -30,14 +30,18 @@ python -m venv .venv
 
 Upload a JPEG, PNG, WebP or BMP image. The page shows both model input views, four CNN class scores, a review reason, the separate HOG prediction and JSON export. Images must be at least 32 pixels per side and at most 24 megapixels; requests are limited to 40 MB. Inference runs locally with the included model files. No database or API key is required. The model does not detect the batter, analyze a full match, grade technique or reliably reject unknown shots.
 
-The public repository excludes raw datasets, large feature caches, lecture PDFs, machine environments and temporary build files. To restore four selected image examples from the pinned public archive without training:
+Five selected image illustrations are included: one successful example for each class and a confident error. They work immediately after setup, without downloading the training archive. Their predictions are computed when clicked; the JPEG illustrations can differ from the original benchmark inputs. All examples were selected after evaluation.
+
+For an examination without internet access, install dependencies in advance and launch the app once. Check all five examples and keep the report and slide PDF locally. The full local package also includes the original disagreement case, `image_00014`.
+
+The public repository excludes raw datasets, large feature caches, lecture PDFs, machine environments and temporary build files. To restore the optional original disagreement example from the pinned public archive without training:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install requests
 .\.venv\Scripts\python.exe scripts/prepare_demo_examples.py --download
 ```
 
-The image archive is about 676 MB. Add `--include-video` to restore the backup video examples too. With raw data already present, omit `--download`. Own-image uploads work without these optional examples. Source URLs, dataset versions and checksums are recorded under `data/` and in [the source register](docs/sources.md).
+The optional image archive is about 676 MB. Add `--include-video` to restore the backup video examples too. With raw data already present, omit `--download`. The five bundled illustrations and own-image uploads work without this optional download. Source URLs, dataset versions and checksums are recorded under `data/` and in [the source register](docs/sources.md).
 
 ## Report, presentation and evidence
 
@@ -52,6 +56,8 @@ The image archive is about 676 MB. Add `--include-video` to restore the backup v
 | [Data card](docs/data_card.md), [model card](docs/model_card.md) | Data protocol, model design and measured limitations |
 | `results/images/`, `results/hog/`, `results/revision/` | Saved predictions, comparisons, confidence analysis and verification |
 | `results/images_initial_hash/`, `results/pilot_fullframe/` | Earlier experiment evidence, retained to explain the evaluation changes |
+
+The contrast feature corrects 17 concatenation errors but loses 14 correct decisions. The post-hoc breakdown and selected cases are in `results/revision/view_diagnostics.json`; they describe the small net gain without establishing a reliable improvement. The report compares two earlier cricket video methods with this image pipeline. [The method guide](docs/viva_guide.md) explains the design choices and their limits.
 
 ## Verification and reproduction
 

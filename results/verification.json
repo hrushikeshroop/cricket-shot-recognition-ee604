@@ -3,7 +3,7 @@
     {
       "name": "Behavioral and integration tests",
       "pass": true,
-      "detail": "....................                                                     [100%]\n20 passed in 2.47s"
+      "detail": ".......................                                                  [100%]\n23 passed in 3.55s"
     },
     {
       "name": "global metric arithmetic",
@@ -63,7 +63,7 @@
     {
       "name": "Complete report includes entire appendix",
       "pass": true,
-      "detail": "5 main + 79 appendix = 84 pages"
+      "detail": "6 main + 83 appendix = 89 pages"
     },
     {
       "name": "Report contains current primary score",
@@ -133,7 +133,7 @@
     {
       "name": "Actual upload HTTP flow",
       "pass": true,
-      "detail": "Four real examples and four actual multipart uploads on the revised running app; malformed upload rejected"
+      "detail": "6 real example/multipart-upload pairs on the running app; malformed upload rejected"
     },
     {
       "name": "Report includes new HOG evidence",
@@ -172,7 +172,11 @@
     }
   ],
   "all_checks_pass": true,
-  "pending_user_submission_items": [],
+  "pending_user_submission_items": [
+    "Each member must add their specific contribution statement before course submission"
+  ],
+  "course_submission_ready": false,
+  "individual_contribution_statements_present": false,
   "revision_scope": "Current source, prediction arithmetic and document checks. Behavioral tests are rerun by this verifier.",
   "manual_review": "See docs/visual_review.md for actual render inspection. Automated checks alone do not prove visual quality or data-label correctness.",
   "limits": [

@@ -2,26 +2,67 @@
   {
     "id": "image_00210",
     "label": "drive",
-    "path": "demo/images/image_00210.png",
+    "path": "slides/assets/class_0.jpg",
     "split": "test",
     "short_label": "Drive",
-    "note": "Selected success. Chosen after evaluation for the demo."
+    "demo_role": "success",
+    "bundled": true,
+    "input_variant": "Shipped JPEG illustration",
+    "example_sha256": "91d52ba376f23e12232a6e0a09e52b026465ae2720c2789c9026795d7216b725",
+    "expected_prediction": "drive",
+    "note": "Selected success. Chosen after evaluation. Shipped JPEG illustration; displayed scores are recomputed from this file."
+  },
+  {
+    "id": "image_01510",
+    "label": "legglance-flick",
+    "path": "slides/assets/class_1.jpg",
+    "split": "test",
+    "short_label": "Leg glance / flick",
+    "demo_role": "success",
+    "bundled": true,
+    "input_variant": "Shipped JPEG illustration",
+    "example_sha256": "c24ae1e2cc360ca04cc4641b092ed6972c29e9737f908ef98b99cf36b1636fb6",
+    "expected_prediction": "legglance-flick",
+    "note": "Selected success. Chosen after evaluation. Shipped JPEG illustration; displayed scores are recomputed from this file."
   },
   {
     "id": "image_02934",
     "label": "pullshot",
-    "path": "demo/images/image_02934.png",
+    "path": "slides/assets/class_2.jpg",
     "split": "test",
     "short_label": "Pull",
-    "note": "Selected success. Chosen after evaluation for the demo."
+    "demo_role": "success",
+    "bundled": true,
+    "input_variant": "Shipped JPEG illustration",
+    "example_sha256": "0159a4f98e62e6fee6148427e5cad247055517d1840702c9c0a5d4b614dade11",
+    "expected_prediction": "pullshot",
+    "note": "Selected success. Chosen after evaluation. Shipped JPEG illustration; displayed scores are recomputed from this file."
+  },
+  {
+    "id": "image_03677",
+    "label": "sweep",
+    "path": "slides/assets/class_3.jpg",
+    "split": "test",
+    "short_label": "Sweep",
+    "demo_role": "success",
+    "bundled": true,
+    "input_variant": "Shipped JPEG illustration",
+    "example_sha256": "a9cdf00f7c76dd2ae3bcde3230aa045ac0a9e723a6b07f59d8af30281b7d9a93",
+    "expected_prediction": "sweep",
+    "note": "Selected success. Chosen after evaluation. Shipped JPEG illustration; displayed scores are recomputed from this file."
   },
   {
     "id": "image_04199",
     "label": "sweep",
-    "path": "demo/images/image_04199.png",
+    "path": "slides/assets/failure_original.jpg",
     "split": "test",
     "short_label": "Sweep",
-    "note": "Confident failure. Chosen after evaluation for the demo."
+    "demo_role": "confident_error",
+    "bundled": true,
+    "input_variant": "Shipped JPEG illustration",
+    "example_sha256": "42520fbdb09e60fbbafb3a3ae04ed13e7c698bec563559fdec3769eb418f787f",
+    "expected_prediction": "pullshot",
+    "note": "Confident failure. Chosen after evaluation. Shipped JPEG illustration; displayed scores are recomputed from this file."
   },
   {
     "id": "image_00014",
@@ -29,6 +70,11 @@
     "path": "demo/images/image_00014.png",
     "split": "test",
     "short_label": "Drive",
-    "note": "View disagreement. Chosen after evaluation for the demo."
+    "demo_role": "view_disagreement",
+    "bundled": false,
+    "input_variant": "Original decoded image",
+    "example_sha256": "7d0ac9d59e383376b5c562c680da8491cda7dc66528718a75cfbd0cfeb51322b",
+    "expected_prediction": "legglance-flick",
+    "note": "View disagreement. Chosen after evaluation. Original decoded image; displayed scores are recomputed from this file."
   }
 ]

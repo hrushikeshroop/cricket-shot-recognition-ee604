@@ -96,7 +96,8 @@ def main():
     proof=json.loads((ROOT/'results/revision/cache_validation.json').read_text())
     check('Current preprocessing binding',proof['images_module_sha256']==hashlib.sha256((ROOT/'src/cricketshot/images.py').read_bytes()).hexdigest() and proof['core_module_sha256']==hashlib.sha256((ROOT/'src/cricketshot/core.py').read_bytes()).hexdigest())
     http=json.loads((ROOT/'results/revision/http_validation.json').read_text())
-    check('Actual upload HTTP flow',http['all_pass'] and all(hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==sha for path,sha in http['source_model_hashes'].items()),'Four real examples and four actual multipart uploads on the revised running app; malformed upload rejected')
+    pairs=[c for c in http['checks'] if 'example_status' in c]
+    check('Actual upload HTTP flow',http['all_pass'] and len(pairs)==len(json.loads((ROOT/'demo/image_examples.json').read_text())) and all(hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==sha for path,sha in http['source_model_hashes'].items()),f'{len(pairs)} real example/multipart-upload pairs on the running app; malformed upload rejected')
     hog=json.loads((ROOT/'results/hog/metrics.json').read_text())
     check('Report includes new HOG evidence',f"{hog['test']['accuracy']*100:.1f}" in text and f"{hog['test']['macro_f1']*100:.1f}" in text and 'HOG' in text)
     check('Slides include new HOG evidence',f"{hog['test']['accuracy']*100:.1f}%" in slide_text and 'HOG' in slide_text)
@@ -106,11 +107,18 @@ def main():
     pending=[]
     if not sub.get('github_url'):pending.append('Project repository URL missing')
     if len(sub.get('members',[]))!=5:pending.append('Five member identities')
+    contribution_statements_present=(len(sub.get('members',[]))==5 and
+        all(isinstance(m.get('contribution_statement'),str) and m['contribution_statement'].strip()
+            for m in sub.get('members',[])))
+    if not contribution_statements_present:
+        pending.append('Each member must add their specific contribution statement before course submission')
     check('Report contains all supplied names and roll numbers',all(m['name'] in plain and m['roll_number'] in plain for m in sub['members']))
     check('Slides contain all supplied names and roll numbers',all(m['name'] in slide_text and m['roll_number'] in slide_text for m in sub['members']))
     report_links={link.get('uri') for page in main for link in page.get_links()}
     check('Current repository URL in report and slides',sub['github_url'] in report_links and sub['github_url'] in slide_text)
     result={'checks':checks,'all_checks_pass':all(x['pass'] for x in checks),'pending_user_submission_items':pending,
+            'course_submission_ready':all(x['pass'] for x in checks) and not pending,
+            'individual_contribution_statements_present':contribution_statements_present,
             'revision_scope':'Current source, prediction arithmetic and document checks. Behavioral tests are rerun by this verifier.',
             'manual_review':'See docs/visual_review.md for actual render inspection. Automated checks alone do not prove visual quality or data-label correctness.',
             'limits':['No independent label audit of every raw image/clip','No image match/player identities','Exploratory revised grouping and reused video holdout','Unknown upstream image license']}
@@ -118,7 +126,8 @@ def main():
     md='# Final verification record\n\n'
     md+='| Check | Result | Evidence |\n|---|---|---|\n'
     for c in checks:md+=f'| {c["name"]} | {"PASS" if c["pass"] else "FAIL"} | {c["detail"].replace(chr(10)," ").replace("|","/")[:250]} |\n'
-    md+='\nSubmission items deliberately pending:\n\n'+'\n'.join('- '+x for x in pending)+'\n\n'+result['manual_review']+'\n'
+    md+='\nThese are technical checks; passing them alone does not establish complete course-submission compliance.\n'
+    md+='\nRemaining submission requirements:\n\n'+('\n'.join('- '+x for x in pending) if pending else 'None identified by these checks.')+'\n\n'+result['manual_review']+'\n'
     (ROOT/'docs/verification.md').write_text(md,encoding='utf-8')
     print(f'{sum(c["pass"] for c in checks)}/{len(checks)} verification checks pass. Pending submission items: {len(pending)}')
     if not result['all_checks_pass']:raise SystemExit(1)

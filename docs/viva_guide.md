@@ -48,11 +48,21 @@ information; backgrounds still contribute gradients.
 applies ImageNet mean/std, transposes channels and adds a batch dimension.
 Two separate calls to the frozen encoder produce (2,1280).
 
+MobileNetV2 provides an efficient ImageNet feature extractor for CPU inference.
+Freezing keeps cricket fitting to small heads on only 221 training visual groups.
+These choices reduce training work; no comparison proves they are optimal. The
+central crop assumes a roughly centered batter to reduce some background without
+training a detector. It can cut off the bat or useful context. The global branch
+keeps a second view, although its square fit also removes peripheral pixels.
+
 L2-normalize each vector to u and v. Global uses u; crop uses v; concatenation
 uses normalize([u;v]); contrast uses normalize([u;v;abs(u-v)]). The absolute value
 is nonlinear: a linear head could already compute u-v from concatenation, but
 cannot generally compute abs(u-v). It is feature-wise difference between two
 resized views, not a physical measure of bat movement or a local keypoint.
+Normalizing each view gives the two blocks the same norm before fusion instead
+of allowing raw feature magnitude to set their relative scale. Equal norm does
+not mean equal usefulness. We did not isolate normalization in an ablation.
 
 The linear head computes logits a=Wz+b and softmax(a/T). Training minimizes
 weighted multiclass cross-entropy with L2 regularization. `C` is inverse
@@ -94,6 +104,15 @@ difference and one split do not establish superiority or strong algorithmic
 novelty. HOG is an additional controlled comparison, not a source of a better
 headline chosen after looking at test scores.
 
+The post-hoc comparison in `results/revision/view_diagnostics.json` shows both
+directions: contrast corrects 17 concatenation errors and loses 14 correct
+decisions. Where global/crop heads disagree (232 images), correct counts are
+120 versus 117; where they agree (713), each gets 499. These conditional subsets
+are descriptive and do not prove the proposed mechanism. Selected drive
+`image_00696` changes from incorrect pull to correct drive; `image_00017` changes
+from correct drive to incorrect glance/flick. Cases are the first IDs in each
+gain/loss category, selected after evaluation, rather than a representative sample.
+
 The uncertainty calculation resamples **70 visual groups**, keeping each sampled
 group's images together. It uses the same draws for paired model differences.
 The intervals condition on the fitted weights and split; they omit training
@@ -114,6 +133,11 @@ does not prove correctness. On test, 557 images pass and 433 are correct:
 58.9% coverage, 77.7% accepted accuracy. The 90% validation target is not a test
 result or guarantee. HOG comparison scores are uncalibrated and do not alter the
 review rule. The selected confident failure remains in the demo.
+
+Confidence alone gives 62.2% coverage and 77.6% accepted accuracy. Adding
+agreement gives 58.9% and 77.7%, so its observed accuracy benefit is negligible
+at the cost of more review. It stays visible as a triage diagnostic of conflicting
+views. The diagnostic heads share the same two encoder passes.
 
 ## What is novel, and what is inherited?
 
