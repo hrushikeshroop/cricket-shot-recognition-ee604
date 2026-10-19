@@ -1,0 +1,284 @@
+{
+  "classes": [
+    "drive",
+    "legglance-flick",
+    "pullshot",
+    "sweep"
+  ],
+  "selection_sha256": "0fedd3c8292fdc3f2dbd68151a23689dad0c01dee3296c857daf49ee757f54a4",
+  "binding": {
+    "config_sha256": "e3ce8426f3997812e90c96f15febe39095156287ba637beca2a0ecb74ada6416",
+    "features_sha256": "42e5d409b5fe3e97488a5c3068ee3f890bce25f39b37763229243092c0270e1d",
+    "heads_sha256": "43f011254541764271add9e192adc1a52d9b18ecb21fe776e335e38fc0ea55f1",
+    "script_sha256": "976e1c262fa7a4c726b60fb320f0e66fe0a6848f848b6ff437b62e4cf2e0a0f9",
+    "implementation_sha256": "51913048f74f8d47471de8f92e71c5cd4f3b3ea9cb68d0f50b580cd59f302d75"
+  },
+  "test": {
+    "uniform_mean": {
+      "n": 945,
+      "accuracy": 0.6507936507936508,
+      "balanced_accuracy": 0.6459608843537414,
+      "macro_f1": 0.6451993265312874,
+      "nll": 0.8598455080611644,
+      "ece_10_bins": 0.03647744980826646,
+      "brier_multiclass": 0.4655509304561548,
+      "confusion": [
+        [
+          162,
+          27,
+          37,
+          19
+        ],
+        [
+          81,
+          103,
+          14,
+          26
+        ],
+        [
+          40,
+          11,
+          201,
+          0
+        ],
+        [
+          1,
+          21,
+          53,
+          149
+        ]
+      ],
+      "per_class": {
+        "drive": {
+          "precision": 0.5704225352112676,
+          "recall": 0.6612244897959184,
+          "f1-score": 0.6124763705103969,
+          "support": 245.0
+        },
+        "legglance-flick": {
+          "precision": 0.6358024691358025,
+          "recall": 0.45982142857142855,
+          "f1-score": 0.533678756476684,
+          "support": 224.0
+        },
+        "pullshot": {
+          "precision": 0.659016393442623,
+          "recall": 0.7976190476190477,
+          "f1-score": 0.7217235188509874,
+          "support": 252.0
+        },
+        "sweep": {
+          "precision": 0.7680412371134021,
+          "recall": 0.6651785714285714,
+          "f1-score": 0.7129186602870813,
+          "support": 224.0
+        },
+        "accuracy": 0.6507936507936508,
+        "macro avg": {
+          "precision": 0.6583206587257738,
+          "recall": 0.6459608843537414,
+          "f1-score": 0.6451993265312874,
+          "support": 945.0
+        },
+        "weighted avg": {
+          "precision": 0.6563879814540988,
+          "recall": 0.6507936507936508,
+          "f1-score": 0.6467395332069624,
+          "support": 945.0
+        }
+      }
+    },
+    "constant_weights": {
+      "n": 945,
+      "accuracy": 0.653968253968254,
+      "balanced_accuracy": 0.6499007936507937,
+      "macro_f1": 0.6482476405442856,
+      "nll": 0.8585644638223632,
+      "ece_10_bins": 0.04733890752272785,
+      "brier_multiclass": 0.4686285919293379,
+      "confusion": [
+        [
+          161,
+          27,
+          37,
+          20
+        ],
+        [
+          79,
+          102,
+          17,
+          26
+        ],
+        [
+          37,
+          12,
+          197,
+          6
+        ],
+        [
+          1,
+          16,
+          49,
+          158
+        ]
+      ],
+      "per_class": {
+        "drive": {
+          "precision": 0.579136690647482,
+          "recall": 0.6571428571428571,
+          "f1-score": 0.615678776290631,
+          "support": 245.0
+        },
+        "legglance-flick": {
+          "precision": 0.6496815286624203,
+          "recall": 0.45535714285714285,
+          "f1-score": 0.5354330708661418,
+          "support": 224.0
+        },
+        "pullshot": {
+          "precision": 0.6566666666666666,
+          "recall": 0.7817460317460317,
+          "f1-score": 0.7137681159420289,
+          "support": 252.0
+        },
+        "sweep": {
+          "precision": 0.7523809523809524,
+          "recall": 0.7053571428571429,
+          "f1-score": 0.728110599078341,
+          "support": 224.0
+        },
+        "accuracy": 0.653968253968254,
+        "macro avg": {
+          "precision": 0.6594664595893803,
+          "recall": 0.6499007936507937,
+          "f1-score": 0.6482476405442856,
+          "support": 945.0
+        },
+        "weighted avg": {
+          "precision": 0.657598396785554,
+          "recall": 0.653968253968254,
+          "f1-score": 0.649465235424508,
+          "support": 945.0
+        }
+      }
+    },
+    "adaptive": {
+      "n": 945,
+      "accuracy": 0.653968253968254,
+      "balanced_accuracy": 0.6499007936507937,
+      "macro_f1": 0.6482476405442856,
+      "nll": 0.8585700983999219,
+      "ece_10_bins": 0.046696787828114324,
+      "brier_multiclass": 0.46862880463630036,
+      "confusion": [
+        [
+          161,
+          27,
+          37,
+          20
+        ],
+        [
+          79,
+          102,
+          17,
+          26
+        ],
+        [
+          37,
+          12,
+          197,
+          6
+        ],
+        [
+          1,
+          16,
+          49,
+          158
+        ]
+      ],
+      "per_class": {
+        "drive": {
+          "precision": 0.579136690647482,
+          "recall": 0.6571428571428571,
+          "f1-score": 0.615678776290631,
+          "support": 245.0
+        },
+        "legglance-flick": {
+          "precision": 0.6496815286624203,
+          "recall": 0.45535714285714285,
+          "f1-score": 0.5354330708661418,
+          "support": 224.0
+        },
+        "pullshot": {
+          "precision": 0.6566666666666666,
+          "recall": 0.7817460317460317,
+          "f1-score": 0.7137681159420289,
+          "support": 252.0
+        },
+        "sweep": {
+          "precision": 0.7523809523809524,
+          "recall": 0.7053571428571429,
+          "f1-score": 0.728110599078341,
+          "support": 224.0
+        },
+        "accuracy": 0.653968253968254,
+        "macro avg": {
+          "precision": 0.6594664595893803,
+          "recall": 0.6499007936507937,
+          "f1-score": 0.6482476405442856,
+          "support": 945.0
+        },
+        "weighted avg": {
+          "precision": 0.657598396785554,
+          "recall": 0.653968253968254,
+          "f1-score": 0.649465235424508,
+          "support": 945.0
+        }
+      }
+    }
+  },
+  "paired_adaptive_minus": {
+    "concat": {
+      "accuracy_difference": 0.0021164021164021165,
+      "accuracy_difference_95": [
+        -0.015182304476143629,
+        0.021554936454536943
+      ],
+      "gained": 18,
+      "lost": 16
+    },
+    "contrast": {
+      "accuracy_difference": -0.0010582010582010583,
+      "accuracy_difference_95": [
+        -0.007862834452616992,
+        0.006757713262526395
+      ],
+      "gained": 5,
+      "lost": 6
+    },
+    "uniform_mean": {
+      "accuracy_difference": 0.0031746031746031746,
+      "accuracy_difference_95": [
+        -0.02104569308107741,
+        0.029819751084831432
+      ],
+      "gained": 18,
+      "lost": 15
+    },
+    "constant_weights": {
+      "accuracy_difference": 0.0,
+      "accuracy_difference_95": [
+        0.0,
+        0.0
+      ],
+      "gained": 0,
+      "lost": 0
+    }
+  },
+  "mean_test_weights": [
+    0.17623858472026702,
+    3.186344715495521e-17,
+    0.8237614152797319
+  ],
+  "caution": "Exploratory follow-up after the existing test results were known. Expert C=10 was selected in the earlier validation study; this is not nested cross-validation. Mixtures of experts are established, not a new architecture. Bootstrap intervals condition on fitted models and this split; visual groups are not match identities."
+}

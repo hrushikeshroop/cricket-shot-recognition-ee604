@@ -1,0 +1,83 @@
+{
+  "binding": {
+    "config_sha256": "e3ce8426f3997812e90c96f15febe39095156287ba637beca2a0ecb74ada6416",
+    "features_sha256": "42e5d409b5fe3e97488a5c3068ee3f890bce25f39b37763229243092c0270e1d",
+    "heads_sha256": "43f011254541764271add9e192adc1a52d9b18ecb21fe776e335e38fc0ea55f1",
+    "script_sha256": "976e1c262fa7a4c726b60fb320f0e66fe0a6848f848b6ff437b62e4cf2e0a0f9",
+    "implementation_sha256": "51913048f74f8d47471de8f92e71c5cd4f3b3ea9cb68d0f50b580cd59f302d75"
+  },
+  "selected_l2": 10.0,
+  "trials": [
+    {
+      "l2": 0.01,
+      "macro_f1": 0.7866639205472341,
+      "accuracy": 0.7870762711864406,
+      "nll": 0.5995760051037844,
+      "iterations": 54,
+      "objective": 0.7638969521695463,
+      "converged": true
+    },
+    {
+      "l2": 0.1,
+      "macro_f1": 0.7867081446738573,
+      "accuracy": 0.7870762711864406,
+      "nll": 0.6017583029574084,
+      "iterations": 49,
+      "objective": 0.7658928306940633,
+      "converged": true
+    },
+    {
+      "l2": 1.0,
+      "macro_f1": 0.7868902117090204,
+      "accuracy": 0.7870762711864406,
+      "nll": 0.6042436191034241,
+      "iterations": 45,
+      "objective": 0.766536374568356,
+      "converged": true
+    },
+    {
+      "l2": 10.0,
+      "macro_f1": 0.7879573593980471,
+      "accuracy": 0.788135593220339,
+      "nll": 0.6046187057814449,
+      "iterations": 22,
+      "objective": 0.7666122383259406,
+      "converged": true
+    }
+  ],
+  "controls": {
+    "uniform_mean": {
+      "macro_f1": 0.78625062076418,
+      "accuracy": 0.7860169491525424,
+      "nll": 0.6031609192794131
+    },
+    "constant_weights": {
+      "macro_f1": 0.7879573593980471,
+      "accuracy": 0.788135593220339,
+      "nll": 0.6046616953115407
+    }
+  },
+  "constant_weights": [
+    0.17585766837318947,
+    8.703298044210512e-11,
+    0.8241423315397775
+  ],
+  "constant_fit": {
+    "iterations": 32,
+    "objective": 0.7666207349307638,
+    "converged": true
+  },
+  "selected_validation": {
+    "l2": 10.0,
+    "macro_f1": 0.7879573593980471,
+    "accuracy": 0.788135593220339,
+    "nll": 0.6046187057814449,
+    "iterations": 22,
+    "objective": 0.7666122383259406,
+    "converged": true
+  },
+  "best_reference_validation_f1": 0.7957195355376785,
+  "deploy_adaptive": false,
+  "selection_uses_test": false,
+  "gate_sha256": "f6f83cbc5c8eb899240b87a099305dd47e898d5dc611b86031898a66a71fe2a8"
+}

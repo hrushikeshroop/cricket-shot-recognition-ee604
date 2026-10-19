@@ -15,8 +15,10 @@
 !/data/images/
 !/data/processed/
 !/demo/images/
+!/models/fusion/
 !/models/hog/
 !/models/image/
+!/results/fusion/
 !/results/hog/
 !/results/images/
 !/results/images_initial_hash/
@@ -31,6 +33,7 @@
 !/THIRD_PARTY_NOTICES.md
 !/app.py
 !/configs/experiment.json
+!/configs/fusion_experiment.json
 !/configs/hog_experiment.json
 !/configs/image_experiment.json
 !/configs/submission.json
@@ -61,6 +64,7 @@
 !/models/NOTICE.md
 !/models/classifier.json
 !/models/classifier.npz
+!/models/fusion/gate.npz
 !/models/hog/classifier.json
 !/models/hog/head.npz
 !/models/image/classifier.json
@@ -70,6 +74,12 @@
 !/requirements-dev.txt
 !/requirements-lock.txt
 !/requirements.txt
+!/results/fusion/folds.json
+!/results/fusion/metrics.json
+!/results/fusion/oof_predictions.npz
+!/results/fusion/protocol.json
+!/results/fusion/selection.json
+!/results/fusion/test_predictions.npz
 !/results/hog/metrics.json
 !/results/hog/protocol_before_fit.json
 !/results/hog/selection_before_test.json
@@ -103,6 +113,7 @@
 !/scripts/prepare_images.py
 !/scripts/strengthen_image_groups.py
 !/scripts/train_evaluate.py
+!/scripts/train_fusion.py
 !/scripts/train_hog.py
 !/scripts/train_images.py
 !/scripts/verify_revision.py
@@ -110,6 +121,7 @@
 !/setup.bat
 !/src/cricketshot/__init__.py
 !/src/cricketshot/core.py
+!/src/cricketshot/fusion.py
 !/src/cricketshot/hog.py
 !/src/cricketshot/images.py
 !/static/app.js
@@ -120,6 +132,7 @@
 !/submission/CricketShot_Report.pdf
 !/templates/images.html
 !/templates/index.html
+!/tests/test_fusion.py
 !/tests/test_images.py
 !/tests/test_project.py
 !/tests/test_revision.py

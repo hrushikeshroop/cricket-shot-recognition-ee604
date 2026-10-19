@@ -1,0 +1,47 @@
+{
+  "binding": {
+    "config_sha256": "e3ce8426f3997812e90c96f15febe39095156287ba637beca2a0ecb74ada6416",
+    "features_sha256": "42e5d409b5fe3e97488a5c3068ee3f890bce25f39b37763229243092c0270e1d",
+    "heads_sha256": "43f011254541764271add9e192adc1a52d9b18ecb21fe776e335e38fc0ea55f1",
+    "script_sha256": "976e1c262fa7a4c726b60fb320f0e66fe0a6848f848b6ff437b62e4cf2e0a0f9",
+    "implementation_sha256": "51913048f74f8d47471de8f92e71c5cd4f3b3ea9cb68d0f50b580cd59f302d75"
+  },
+  "config": {
+    "seed": 604,
+    "experts": [
+      "global",
+      "focus",
+      "contrast"
+    ],
+    "expert_C": 10,
+    "expert_temperature": 1.0,
+    "training_folds": 5,
+    "gate_l2_candidates": [
+      0.01,
+      0.1,
+      1.0,
+      10.0
+    ],
+    "selection": "Highest validation macro F1; larger L2 wins exact ties. Test is not used for selection.",
+    "deployment_rule": "Retain contrast unless adaptive fusion exceeds every existing head and both fusion controls on validation macro F1.",
+    "controls": [
+      "uniform_mean",
+      "constant_weights"
+    ],
+    "objective": "Class-balanced training out-of-fold negative log likelihood plus 0.5*L2*sum(gate slopes squared). Gate intercepts are unpenalized.",
+    "features": "For each expert: entropy/log(4), top-two margin, maximum score; three pairwise total-variation distances; cosine distance of normalized global/crop embeddings. Standardize with training out-of-fold means and std clipped below at 0.05.",
+    "caution": "Exploratory follow-up after the existing test results were known. Expert C=10 was selected in the earlier validation study; this is not nested cross-validation. Mixtures of experts are established, not a new architecture."
+  },
+  "classes": [
+    "drive",
+    "legglance-flick",
+    "pullshot",
+    "sweep"
+  ],
+  "counts": {
+    "train": 2834,
+    "validation": 944,
+    "test": 945
+  },
+  "test_previously_seen": true
+}

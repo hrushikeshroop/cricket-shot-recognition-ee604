@@ -21,6 +21,9 @@
 
 ## Implementation references
 
+- Robert A. Jacobs, Michael I. Jordan, Steven J. Nowlan and Geoffrey E. Hinton, [Adaptive Mixtures of Local Experts](https://www.cs.toronto.edu/~hinton/absps/jjnh91.pdf), Neural Computation 3(1), 79-87, 1991. Primary background for learned expert weighting. Our small gate uses frozen classifiers and separate group-held-out training scores; it does not reproduce their joint expert training or claim that gating is new.
+- [Official scikit-learn stacking documentation](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html), checked for the use of out-of-fold predictions to train a second-level estimator and the risk of fitting it to resubstitution predictions. We implement a convex probability mixture rather than importing StackingClassifier. Group separation is explicit in the experiment.
+
 - [scikit-learn LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) and [source repository](https://github.com/scikit-learn/scikit-learn).
 - [ONNX Runtime](https://onnxruntime.ai/docs/) and [repository](https://github.com/microsoft/onnxruntime).
 - [Flask documentation](https://flask.palletsprojects.com/) and [repository](https://github.com/pallets/flask).

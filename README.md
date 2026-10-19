@@ -58,3 +58,18 @@ Check inference using only runtime dependencies:
 Training and full research tests require `requirements-dev.txt`, downloaded data and feature caches. The training code retains the recorded split and selects classifier regularization using validation data. Run training commands in a scratch copy because they replace generated models and results. Do not choose new settings from test feedback.
 
 Source photographs retain their upstream rights; downloaded image metadata lists an unknown license. Third-party notices are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## Learned weighting experiment
+
+A follow-up implements a 42-parameter gate that weights global, crop and contrast predictions for each image. It learns from five group-separated folds within the training set. Uniform averaging and learned constant weights are controls. Validation selects the regularization before test evaluation. The protocol, fold assignments, selected gate and predictions are retained in `configs/fusion_experiment.json`, `models/fusion/` and `results/fusion/`.
+
+The adaptive gate reaches **78.8% validation macro F1**, matching constant weighting and below concatenation's 79.6%. Adaptive and constant weighting make identical test decisions: **618/945 correct**, versus contrast's 619. This negative result does not justify replacing the demo model or claiming reliable improvement. It is exploratory because the earlier test results were already known. Mixtures of experts are an established method, cited in the report and [sources](docs/sources.md).
+
+To reproduce in a scratch copy with the image feature cache restored, first move aside its `results/fusion/` directory. Then run:
+
+```powershell
+python scripts/train_fusion.py --stage validation
+python scripts/train_fusion.py --stage test
+```
+
+The script deliberately refuses to overwrite a frozen selection or an existing test result. The gate's numerical gradient and probability constraints are covered by the research tests.

@@ -1,0 +1,14 @@
+{
+  "seed": 604,
+  "experts": ["global", "focus", "contrast"],
+  "expert_C": 10,
+  "expert_temperature": 1.0,
+  "training_folds": 5,
+  "gate_l2_candidates": [0.01, 0.1, 1.0, 10.0],
+  "selection": "Highest validation macro F1; larger L2 wins exact ties. Test is not used for selection.",
+  "deployment_rule": "Retain contrast unless adaptive fusion exceeds every existing head and both fusion controls on validation macro F1.",
+  "controls": ["uniform_mean", "constant_weights"],
+  "objective": "Class-balanced training out-of-fold negative log likelihood plus 0.5*L2*sum(gate slopes squared). Gate intercepts are unpenalized.",
+  "features": "For each expert: entropy/log(4), top-two margin, maximum score; three pairwise total-variation distances; cosine distance of normalized global/crop embeddings. Standardize with training out-of-fold means and std clipped below at 0.05.",
+  "caution": "Exploratory follow-up after the existing test results were known. Expert C=10 was selected in the earlier validation study; this is not nested cross-validation. Mixtures of experts are established, not a new architecture."
+}
