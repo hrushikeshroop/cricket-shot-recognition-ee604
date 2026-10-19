@@ -1,10 +1,8 @@
-# Cricket Shot Recognition - EE604
+# Cricket Shot Recognition — EE604
 
-Classify a cricket image as **drive, leg glance/flick, pull or sweep**. The project compares a HOG descriptor with frozen MobileNetV2 features and tests whether combining a full-image view, a fixed central crop and their absolute difference helps recognition.
+Classify one cricket image as **drive, leg glance/flick, pull or sweep** using frozen MobileNetV2 features and a linear classifier. A HOG classifier provides a separate baseline. The tested extension combines full-image and central-crop features with their absolute difference.
 
-Repository: https://github.com/hrushikeshroop/cricket-shot-recognition-ee604
-
-| Name | Roll number |
+| Team member | Roll number |
 |---|---|
 | Hrushikesh Roop Avvari | 230249 |
 | Voora Rakesh | 231174 |
@@ -12,15 +10,14 @@ Repository: https://github.com/hrushikeshroop/cricket-shot-recognition-ee604
 | Lokesh Kumar Moond | 230606 |
 | Bollu Sharath chandra | 230303 |
 
-## Results
+## Submission
 
-All image methods use the same 945 test images in 70 visual groups. The contrast CNN scores **65.5% accuracy and 64.9% macro F1** (619 correct); concatenation scores 65.2% accuracy (616 correct). Their paired group-bootstrap accuracy-difference interval is -1.46 to +2.38 percentage points, so a reliable advantage is not established. The HOG baseline scores **35.3% accuracy and 34.5% macro F1** (334 correct).
+- [Project report, including the full implementation appendix](submission/CricketShot_Report.pdf)
+- [Presentation](submission/CricketShot_Presentation.pptx)
 
-These are exploratory results. Duplicate grouping was strengthened after preliminary evaluation; verified match and player identities are unavailable. Temperature scaling worsened test calibration. The review rule accepts 557 images with 433 correct; it is a diagnostic rather than a correctness guarantee. The separate eight-class video pilot scores 30.2% accuracy, equal to its majority baseline, and is available as a backup demonstration.
+## Run the application
 
-## Run the demo
-
-Use Python 3.11 or newer. On Windows, run `setup.bat`, then `run_demo.bat`, and open http://127.0.0.1:6040. Alternatively:
+Use Python 3.11 or newer. On Windows, run `setup.bat`, then `run_demo.bat`, and open http://127.0.0.1:6040. Or run:
 
 ```powershell
 python -m venv .venv
@@ -28,63 +25,36 @@ python -m venv .venv
 .\.venv\Scripts\python.exe app.py
 ```
 
-Upload a JPEG, PNG, WebP or BMP image. The page shows both model input views, four CNN class scores, a review reason, the separate HOG prediction and JSON export. Images must be at least 32 pixels per side and at most 24 megapixels; requests are limited to 40 MB. Inference runs locally with the included model files. No database or API key is required. The model does not detect the batter, analyze a full match, grade technique or reliably reject unknown shots.
+Upload a JPEG, PNG, WebP or BMP image, or select one of the five bundled examples. They cover all four labels and a confident failure. The page shows the two input views, CNN scores, review reason, HOG result and downloadable prediction JSON. All examples were selected after evaluation. Inference is local and requires no database, cloud service or API key.
 
-Five selected image illustrations are included: one successful example for each class and a confident error. They work immediately after setup, without downloading the training archive. Their predictions are computed when clicked; the JPEG illustrations can differ from the original benchmark inputs. All examples were selected after evaluation.
+The model supports four labels. It does not detect the batter, locate contact or grade batting technique. Unknown shots can receive confident predictions. Inputs must be at least 32 pixels per side and at most 24 megapixels; requests are limited to 40 MB.
 
-For an examination without internet access, install dependencies in advance and launch the app once. Check all five examples and keep the report and slide PDF locally. The full local package also includes the original disagreement case, `image_00014`.
+## Code and data
 
-The public repository excludes raw datasets, large feature caches, lecture PDFs, machine environments and temporary build files. To restore the optional original disagreement example from the pinned public archive without training:
-
-```powershell
-.\.venv\Scripts\python.exe -m pip install requests
-.\.venv\Scripts\python.exe scripts/prepare_demo_examples.py --download
-```
-
-The optional image archive is about 676 MB. Add `--include-video` to restore the backup video examples too. With raw data already present, omit `--download`. The five bundled illustrations and own-image uploads work without this optional download. Source URLs, dataset versions and checksums are recorded under `data/` and in [the source register](docs/sources.md).
-
-## Report, presentation and evidence
-
-| Location | Contents |
+| Folder | Contents |
 |---|---|
-| [Complete report](output/pdf/CricketShot_Report_Complete.pdf) | CVPR manuscript, supplementary experiments and complete custom-code appendix |
-| [Presentation](output/presentation/CricketShot_Presentation.pptx) | 16 editable slides and speaker notes; slide 16 is backup |
-| `report/` | Editable LaTeX manuscript, required tables, references and CVPR 2022 style |
-| [Course mapping](docs/course_mapping.md) | Connections to the supplied lecture topics and page references |
-| [Demo guide](docs/demo_guide.md), [method guide](docs/viva_guide.md) | Example sequence, equations and implementation explanations |
-| [Data card](docs/data_card.md), [model card](docs/model_card.md) | Data protocol, model design and measured limitations |
-| `results/images/`, `results/hog/`, `results/revision/` | Saved predictions, comparisons, confidence analysis and method figures |
-| `results/images_initial_hash/`, `results/pilot_fullframe/` | Earlier experiment evidence, retained to explain the evaluation changes |
+| `src/`, `app.py`, `templates/`, `static/` | Feature extraction, inference and application interface |
+| `scripts/` | Dataset preparation, training, evaluation and runtime checks |
+| `models/`, `configs/` | Required weights, classifier heads and experiment settings |
+| `demo/` | Example images and labels |
+| `data/` | Dataset source metadata, split manifests and grouping records |
+| `results/` | Numerical results and saved predictions supporting the report |
+| `tests/` | Descriptor, model, API and provenance checks |
 
-The contrast feature corrects 17 concatenation errors but loses 14 correct decisions. The post-hoc breakdown and selected cases are in `results/revision/view_diagnostics.json`; they describe the small net gain without establishing a reliable improvement. The report compares two earlier cricket video methods with this image pipeline. [The method guide](docs/viva_guide.md) explains the design choices and their limits.
+Dataset and pretrained-weight links, versions and attribution are in [docs/sources.md](docs/sources.md). Raw datasets and feature caches are excluded from Git. The [data card](docs/data_card.md), [model card](docs/model_card.md) and [demo guide](docs/demo_guide.md) describe the protocol and use limits.
 
-## Verification and reproduction
+Five examples work without a dataset download. To restore the optional original disagreement example, install `requests` and run `scripts/prepare_demo_examples.py --download`; the pinned archive is about 676 MB. Add `--include-video` for the separate exploratory video examples.
 
-For an inference check using only the public repository and runtime dependencies:
+## Results and checks
+
+On 945 test images in 70 visual groups, contrast obtains **65.5% accuracy and 64.9% macro F1** (619 correct). Concatenation gets 616 correct. The paired group-bootstrap accuracy-difference interval is **−1.46 to +2.38 percentage points**, so a reliable gain is not established. HOG obtains **35.3% accuracy and 34.5% macro F1**. The study is exploratory because grouping was strengthened after preliminary evaluation; verified match/player identities are unavailable. Temperature scaling worsened test calibration. Agreement is a review diagnostic, not a correctness guarantee.
+
+Check inference using only runtime dependencies:
 
 ```powershell
 .\.venv\Scripts\python.exe scripts/verify_runtime.py
 ```
 
-Full research tests require development dependencies, raw data and feature caches. On the full local dataset copy:
+Training and full research tests require `requirements-dev.txt`, downloaded data and feature caches. The training code retains the recorded split and selects classifier regularization using validation data. Run training commands in a scratch copy because they replace generated models and results. Do not choose new settings from test feedback.
 
-```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
-.\.venv\Scripts\python.exe scripts/train_hog.py
-.\.venv\Scripts\python.exe scripts/analyze_revision.py
-.\.venv\Scripts\python.exe scripts/revision_figures.py
-.\.venv\Scripts\python.exe scripts/verify_revision.py
-.\.venv\Scripts\python.exe -m pytest -q
-```
-
-For a reconstruction from downloads, run `fetch_assets.py`, `prepare_data.py`, `fetch_images.py`, `prepare_images.py`, `strengthen_image_groups.py`, then `train_images.py`. Run these in a scratch copy: they replace generated data and model files. The strengthening step is required for the final visual-group protocol. Do not select new splits, seeds or thresholds using test results. HOG uses the same final manifest and selects only C on validation, without a fusion search.
-
-The public `output/` directory contains only the complete report and editable presentation. Separate manuscript/code PDFs, the optional Overleaf ZIP, slide PDF/previews and machine-specific verification records are local build artifacts and are excluded from Git.
-
-Rebuild the report with `scripts/build_revision_report.py`; edit `report/image_content_template.tex` for manuscript changes. Rebuilding needs development dependencies and Tectonic at `tools/tectonic/tectonic.exe`. It creates the complete PDF under `output/pdf/` and intermediate parts plus an optional Overleaf package under `.build/report/`. In that package, compile `main.tex`, then use `merge_report.py` to append the code PDF. The unmodified CVPR 2022 style is retained.
-
-Rebuild slides with `scripts/prepare_revision_slides.py` and `scripts/build_slides.ps1` using desktop PowerPoint on Windows. For a fresh clone, first start the app and run `scripts/render_demo.ps1` to produce the local UI screenshot; that optional capture step needs Chrome. Slide PDF and preview images go under `.build/presentation/`. The demo itself needs none of these authoring tools.
-
-After a full local rebuild and `scripts/verify_revision.py`, run `scripts/verify_submission.py`. Verification generates local records; they are excluded from the public repository.
-
-Dataset, pretrained-model, paper, library and template sources are listed in [docs/sources.md](docs/sources.md) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The image dataset metadata reports an unknown license; this project does not grant rights to the source photographs.
+Source photographs retain their upstream rights; downloaded image metadata lists an unknown license. Third-party notices are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

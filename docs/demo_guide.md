@@ -7,6 +7,6 @@
 5. Upload a real image you may use. Inspect all four scores, then download JSON. Scores are relative outputs, not guaranteed correctness probabilities.
 6. If asked, show `/video` as backup: 30.2% accuracy equals majority accuracy. Keep the different dataset/labels and reused pilot holdout explicit; its examples also require local preparation.
 
-The five bundled inputs reuse the JPEG illustrations in `slides/assets/`. Their current predictions are computed from these actual files, not replayed benchmark outputs. The optional disagreement input is the original decoded PNG. `demo/image_examples.json` records each variant, SHA-256, upstream label, expected prediction and selection role. Examples were selected after evaluation; they illustrate behaviour and do not estimate accuracy.
+The five bundled JPEG inputs are in `demo/images/`. Their current predictions are computed from these actual files, not replayed benchmark outputs. The optional disagreement input is the original decoded PNG. `demo/image_examples.json` records each variant, SHA-256, upstream label, expected prediction and selection role. Examples were selected after evaluation; they illustrate behaviour and do not estimate accuracy.
 
-Install dependencies and run the complete sequence before going offline. Keep the deck PDF and UI screenshots available as fallback. For questions, use the measured trace and viva guide. Verification uses port 6060 if 6040 belongs to another running copy.
+Install dependencies and run the complete sequence before going offline. The submitted report explains the method and includes the implementation; `results/revision/worked_trace.json` records one measured prediction trace. The default app port is 6040.

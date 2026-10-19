@@ -41,6 +41,7 @@ def main():
         stream = io.BytesIO()
         im.save(stream, format="PNG")
         payload, filename = stream.getvalue(), "generated_wiring_check.png"
+    input_sha256 = hashlib.sha256(payload).hexdigest()
     response = client.post("/image-api/predict", data={"image": (io.BytesIO(payload), filename)})
     assert response.status_code == 200, response.get_data(as_text=True)
     result = response.json
@@ -59,10 +60,10 @@ def main():
         # from the local manifest when checking actual upload bytes.
         entry=example_metadata[available["id"]]
         assert client.get("/image-api/example/"+entry["id"]+"/thumbnail").status_code == 200
-        payload=(ROOT/entry["path"]).read_bytes()
-        assert hashlib.sha256(payload).hexdigest()==entry["example_sha256"]
+        example_payload=(ROOT/entry["path"]).read_bytes()
+        assert hashlib.sha256(example_payload).hexdigest()==entry["example_sha256"]
         example=client.post("/image-api/example/"+entry["id"])
-        upload=client.post("/image-api/predict",data={"image":(io.BytesIO(payload),Path(entry["path"]).name)})
+        upload=client.post("/image-api/predict",data={"image":(io.BytesIO(example_payload),Path(entry["path"]).name)})
         assert example.status_code==upload.status_code==200
         assert example.json["probabilities"]==upload.json["probabilities"]
         assert example.json["hog_baseline"]==upload.json["hog_baseline"]
@@ -76,7 +77,7 @@ def main():
         paths.extend(p for p in (ROOT/folder).rglob("*") if p.is_file() and p.suffix in {".py", ".html", ".js", ".css", ".json", ".npz", ".onnx"})
     proof = {"all_pass": True, "scope": "Repository runtime; Flask request client, actual multipart upload, CNN/HOG probabilities, previews, malformed-upload rejection, team and URL rendering. No new accuracy measurement.",
              "input": "external photograph" if args.image else "generated wiring pattern",
-             "input_sha256": hashlib.sha256(payload).hexdigest(), "label": result["label"],
+             "input_sha256": input_sha256, "label": result["label"],
              "available_image_examples": len(examples), "example_checks":demo_checks, "python": sys.version,
              "packages": {p: importlib.metadata.version(p) for p in ["numpy", "Pillow", "onnxruntime", "opencv-python-headless", "Flask"]},
              "source_model_hashes": {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(set(paths))}}

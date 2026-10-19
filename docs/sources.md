@@ -33,7 +33,7 @@ The implementation uses the libraries above. HOG, the pretrained backbone, logis
 
 ## Course revision, checked 19 October 2026
 
-- Supplied lecture PDFs are preserved in the full local research package under `course_notes/`. They are excluded from the public repository and smaller demo package; verified topic/page references are in [course_mapping.md](course_mapping.md).
+- Supplied lecture PDFs remain in the local working materials. The report explains the connections to gradient features, frozen feature extraction and multiclass classification.
 - HOG primary method: [Dalal and Triggs, CVPR 2005](https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf). Our documented NumPy variant is not an exact reproduction of the original detector.
 - [Official scikit-learn logistic regression documentation](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html), used to check the classifier behavior; no external cricket classifier code is imported.
 - [Supplied Overleaf URL](https://www.overleaf.com/latex/templates/cvpr-2022-author-kit/qbmjsdxryffn) currently displays the 2026 submission kit. Existing unmodified official 2022 style is preserved in this revision.

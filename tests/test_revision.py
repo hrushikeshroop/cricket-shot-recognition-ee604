@@ -4,6 +4,7 @@ import csv
 import io
 import json
 import hashlib
+import pytest
 import numpy as np
 from PIL import Image
 from cricketshot.hog import (PARAMETERS, HOGRecognizer, cell_histograms,
@@ -105,17 +106,32 @@ def test_posthoc_view_diagnostics_reconcile_with_saved_predictions():
     assert all_test["gained"]-all_test["lost"] == all_test["contrast_correct"]-all_test["concat_correct"] == 3
 
 
-def test_runtime_verifier_cli_exercises_available_examples(tmp_path):
-    """Exercise the handoff command, including the API's hidden-path boundary."""
+@pytest.mark.parametrize("external", [False, True])
+def test_runtime_verifier_cli_exercises_available_examples(tmp_path, external):
+    """The initial input hash must survive checks of later demo examples."""
     import subprocess
     import sys
     proof=tmp_path/"runtime.json"
-    run=subprocess.run([sys.executable,str(ROOT/"scripts/verify_runtime.py"),"--output",str(proof)],
+    command=[sys.executable,str(ROOT/"scripts/verify_runtime.py"),"--output",str(proof)]
+    if external:
+        entry=next(e for e in json.loads((ROOT/"demo/image_examples.json").read_text()) if e.get("bundled"))
+        source=ROOT/entry["path"]
+        initial_bytes=source.read_bytes()
+        command.extend(["--image",str(source)])
+    else:
+        from PIL import ImageDraw
+        pattern=Image.new("RGB", (320,240), "#448344")
+        ImageDraw.Draw(pattern).line((40,210,240,30),fill="white",width=12)
+        buffer=io.BytesIO();pattern.save(buffer,format="PNG")
+        initial_bytes=buffer.getvalue()
+    run=subprocess.run(command,
                        cwd=ROOT,capture_output=True,text=True)
     assert run.returncode == 0, run.stdout+run.stderr
     result=json.loads(proof.read_text())
     assert result["all_pass"] and len(result["example_checks"])>=5
     assert sum(e["bundled"] for e in result["example_checks"]) == 5
+    assert result["input_sha256"] == hashlib.sha256(initial_bytes).hexdigest()
+    assert result["input"] == ("external photograph" if external else "generated wiring pattern")
 
 
 def test_missing_optional_examples_are_hidden(monkeypatch):

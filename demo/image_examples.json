@@ -2,7 +2,7 @@
   {
     "id": "image_00210",
     "label": "drive",
-    "path": "slides/assets/class_0.jpg",
+    "path": "demo/images/drive.jpg",
     "split": "test",
     "short_label": "Drive",
     "demo_role": "success",
@@ -15,7 +15,7 @@
   {
     "id": "image_01510",
     "label": "legglance-flick",
-    "path": "slides/assets/class_1.jpg",
+    "path": "demo/images/glance_flick.jpg",
     "split": "test",
     "short_label": "Leg glance / flick",
     "demo_role": "success",
@@ -28,7 +28,7 @@
   {
     "id": "image_02934",
     "label": "pullshot",
-    "path": "slides/assets/class_2.jpg",
+    "path": "demo/images/pull.jpg",
     "split": "test",
     "short_label": "Pull",
     "demo_role": "success",
@@ -41,7 +41,7 @@
   {
     "id": "image_03677",
     "label": "sweep",
-    "path": "slides/assets/class_3.jpg",
+    "path": "demo/images/sweep.jpg",
     "split": "test",
     "short_label": "Sweep",
     "demo_role": "success",
@@ -54,7 +54,7 @@
   {
     "id": "image_04199",
     "label": "sweep",
-    "path": "slides/assets/failure_original.jpg",
+    "path": "demo/images/confident_error.jpg",
     "split": "test",
     "short_label": "Sweep",
     "demo_role": "confident_error",
