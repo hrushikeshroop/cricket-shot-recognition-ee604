@@ -1,0 +1,38 @@
+{
+  "group_name": "EE604 Project Group",
+  "github_url": "https://github.com/hrushikeshroop/cricket-shot-recognition-ee604",
+  "member_names": [
+    "Hrushikesh Roop Avvari",
+    "Voora Rakesh",
+    "Gokavarapu Manikanta Sri Akshith",
+    "Lokesh Kumar Moond",
+    "Bollu Sharath chandra"
+  ],
+  "members": [
+    {
+      "name": "Hrushikesh Roop Avvari",
+      "roll_number": "230249",
+      "contribution": "Worked on feature extraction, classifier implementation and model training. Compared the model configurations and analysed training behaviour and overfitting."
+    },
+    {
+      "name": "Voora Rakesh",
+      "roll_number": "231174",
+      "contribution": "Contributed to evaluating the model by checking the confusion matrix and per-class precision, recall and F1 scores. Cross-checked the result tables against saved experiment outputs and prepared the literature review and results slides."
+    },
+    {
+      "name": "Gokavarapu Manikanta Sri Akshith",
+      "roll_number": "230418",
+      "contribution": "Worked on dataset preparation, class mapping and experimental evaluation. Checked the reported results and contributed to writing and reviewing the report."
+    },
+    {
+      "name": "Lokesh Kumar Moond",
+      "roll_number": "230606",
+      "contribution": "Contributed to application testing by checking video uploads, interval selection and threshold-based human-review decisions. Verified exported prediction and review records using successful and failed examples, and prepared the live demonstration."
+    },
+    {
+      "name": "Bollu Sharath chandra",
+      "roll_number": "230303",
+      "contribution": "Worked on the threshold-based human-review mechanism and the application interface. Tested video uploads, prediction outputs and the review workflow."
+    }
+  ]
+}

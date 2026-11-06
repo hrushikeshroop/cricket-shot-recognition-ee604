@@ -1,0 +1,14 @@
+{
+  "source": "https://download.pytorch.org/models/mc3_18-a90a0ba3.pth",
+  "architecture": "torchvision MC3_18, shared temporal feature map",
+  "pretraining": "KINETICS400_V1",
+  "feature_dimension": 512,
+  "temporal_samples": 24,
+  "onnx_sha256": "f46102b7c666c733fdecc1d4ebbab18e1024f2f11a5d046e693bf3aacadbd10d",
+  "onnx_bytes": 45954422,
+  "max_abs_export_error": 2.5033950805664062e-06,
+  "cpu_seconds_per_view_median": 1.2590678500127979,
+  "threads": 4,
+  "opset": 17,
+  "trainable_encoder_parameters": 0
+}

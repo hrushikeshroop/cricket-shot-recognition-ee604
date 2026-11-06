@@ -1,0 +1,14 @@
+{
+  "architecture": "MobileNetV2",
+  "pretraining": "ImageNet",
+  "source": "https://media.githubusercontent.com/media/onnx/models/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx",
+  "source_sha256": "c0c3f76d93fa3fd6580652a45618618a220fced18babf65774ed169de0432ad5",
+  "modification": "Expose the 1280-dimensional global pooling output, with unchanged frozen convolution weights.",
+  "onnx_sha256": "bfa8f7bdd68ff12b519fe81f420ba370904b33b6580b01fb907bd05a3b6959cc",
+  "feature_dimension": 1280,
+  "input_size": [
+    224,
+    224
+  ],
+  "license": "Apache-2.0, ONNX Model Zoo"
+}

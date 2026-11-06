@@ -1,0 +1,788 @@
+{
+  "raw_clips": 10091,
+  "retained_clips": 9965,
+  "raw_class_counts": {
+    "cover_drive": 772,
+    "defence": 605,
+    "down_the_wicket": 890,
+    "flick": 933,
+    "hook": 534,
+    "late_cut": 306,
+    "lofted_legside": 1123,
+    "lofted_offside": 1023,
+    "pull": 745,
+    "reverse_sweep": 252,
+    "scoop": 279,
+    "square_cut": 1023,
+    "straight_drive": 423,
+    "sweep": 908,
+    "upper_cut": 275
+  },
+  "counts": {
+    "train": {
+      "drive": 711,
+      "defence": 357,
+      "review": 2283,
+      "flick": 553,
+      "pull": 444,
+      "square_cut": 608,
+      "sweep": 537
+    },
+    "tune": {
+      "drive": 76,
+      "defence": 40,
+      "review": 258,
+      "flick": 67,
+      "pull": 48,
+      "square_cut": 67,
+      "sweep": 59
+    },
+    "calibration": {
+      "drive": 82,
+      "defence": 42,
+      "review": 263,
+      "flick": 57,
+      "pull": 49,
+      "square_cut": 67,
+      "sweep": 62
+    },
+    "policy": {
+      "drive": 78,
+      "defence": 38,
+      "review": 265,
+      "flick": 60,
+      "pull": 52,
+      "square_cut": 68,
+      "sweep": 58
+    },
+    "test": {
+      "drive": 237,
+      "defence": 120,
+      "review": 923,
+      "flick": 184,
+      "pull": 148,
+      "square_cut": 202,
+      "sweep": 179
+    },
+    "reserved_unknown": {
+      "review": 623
+    },
+    "excluded": {
+      "drive": 11,
+      "defence": 8,
+      "review": 67,
+      "flick": 12,
+      "pull": 4,
+      "square_cut": 11,
+      "sweep": 13
+    }
+  },
+  "native_counts": {
+    "train": {
+      "cover_drive": 459,
+      "defence": 357,
+      "down_the_wicket": 555,
+      "flick": 553,
+      "hook": 316,
+      "late_cut": 184,
+      "lofted_legside": 632,
+      "lofted_offside": 596,
+      "pull": 444,
+      "square_cut": 608,
+      "straight_drive": 252,
+      "sweep": 537
+    },
+    "tune": {
+      "cover_drive": 52,
+      "defence": 40,
+      "down_the_wicket": 59,
+      "flick": 67,
+      "hook": 32,
+      "late_cut": 25,
+      "lofted_legside": 69,
+      "lofted_offside": 73,
+      "pull": 48,
+      "square_cut": 67,
+      "straight_drive": 24,
+      "sweep": 59
+    },
+    "calibration": {
+      "cover_drive": 55,
+      "defence": 42,
+      "down_the_wicket": 74,
+      "flick": 57,
+      "hook": 37,
+      "late_cut": 18,
+      "lofted_legside": 76,
+      "lofted_offside": 58,
+      "pull": 49,
+      "square_cut": 67,
+      "straight_drive": 27,
+      "sweep": 62
+    },
+    "policy": {
+      "cover_drive": 45,
+      "defence": 38,
+      "down_the_wicket": 53,
+      "flick": 60,
+      "hook": 37,
+      "late_cut": 17,
+      "lofted_legside": 89,
+      "lofted_offside": 69,
+      "pull": 52,
+      "square_cut": 68,
+      "straight_drive": 33,
+      "sweep": 58
+    },
+    "test": {
+      "cover_drive": 153,
+      "defence": 120,
+      "down_the_wicket": 142,
+      "flick": 184,
+      "hook": 106,
+      "late_cut": 57,
+      "lofted_legside": 246,
+      "lofted_offside": 214,
+      "pull": 148,
+      "reverse_sweep": 45,
+      "scoop": 67,
+      "square_cut": 202,
+      "straight_drive": 84,
+      "sweep": 179,
+      "upper_cut": 46
+    },
+    "reserved_unknown": {
+      "reverse_sweep": 186,
+      "scoop": 209,
+      "upper_cut": 228
+    },
+    "excluded": {
+      "cover_drive": 8,
+      "defence": 8,
+      "down_the_wicket": 7,
+      "flick": 12,
+      "hook": 6,
+      "late_cut": 5,
+      "lofted_legside": 11,
+      "lofted_offside": 13,
+      "pull": 4,
+      "reverse_sweep": 21,
+      "scoop": 3,
+      "square_cut": 11,
+      "straight_drive": 3,
+      "sweep": 13,
+      "upper_cut": 1
+    }
+  },
+  "group_counts": {
+    "train": 277,
+    "tune": 33,
+    "calibration": 33,
+    "policy": 30,
+    "test": 109
+  },
+  "source_ids": 534,
+  "bridged_components": [],
+  "exclusions": {
+    "duplicate_clip": 29,
+    "conflicting_target_duplicate": 4,
+    "compilation_source": 93
+  },
+  "metadata_alias_edges": [
+    [
+      203,
+      204
+    ],
+    [
+      203,
+      205
+    ],
+    [
+      219,
+      220
+    ],
+    [
+      219,
+      221
+    ],
+    [
+      222,
+      223
+    ],
+    [
+      222,
+      224
+    ],
+    [
+      225,
+      226
+    ],
+    [
+      225,
+      227
+    ],
+    [
+      225,
+      228
+    ],
+    [
+      225,
+      229
+    ],
+    [
+      230,
+      231
+    ],
+    [
+      230,
+      232
+    ],
+    [
+      230,
+      233
+    ],
+    [
+      230,
+      234
+    ],
+    [
+      235,
+      236
+    ],
+    [
+      235,
+      237
+    ],
+    [
+      235,
+      238
+    ],
+    [
+      239,
+      240
+    ],
+    [
+      239,
+      241
+    ],
+    [
+      239,
+      242
+    ],
+    [
+      239,
+      243
+    ],
+    [
+      244,
+      245
+    ],
+    [
+      244,
+      246
+    ],
+    [
+      244,
+      247
+    ],
+    [
+      248,
+      249
+    ],
+    [
+      248,
+      250
+    ],
+    [
+      248,
+      251
+    ],
+    [
+      248,
+      252
+    ],
+    [
+      294,
+      295
+    ],
+    [
+      294,
+      296
+    ],
+    [
+      294,
+      297
+    ],
+    [
+      298,
+      299
+    ],
+    [
+      298,
+      300
+    ],
+    [
+      301,
+      302
+    ],
+    [
+      301,
+      303
+    ],
+    [
+      304,
+      305
+    ],
+    [
+      304,
+      306
+    ],
+    [
+      307,
+      308
+    ],
+    [
+      307,
+      309
+    ],
+    [
+      307,
+      310
+    ],
+    [
+      307,
+      311
+    ],
+    [
+      312,
+      313
+    ],
+    [
+      312,
+      314
+    ],
+    [
+      312,
+      315
+    ],
+    [
+      312,
+      316
+    ],
+    [
+      317,
+      318
+    ],
+    [
+      317,
+      319
+    ]
+  ],
+  "duplicate_edges": [
+    {
+      "a": 22,
+      "b": 32,
+      "type": "file"
+    },
+    {
+      "a": 22,
+      "b": 32,
+      "type": "decoded"
+    },
+    {
+      "a": 23,
+      "b": 33,
+      "type": "file"
+    },
+    {
+      "a": 23,
+      "b": 33,
+      "type": "decoded"
+    },
+    {
+      "a": 24,
+      "b": 34,
+      "type": "file"
+    },
+    {
+      "a": 24,
+      "b": 34,
+      "type": "decoded"
+    },
+    {
+      "a": 798,
+      "b": 804,
+      "type": "file"
+    },
+    {
+      "a": 798,
+      "b": 804,
+      "type": "decoded"
+    },
+    {
+      "a": 913,
+      "b": 917,
+      "type": "file"
+    },
+    {
+      "a": 913,
+      "b": 917,
+      "type": "decoded"
+    },
+    {
+      "a": 2303,
+      "b": 2317,
+      "type": "file"
+    },
+    {
+      "a": 2303,
+      "b": 2317,
+      "type": "decoded"
+    },
+    {
+      "a": 2305,
+      "b": 2319,
+      "type": "file"
+    },
+    {
+      "a": 2305,
+      "b": 2319,
+      "type": "decoded"
+    },
+    {
+      "a": 3245,
+      "b": 3254,
+      "type": "file"
+    },
+    {
+      "a": 3245,
+      "b": 3254,
+      "type": "decoded"
+    },
+    {
+      "a": 3246,
+      "b": 3255,
+      "type": "file"
+    },
+    {
+      "a": 3246,
+      "b": 3255,
+      "type": "decoded"
+    },
+    {
+      "a": 3247,
+      "b": 3256,
+      "type": "file"
+    },
+    {
+      "a": 3247,
+      "b": 3256,
+      "type": "decoded"
+    },
+    {
+      "a": 3744,
+      "b": 3748,
+      "type": "file"
+    },
+    {
+      "a": 3744,
+      "b": 3748,
+      "type": "decoded"
+    },
+    {
+      "a": 4062,
+      "b": 4072,
+      "type": "file"
+    },
+    {
+      "a": 4062,
+      "b": 4072,
+      "type": "decoded"
+    },
+    {
+      "a": 4063,
+      "b": 4073,
+      "type": "file"
+    },
+    {
+      "a": 4063,
+      "b": 4073,
+      "type": "decoded"
+    },
+    {
+      "a": 5191,
+      "b": 5199,
+      "type": "file"
+    },
+    {
+      "a": 5191,
+      "b": 5199,
+      "type": "decoded"
+    },
+    {
+      "a": 5192,
+      "b": 5200,
+      "type": "file"
+    },
+    {
+      "a": 5192,
+      "b": 5200,
+      "type": "decoded"
+    },
+    {
+      "a": 7186,
+      "b": 7188,
+      "type": "file"
+    },
+    {
+      "a": 7186,
+      "b": 7188,
+      "type": "decoded"
+    },
+    {
+      "a": 7492,
+      "b": 7501,
+      "type": "file"
+    },
+    {
+      "a": 7492,
+      "b": 7501,
+      "type": "decoded"
+    },
+    {
+      "a": 2304,
+      "b": 8505,
+      "type": "file"
+    },
+    {
+      "a": 2304,
+      "b": 8505,
+      "type": "decoded"
+    },
+    {
+      "a": 8921,
+      "b": 8927,
+      "type": "file"
+    },
+    {
+      "a": 8921,
+      "b": 8927,
+      "type": "decoded"
+    },
+    {
+      "a": 8922,
+      "b": 8928,
+      "type": "file"
+    },
+    {
+      "a": 8922,
+      "b": 8928,
+      "type": "decoded"
+    },
+    {
+      "a": 8923,
+      "b": 8929,
+      "type": "file"
+    },
+    {
+      "a": 8923,
+      "b": 8929,
+      "type": "decoded"
+    },
+    {
+      "a": 22,
+      "b": 32,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 23,
+      "b": 33,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 24,
+      "b": 34,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 323,
+      "b": 7832,
+      "type": "near",
+      "mae_255": 3.9273619684499312
+    },
+    {
+      "a": 528,
+      "b": 529,
+      "type": "near",
+      "mae_255": 1.7451774691358024
+    },
+    {
+      "a": 798,
+      "b": 804,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 912,
+      "b": 916,
+      "type": "near",
+      "mae_255": 1.1273148148148149
+    },
+    {
+      "a": 913,
+      "b": 917,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 2303,
+      "b": 2317,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 2304,
+      "b": 8505,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 2305,
+      "b": 2319,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 3245,
+      "b": 3254,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 3246,
+      "b": 3255,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 3247,
+      "b": 3256,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 3744,
+      "b": 3748,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 4062,
+      "b": 4072,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 4063,
+      "b": 4073,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 5191,
+      "b": 5199,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 5192,
+      "b": 5200,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 5261,
+      "b": 5263,
+      "type": "near",
+      "mae_255": 2.626414609053498
+    },
+    {
+      "a": 6957,
+      "b": 6961,
+      "type": "near",
+      "mae_255": 0.8942043895747599
+    },
+    {
+      "a": 6958,
+      "b": 6963,
+      "type": "near",
+      "mae_255": 1.5183256172839505
+    },
+    {
+      "a": 7004,
+      "b": 7069,
+      "type": "near",
+      "mae_255": 4.499421296296297
+    },
+    {
+      "a": 7186,
+      "b": 7188,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 7492,
+      "b": 7501,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 7649,
+      "b": 7656,
+      "type": "near",
+      "mae_255": 1.2194787379972565
+    },
+    {
+      "a": 7652,
+      "b": 7658,
+      "type": "near",
+      "mae_255": 0.20265346364883402
+    },
+    {
+      "a": 8921,
+      "b": 8927,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 8922,
+      "b": 8928,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 8923,
+      "b": 8929,
+      "type": "near",
+      "mae_255": 0.0
+    },
+    {
+      "a": 9630,
+      "b": 9634,
+      "type": "near",
+      "mae_255": 1.4392361111111112
+    },
+    {
+      "a": 9752,
+      "b": 9753,
+      "type": "near",
+      "mae_255": 1.6597650891632374
+    }
+  ],
+  "protocol_sha256": "9973049dd8cc3296ba0008bd19cf4f2f37713b3df63439c4f580a6ec4e2860a5",
+  "manifest_sha256": "c7802f63c13d9abd5c112cbceacd9fda9b6e3543faa0ab55da367343e0761440",
+  "test_limit": "Reused old benchmark groups plus any newly available source components. Source groups are not independently verified matches."
+}

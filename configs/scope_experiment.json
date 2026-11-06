@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "reason": "The initial linear scope model reaches 90% known automatic accuracy but only 23.4% known coverage on policy groups. This development-only follow-up tests nonlinear taxonomy membership before any current-run test scores are opened.",
+  "fit_role": "train",
+  "selection_role": "tune",
+  "selection_metric": "binary AUROC; initial linear model remains a candidate",
+  "representations": [{"name":"context_mean","pca":128,"hidden":32},{"name":"full_ordered","pca":128,"hidden":32},{"name":"full_ordered","pca":256,"hidden":64}],
+  "seeds": [604,605],
+  "dropout": 0.6,
+  "weight_decay": 0.01,
+  "learning_rate": 0.001,
+  "feature_noise_std": 0.05,
+  "label_smoothing": 0.02,
+  "batch_size": 64,
+  "max_epochs": 150,
+  "patience": 20,
+  "unchanged": "Class heads, data roles, unseen-style withholding, calibration roles, common threshold grid and review rule. The user clip is not used for selection."
+}

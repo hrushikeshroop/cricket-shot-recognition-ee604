@@ -1,0 +1,95 @@
+{
+  "n_clips": 10,
+  "median_seconds": 0.7009885000006761,
+  "p95_seconds": 0.796510194966686,
+  "timing_scope": "Warm encoders: interval decode, motion, CNN features, scope and class heads. Excludes model initialisation, JPEG previews and browser rendering.",
+  "examples": [
+    {
+      "id": "drive",
+      "decision": "automatic",
+      "class": "drive",
+      "input_sha256": "1a9b80465e134369ae1818477b1964e88a67a3c18ae3fd8476dfa55da29cb442",
+      "score_max_abs_error": 3.981761075022572e-08,
+      "seconds": 0.6923391000018455
+    },
+    {
+      "id": "defence",
+      "decision": "automatic",
+      "class": "defence",
+      "input_sha256": "ab18a6dbad390ec4cb7e4af55e2c96f401c826e403bdaeff34565d176e4dea0f",
+      "score_max_abs_error": 1.4218989496939116e-07,
+      "seconds": 0.8049975999747403
+    },
+    {
+      "id": "flick",
+      "decision": "automatic",
+      "class": "flick",
+      "input_sha256": "cfef167ac928e7cf1de05a07261be2802546e836fac068d0e594baf7f6eb027c",
+      "score_max_abs_error": 1.2127845172571483e-07,
+      "seconds": 0.7028070000233129
+    },
+    {
+      "id": "pull",
+      "decision": "automatic",
+      "class": "pull",
+      "input_sha256": "951fb8c0112a20bfdf16d65ff4a610f7eebbb879a62ec824ec57632539895b62",
+      "score_max_abs_error": 2.3428841347539198e-07,
+      "seconds": 0.6820155000314116
+    },
+    {
+      "id": "square_cut",
+      "decision": "automatic",
+      "class": "square_cut",
+      "input_sha256": "4f016bfd80c22ab3643b83a7b679b5ab83dad0687506db4face67de05bd347d5",
+      "score_max_abs_error": 2.5640051726227853e-07,
+      "seconds": 0.7861366999568418
+    },
+    {
+      "id": "sweep",
+      "decision": "automatic",
+      "class": "sweep",
+      "input_sha256": "a0691b383341c212024207c573049a436818a3cf0102fe299d04aef486943e8e",
+      "score_max_abs_error": 7.358005227331432e-08,
+      "seconds": 0.6991699999780394
+    },
+    {
+      "id": "known_review",
+      "decision": "human_review",
+      "class": null,
+      "input_sha256": "f29b826e856f640fbbcb8ac4839edf506978124a5d5bc2aa0f4ac21501f9c4ed",
+      "score_max_abs_error": 3.546369362061874e-07,
+      "seconds": 0.7065745000145398
+    },
+    {
+      "id": "outside_review",
+      "decision": "human_review",
+      "class": null,
+      "input_sha256": "ed1f7040dfd3e473049c02fce03c36dc6da0c489ba6d93f5a784591bb8c25d77",
+      "score_max_abs_error": 1.6376675565643595e-07,
+      "seconds": 0.6829865999752656
+    },
+    {
+      "id": "known_error",
+      "decision": "automatic",
+      "class": "drive",
+      "input_sha256": "0d0be2dd91dd8ca1698aaa5e192e5989490b96e1c6606a709dcb6562225480a0",
+      "score_max_abs_error": 3.796494207897183e-08,
+      "seconds": 0.6885229999898002
+    },
+    {
+      "id": "outside_error",
+      "decision": "automatic",
+      "class": "sweep",
+      "input_sha256": "c966b73198cd0cf0cd231ad1a67138b1300c6b56752ce71d694c5f3ac62f4c82",
+      "score_max_abs_error": 5.203435127221212e-09,
+      "seconds": 0.732633099949453
+    }
+  ],
+  "wiring_input": {
+    "description": "Generated moving gradient; wiring/provenance check only, no recognition ground truth",
+    "input_sha256": "810d26e8a47e426daddd9ff2f149e0b36d9ed661e9d6e8f88a119c07e5ff2787",
+    "recorded_sha256": "810d26e8a47e426daddd9ff2f149e0b36d9ed661e9d6e8f88a119c07e5ff2787"
+  },
+  "heads_sha256": "73eb0a07a3f1766a01e34aa0c842dce0e78d494cfb272e2208aaafc64427355c",
+  "independent_value_checks": 15362
+}

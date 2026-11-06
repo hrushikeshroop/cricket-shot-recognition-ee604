@@ -1,0 +1,148 @@
+{
+  "dataset": "CricShot10k: all 15 native archives, mapped to six target families and review-only categories",
+  "repository": "https://github.com/Dihan69/CricShot10k",
+  "fetched_utc": "2026-11-05T16:00:17Z",
+  "source_table_url": "https://docs.google.com/spreadsheets/d/1q8bdNIEX9vDCJiFbykNoNb0VNoeNupNwrM-AZHLBXSg/edit",
+  "source_table_sha256": "38ab42e578be844867058d7b7aa847379441e32210740844d5091a086a0d7623",
+  "upstream_readme_sha256": "0e3252b7384e1101477f62bec925d08276d9906f684916cdb7822eca343d5f6f",
+  "archives": [
+    {
+      "label": "cover_drive",
+      "upstream_label": "Cover Drive",
+      "file_id": "1GA3d3ismeu7tDNph-1_4nsInBlXpEQrr",
+      "url": "https://drive.google.com/uc?id=1GA3d3ismeu7tDNph-1_4nsInBlXpEQrr",
+      "sha256": "f788bf4e7aab22b77841a3863c813095612b9612a2f8a7b7ea1b814e34c59b0b",
+      "bytes": 277743654,
+      "video_files": 772
+    },
+    {
+      "label": "defence",
+      "upstream_label": "Defensive",
+      "file_id": "1N4M0uimTF2578i5jWEr-d4EisSPUdc_M",
+      "url": "https://drive.google.com/uc?id=1N4M0uimTF2578i5jWEr-d4EisSPUdc_M",
+      "sha256": "192e4ed1021b6ac63a65a07acf2ecbc383efae3cb18e893d8f948c585fde8dc5",
+      "bytes": 215192001,
+      "video_files": 605
+    },
+    {
+      "label": "flick",
+      "upstream_label": "Flick",
+      "file_id": "1vyu9q3IvCjLrx9bgH_kuIpJWOtJ0fy-b",
+      "url": "https://drive.google.com/uc?id=1vyu9q3IvCjLrx9bgH_kuIpJWOtJ0fy-b",
+      "sha256": "b39a7d48dc448ee559103f308d4e89d5fe6dce0ffef072adb98c75729ecd6b4f",
+      "bytes": 338497012,
+      "video_files": 933
+    },
+    {
+      "label": "hook",
+      "upstream_label": "Hook",
+      "file_id": "1hJAHKiB_x8ECfv7B4KiJJnNqgtC7xLwp",
+      "url": "https://drive.google.com/uc?id=1hJAHKiB_x8ECfv7B4KiJJnNqgtC7xLwp",
+      "sha256": "487aa93514ae7722cadd2174c4d78e164fb55bb7619a6001fe4dae754013d3a5",
+      "bytes": 205575882,
+      "video_files": 534
+    },
+    {
+      "label": "pull",
+      "upstream_label": "Pull",
+      "file_id": "1LFr7XodyInKRGkDA7Di4BSnlN0v9ucxj",
+      "url": "https://drive.google.com/uc?id=1LFr7XodyInKRGkDA7Di4BSnlN0v9ucxj",
+      "sha256": "914e1fcb4e6c33cc654702345e886b187a1636a7b3a2dc89b4e8ccfa027fc472",
+      "bytes": 294549070,
+      "video_files": 745
+    },
+    {
+      "label": "square_cut",
+      "upstream_label": "Square Cut",
+      "file_id": "1fDSYfEwVwJ1xo3dl2kVKpHjXd4LPRX7V",
+      "url": "https://drive.google.com/uc?id=1fDSYfEwVwJ1xo3dl2kVKpHjXd4LPRX7V",
+      "sha256": "7dca65e84cf25577b7ce10382e3887e0d35c1b00628baf5527e5626b368b69e8",
+      "bytes": 393993698,
+      "video_files": 1023
+    },
+    {
+      "label": "straight_drive",
+      "upstream_label": "Straight Drive",
+      "file_id": "1yy3e-hdLHiat2xhb09aL3pdhxqtqVJ0t",
+      "url": "https://drive.google.com/uc?id=1yy3e-hdLHiat2xhb09aL3pdhxqtqVJ0t",
+      "sha256": "22f50348042cbe286ee500d4397695df942399d28819ef6b907d8c9a78669ef2",
+      "bytes": 150549615,
+      "video_files": 423
+    },
+    {
+      "label": "sweep",
+      "upstream_label": "Sweep",
+      "file_id": "1fS_nvnGj6eM89PW1Wb8SuHwSrjBhtaji",
+      "url": "https://drive.google.com/uc?id=1fS_nvnGj6eM89PW1Wb8SuHwSrjBhtaji",
+      "sha256": "4aae9ba393d9b3d25b067928073704150434577ccba9cc327dd0102c9e0208ed",
+      "bytes": 353219054,
+      "video_files": 908
+    },
+    {
+      "label": "down_the_wicket",
+      "upstream_label": "Down The Wicket",
+      "file_id": "1ceijlIckZ5wkMb7_uLdwPUNBnUDpW18t",
+      "url": "https://drive.google.com/uc?id=1ceijlIckZ5wkMb7_uLdwPUNBnUDpW18t",
+      "sha256": "9e3f63bea006f3c00b65712d043ba283bf8b9995b658602799c75a940f11f0c8",
+      "bytes": 347477114,
+      "video_files": 890
+    },
+    {
+      "label": "late_cut",
+      "upstream_label": "Late Cut",
+      "file_id": "16ykROsk0I_jYUHQuDkTWMvjqlcfIkcrh",
+      "url": "https://drive.google.com/uc?id=16ykROsk0I_jYUHQuDkTWMvjqlcfIkcrh",
+      "sha256": "8b0d062476f5c1ef24a5b789acf8b0224f481872df88305e86545af718155f71",
+      "bytes": 112303811,
+      "video_files": 306
+    },
+    {
+      "label": "lofted_legside",
+      "upstream_label": "Lofted Legside",
+      "file_id": "16LiyYIIfsSIZtP2WyMm73vAm8cCpLA4H",
+      "url": "https://drive.google.com/uc?id=16LiyYIIfsSIZtP2WyMm73vAm8cCpLA4H",
+      "sha256": "b089e6c6ab8baa3aa24559cf64b4f6ce4d9be325611b90cdfd4127caafc407e1",
+      "bytes": 437419141,
+      "video_files": 1123
+    },
+    {
+      "label": "lofted_offside",
+      "upstream_label": "Lofted Offside",
+      "file_id": "1H9-oRr1lhQ-SlryjmfEIYAww94CmMKAs",
+      "url": "https://drive.google.com/uc?id=1H9-oRr1lhQ-SlryjmfEIYAww94CmMKAs",
+      "sha256": "96c21beb55e61743f2cec7252f64f4a0a4b6e9ca918157c40c51305475cba711",
+      "bytes": 399726379,
+      "video_files": 1023
+    },
+    {
+      "label": "reverse_sweep",
+      "upstream_label": "Reverse Sweep",
+      "file_id": "1nCQiGcjoj7gQOX_dygS1V0TBCTpVUFTH",
+      "url": "https://drive.google.com/uc?id=1nCQiGcjoj7gQOX_dygS1V0TBCTpVUFTH",
+      "sha256": "ed9e4a4c5e3bd109c5f54ba1af94a5c96f48dbb7933d801b1bc0934d7a305768",
+      "bytes": 99628993,
+      "video_files": 252
+    },
+    {
+      "label": "scoop",
+      "upstream_label": "Scoop",
+      "file_id": "124KpsJW-XLkXUZ4tAlDLP824tEeRtRs3",
+      "url": "https://drive.google.com/uc?id=124KpsJW-XLkXUZ4tAlDLP824tEeRtRs3",
+      "sha256": "992b058d4279dfd93cc2594ba4c5da0895300934b1f5352b790b9b37be878448",
+      "bytes": 111405097,
+      "video_files": 279
+    },
+    {
+      "label": "upper_cut",
+      "upstream_label": "Upper Cut",
+      "file_id": "1jIriwWh003bqz66IREQRGlaMIpi9fTx4",
+      "url": "https://drive.google.com/uc?id=1jIriwWh003bqz66IREQRGlaMIpi9fTx4",
+      "sha256": "8031bdf383af250897f2c735204239ecaf570b5b522917949042eab31c9c1d1e",
+      "bytes": 103730874,
+      "video_files": 275
+    }
+  ],
+  "rights": "Authors specify non-commercial research use with citation; original footage rights remain with their owners.",
+  "expanded_fetched_utc": "2026-11-05T21:44:32.877409+00:00",
+  "previous_split_commit": "7130e89b9e534a83a7c770f4e69121303ec7a033"
+}

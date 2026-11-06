@@ -1,0 +1,13 @@
+# Install the official CPU torch/torchvision wheels first, as shown in README.
+-r requirements-lock.txt
+torch==2.15.0
+torchvision==0.29.2
+scikit-learn==1.9.1
+scipy==1.18.1
+ImageHash==4.3.2
+onnx==1.23.2
+pytest==9.2.0
+requests==2.34.2
+threadpoolctl==3.8.0
+tqdm==4.70.1
+gdown==6.5.1

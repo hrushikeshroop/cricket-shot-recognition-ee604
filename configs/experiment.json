@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "seed": 604,
+  "created_utc": "2026-11-05T21:42:39.193443+00:00",
+  "task": "Six common shot families with automatic classification or human review",
+  "classes": [
+    "drive",
+    "defence",
+    "flick",
+    "pull",
+    "square_cut",
+    "sweep"
+  ],
+  "source_mapping": {
+    "cover_drive": "drive",
+    "straight_drive": "drive",
+    "defence": "defence",
+    "flick": "flick",
+    "pull": "pull",
+    "square_cut": "square_cut",
+    "sweep": "sweep"
+  },
+  "exposure_classes": [
+    "hook",
+    "late_cut",
+    "down_the_wicket",
+    "lofted_legside",
+    "lofted_offside"
+  ],
+  "unseen_style_classes": [
+    "reverse_sweep",
+    "scoop",
+    "upper_cut"
+  ],
+  "taxonomy_note": "Common coaching families, not an empirically verified worldwide frequency ranking. Drive combines cover and straight drives; six output families are not six native archive labels.",
+  "data": "CricShot10k author archives, all 15 native categories; audit actual files and cross-category duplicates.",
+  "excluded_source_ids": [
+    20,
+    29,
+    40,
+    56
+  ],
+  "split_rule": "Preserve previous train/test source separation. Split validation components deterministically into disjoint tune, calibration and policy roles. Exclude newly connected components that bridge old train/validation/test partitions. New source components enter test. Unseen-style classes never enter training, tuning, calibration or policy selection.",
+  "test_history": "Existing test source groups were evaluated in the eight-class study. The new six-class test is a reused benchmark, not a wholly new independent benchmark. No current-run test scores will select models/calibration/policy.",
+  "representations": [
+    "video_mean",
+    "context_mean",
+    "full_ordered",
+    "motion_ordered"
+  ],
+  "linear_C": [
+    1e-05,
+    0.0001,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "linear": "Train-only standardisation; raw video-mean baseline, other descriptors use train-only whitened PCA128; balanced multinomial logistic regression.",
+  "neural_configs": [
+    {
+      "pca": 128,
+      "hidden": 32
+    },
+    {
+      "pca": 256,
+      "hidden": 64
+    }
+  ],
+  "neural_representations": [
+    "full_ordered",
+    "motion_ordered"
+  ],
+  "neural_seeds": [
+    604,
+    605
+  ],
+  "neural": {
+    "dropout": 0.6,
+    "weight_decay": 0.01,
+    "learning_rate": 0.001,
+    "label_smoothing": 0.05,
+    "feature_noise_std": 0.05,
+    "max_epochs": 150,
+    "patience": 20,
+    "batch_size": 64,
+    "input_clip": 5.0
+  },
+  "model_selection": "Tune macro F1; evaluate recorded linear candidates, two-seed neural ensembles and matched full/motion ensembles. No tune-plus-train refit.",
+  "scope_head": "Binary balanced logistic regression on train-only PCA128 context features; known six families versus the five exposure categories. Select C using tune AUROC.",
+  "calibration": "Fit one temperature for the six-class conditional distribution and a Platt sigmoid for scope logits using calibration groups only.",
+  "support": "Joint support_i = calibrated in-scope score times calibrated conditional class score_i. Scores sum to the in-scope score, not necessarily one.",
+  "review_rule": "Exactly one support score strictly above the selected common threshold -> automatic label; zero or multiple -> human review. No forced top-1 fallback.",
+  "policy_grid": [
+    0.1,
+    0.12,
+    0.14,
+    0.16,
+    0.18,
+    0.2,
+    0.22,
+    0.24,
+    0.26,
+    0.28,
+    0.3,
+    0.32,
+    0.34,
+    0.36,
+    0.38,
+    0.4,
+    0.42,
+    0.44,
+    0.46,
+    0.48,
+    0.5,
+    0.52,
+    0.54,
+    0.56,
+    0.58,
+    0.6,
+    0.62,
+    0.64,
+    0.66,
+    0.68,
+    0.7,
+    0.72,
+    0.74,
+    0.76,
+    0.78,
+    0.8,
+    0.82,
+    0.84,
+    0.86,
+    0.88,
+    0.9
+  ],
+  "policy_targets": {
+    "known_automatic_accuracy": 0.9,
+    "known_coverage_goal": 0.75,
+    "exposure_review_rate": 0.85
+  },
+  "policy_selection": "On policy groups only: maximise known coverage among thresholds meeting 90% known automatic accuracy and 85% exposure review. Report whether the 75% known-coverage goal is met. If no threshold meets the accuracy/rejection targets, choose the greatest balanced objective (known coverage * known automatic accuracy - unknown false-automatic rate); explicitly report the target failure.",
+  "uncertainty": "2,000 source-component bootstrap draws, seed604, fixed models and policy; no independent-match or universal unknown-detection guarantee.",
+  "external_clip": "User Kohli clip is a previously seen qualitative diagnostic only. No threshold, training label or model choice is fit to that clip.",
+  "novelty": "Course-level integration of focused/global temporal context, calibrated scope support, explicit candidate-set review and measured risk/coverage; established component methods attributed."
+}

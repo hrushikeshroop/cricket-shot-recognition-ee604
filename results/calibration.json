@@ -1,0 +1,10 @@
+{
+  "temperature": 0.7077226855831622,
+  "scope_slope": 0.9050890207290649,
+  "scope_intercept": 0.17643536627292633,
+  "role": "calibration",
+  "n": 622,
+  "known": 359,
+  "selection_sha256": "b15a226e3d0dedc8a72b14daaa243f677195af31e1d2959170bcebba000a9306",
+  "calibration_code_sha256": "456c091eca665129a282e6b6486d350ad9aecf7e449ca44a86c00fd5b2dd03ff"
+}

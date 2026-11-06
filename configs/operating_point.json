@@ -1,0 +1,8 @@
+{
+  "threshold": 0.4,
+  "selection_role": "policy",
+  "selection_basis": "The coverage-oriented operating point was selected from two development-only trade-offs before current-run test evaluation and the external-clip diagnostic.",
+  "development_goals": {"known_coverage":0.75,"known_automatic_accuracy":0.8,"exposure_review_rate":0.8},
+  "cautious_reference_threshold": 0.66,
+  "note": "This changes the operating preference, not the fitted classifier or calibration. Original 90% accuracy / 85% rejection goals remain recorded as a stricter reference. No statistical error guarantee."
+}

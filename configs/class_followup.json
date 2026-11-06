@@ -1,0 +1,9 @@
+{
+  "reason": "The initial regularised six-family classifier reaches 79.6% tuning accuracy. Before opening current-run test results, test whether retaining more frozen-feature dimensions improves generalisation and the automatic-review trade-off.",
+  "pca": 512,
+  "hidden": 128,
+  "seeds": [604,605],
+  "representations": ["full_ordered","motion_ordered"],
+  "unchanged": "Train-only fitting, neural optimisation settings, earliest best tune macro-F1 epoch, original 26 candidates, source roles and test withholding. No user clip selection.",
+  "selection": "Highest tuning macro F1 among the original and three additional two-/four-head ensembles. No refit on tuning groups."
+}
